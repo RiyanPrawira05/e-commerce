@@ -55,7 +55,7 @@
                 </li>
                 @else
                 <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href="../examples/login.html"><i class="ni ni-key-25"></i><span class="nav-link-inner--text">Login</span></a>
+                    <a class="nav-link nav-link-icon" href=""><i class="ni ni-key-25"></i><span class="nav-link-inner--text">Login</span></a>
                 </li>
                 @if (Route::has('register'))
                 <li class="nav-item">
@@ -87,6 +87,8 @@
             </svg>
         </div>
     </div>
+
+    @yield('content')
 
     <!-- Footer -->
     <footer class="py-5">
