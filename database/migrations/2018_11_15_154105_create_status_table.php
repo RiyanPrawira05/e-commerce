@@ -16,8 +16,10 @@ class CreateStatusTable extends Migration
         Schema::create('status', function (Blueprint $table) {
             $table->increments('id_status');
             $table->enum('status', ['0','1','2','3','4'])->comment('0 = Belum Bayar, 1 = Sudah Bayar, 2 = Proses Pengiriman, 3 = Dikirim, 4 = Sudah Sampai');
-            $table->integer('users');
+            $table->integer('users')->unsigned();
             $table->timestamps();
+
+            $table->foreign('users')->references('id_users')->on('users');
         });
     }
 

@@ -15,9 +15,12 @@ class CreateProductwarnaTable extends Migration
     {
         Schema::create('product_warna', function (Blueprint $table) {
             $table->increments('id_productwarna');
-            $table->integer('product');
-            $table->integer('warna');
+            $table->integer('product')->unsigned();
+            $table->integer('warna')->unsigned();
             $table->timestamp('created_at')->nullable();
+
+            $table->foreign('product')->references('id_product')->on('product');
+            $table->foreign('warna')->references('id_warna')->on('warna');
         });
     }
 

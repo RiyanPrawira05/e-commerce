@@ -15,9 +15,11 @@ class CreatePembayaranTable extends Migration
     {
         Schema::create('pembayaran', function (Blueprint $table) {
             $table->increments('id_pembayaran');
-            $table->integer('via');
+            $table->integer('via')->unsigned();
             $table->dateTime('tgl_pembayaran');
             $table->timestamp('created_at')->nullable();
+
+            $table->foreign('via')->references('id_via')->on('via');
         });
     }
 

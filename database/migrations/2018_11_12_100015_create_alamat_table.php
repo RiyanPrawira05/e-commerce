@@ -16,8 +16,10 @@ class CreateAlamatTable extends Migration
         Schema::create('alamat', function (Blueprint $table) {
             $table->increments('id_alamat');
             $table->text('alamat');
-            $table->integer('users');
+            $table->integer('users')->unsigned();
             $table->timestamp('created_at')->nullable();
+
+            $table->foreign('users')->references('id_users')->on('users');
         });
     }
 

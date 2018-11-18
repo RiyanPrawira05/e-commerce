@@ -17,9 +17,11 @@ class CreateAdminTable extends Migration
             $table->increments('id_admin');
             $table->string('name',100);
             $table->text('email')->nullable();
-            $table->integer('jabatan');
+            $table->integer('jabatan')->unsigned();
             $table->text('alamat')->nullable();
             $table->timestamps();
+
+            $table->foreign('jabatan')->references('id_jabatan')->on('jabatan');
         });
     }
 

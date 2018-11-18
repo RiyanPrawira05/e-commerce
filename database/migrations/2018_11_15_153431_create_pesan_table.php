@@ -15,11 +15,14 @@ class CreatePesanTable extends Migration
     {
         Schema::create('pesan', function (Blueprint $table) {
             $table->increments('id_pesan');
-            $table->integer('users');
-            $table->integer('product');
+            $table->integer('users')->unsigned();
+            $table->integer('product')->unsigned();
             $table->dateTime('tgl_pesan');
-            $table->integer('status');
+            $table->integer('status')->unsigned();
             $table->timestamps();
+
+            $table->foreign('product')->references('id_product')->on('product');
+            $table->foreign('users')->references('id_users')->on('users');
         });
     }
 
