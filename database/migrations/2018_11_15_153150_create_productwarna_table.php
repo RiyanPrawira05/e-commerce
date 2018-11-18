@@ -14,7 +14,7 @@ class CreateProductwarnaTable extends Migration
     public function up()
     {
         Schema::create('product_warna', function (Blueprint $table) {
-            $table->increments('id_productwarna');
+            $table->increments('id_product_warna');
             $table->integer('product')->unsigned();
             $table->integer('warna')->unsigned();
             $table->timestamp('created_at')->nullable();

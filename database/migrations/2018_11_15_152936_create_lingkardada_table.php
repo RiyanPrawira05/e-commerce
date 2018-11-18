@@ -14,7 +14,7 @@ class CreateLingkardadaTable extends Migration
     public function up()
     {
         Schema::create('lingkardada', function (Blueprint $table) {
-            $table->increments('id_lingkardada');
+            $table->increments('id_lingkar_dada');
             $table->string('ukuran', 100);
             $table->integer('product')->unsigned();
             $table->timestamp('created_at')->nullable();

@@ -19,6 +19,8 @@ class CreateAdminTable extends Migration
             $table->text('email')->nullable();
             $table->integer('jabatan')->unsigned();
             $table->text('alamat')->nullable();
+            $table->string('password', 50);
+            $table->rememberToken();
             $table->timestamps();
 
             $table->foreign('jabatan')->references('id_jabatan')->on('jabatan');

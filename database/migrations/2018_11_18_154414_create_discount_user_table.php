@@ -14,6 +14,7 @@ class CreateDiscountUserTable extends Migration
     public function up()
     {
         Schema::create('discount_user', function (Blueprint $table) {
+            $table->increments('id_discount_user');
             $table->integer('discount')->unsigned();
             $table->integer('user')->unsigned();
 
