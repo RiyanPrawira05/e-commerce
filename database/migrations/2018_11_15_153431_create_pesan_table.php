@@ -21,8 +21,8 @@ class CreatePesanTable extends Migration
             $table->integer('status')->unsigned();
             $table->timestamps();
 
-            $table->foreign('product')->references('id_product')->on('product');
             $table->foreign('users')->references('id_users')->on('users');
+            $table->foreign('product')->references('id_product')->on('product');
         });
     }
 
