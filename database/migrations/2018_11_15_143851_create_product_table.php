@@ -24,8 +24,8 @@ class CreateProductTable extends Migration
             $table->text('deskripsi');
             $table->timestamps();
 
-            $table->foreign('category')->references('category')->on('id_category');
-            $table->foreign('jenis')->references('jenis')->on('id_jenis');
+            $table->foreign('category')->references('id_category')->on('category');
+            $table->foreign('jenis')->references('id_jenis')->on('jenis');
 
         });
     }
