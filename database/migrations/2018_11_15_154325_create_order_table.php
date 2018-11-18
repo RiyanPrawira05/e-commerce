@@ -23,6 +23,7 @@ class CreateOrderTable extends Migration
             $table->string('berat', 100);
             $table->integer('pengiriman');
             $table->integer('status');
+            $table->string('total_pembayaran');
             $table->timestamp('created_at')->nullable();
         });
     }

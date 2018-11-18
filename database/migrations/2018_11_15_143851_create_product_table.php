@@ -17,12 +17,16 @@ class CreateProductTable extends Migration
             $table->increments('id_product');
             $table->string('product', 100);
             $table->string('foto', 50);
-            $table->integer('category')->comment('Kategori Baju, ex: Mens, Womens, Celana, dll');
-            $table->integer('jenis')->comment('Jenis, ex: Jeans, Chino, dll');
+            $table->integer('category')->comment('Kategori Baju, ex: Mens, Womens, Celana, dll')->unsigned();
+            $table->integer('jenis')->comment('Jenis, ex: Jeans, Chino, dll')->unsigned();
             $table->string('harga');
             $table->string('size', 200);
             $table->text('deskripsi');
             $table->timestamps();
+
+            $table->foreign('category')->references('category')->on('id_category');
+            $table->foreign('jenis')->references('jenis')->on('id_jenis');
+
         });
     }
 

@@ -47,24 +47,22 @@
             </div>
 
             <!-- Navbar items -->
-            @if (Route::has('login'))
             <ul class="navbar-nav ml-auto">
                 @auth
-                <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href="../index.html"><i class="ni ni-planet"></i><span class="nav-link-inner--text">Dashboard</span></a>
-                </li>
-                @else
-                <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href=""><i class="ni ni-key-25"></i><span class="nav-link-inner--text">Login</span></a>
-                </li>
-                @if (Route::has('register'))
-                <li class="nav-item">
-                    <a class="nav-link nav-link-icon" href="../examples/register.html"><i class="ni ni-circle-08"></i><span class="nav-link-inner--text">Register</span></a>
-                </li>
-                @endif
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-icon" href="{{ url('/home_backend') }}"><i class="ni ni-planet"></i><span class="nav-link-inner--text">Home</span></a>
+                    </li>
                 @endauth
+
+                @guest
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-icon" href="{{ route('login') }}"><i class="ni ni-key-25"></i><span class="nav-link-inner--text"> Login </span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-icon" href="{{ route('register') }}"><i class="ni ni-circle-08"></i><span class="nav-link-inner--text"> Register </span></a>
+                    </li>
+                @endguest
             </ul>
-            @endif
             </div>
         </div>
     </nav>
@@ -75,8 +73,8 @@
             <div class="header-body text-center mb-7">
                 <div class="row justify-content-center">
                     <div class="col-lg-5 col-md-6">
-                        <h1 class="text-white">Welcome!</h1>
-                            <p class="text-lead text-light">Use these awesome forms to login or create new account in your project for free.</p>
+                        <h1 class="text-white">Welcome !</h1>
+                            <h4 class="text-white text-light" style="margin-bottom: -30px;">To RD-SHOPS, we offer great clothings</h4>
                     </div>
                 </div>
             </div>

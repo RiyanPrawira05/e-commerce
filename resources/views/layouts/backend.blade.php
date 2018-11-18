@@ -112,6 +112,8 @@
 
 				<!-- Navigation -->
 				<ul class="navbar-nav">
+					
+				@auth
 					<li class="nav-item">
 						<a class="nav-link" href="./index.html">
 							<i class="ni ni-tv-2 text-primary"></i> Dashboard
@@ -137,6 +139,8 @@
 							<i class="ni ni-bullet-list-67 text-red"></i> Tables
 						</a>
 					</li>
+
+				@else
 					<li class="nav-item">
 						<a class="nav-link" href="./examples/login.html">
 							<i class="ni ni-key-25 text-info"></i> Login
@@ -173,6 +177,7 @@
 						</a>
 					</li>
 				</ul>
+				@endauth
 			</div>
 		</div>
 	</nav>
@@ -334,17 +339,17 @@
       </div>
     </div>
 
-			<!-- Header -->
-			<div class="header bg-gradient-primary pb-1 pt-5 pt-md-6">
-				<div class="container-fluid">
-					<div class="header-body"></div>
-				</div>
-			</div>
+	<!-- Header -->
+	<div class="header bg-gradient-primary pb-1 pt-5 pt-md-6">
+		<div class="container-fluid">
+			<div class="header-body"></div>
+		</div>
+	</div>
 
-			<!-- Page content -->
-			<div class="container-fluid" style="margin-top: 15px;">
-				@yield('content')
-			</div>
+	<!-- Page content -->
+	<div class="container-fluid" style="margin-top: 15px;">
+		@yield('content')
+	</div>
 
 		<!-- Core -->
 		<script src="{{ asset('backend/vendor/jquery/dist/jquery.min.js') }}"></script>
