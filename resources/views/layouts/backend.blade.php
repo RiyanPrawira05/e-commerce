@@ -341,7 +341,10 @@
 				</div>
 			</div>
 
-			@yield('content')
+			<!-- Page content -->
+			<div class="container-fluid" style="margin-top: 15px;">
+				@yield('content')
+			</div>
 
 		<!-- Core -->
 		<script src="{{ asset('backend/vendor/jquery/dist/jquery.min.js') }}"></script>
