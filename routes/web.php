@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('welcome_backend');
 });
 
+Route::get('/pass', function () {
+    return bcrypt('123456');
+});
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

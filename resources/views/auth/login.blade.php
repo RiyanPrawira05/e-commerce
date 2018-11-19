@@ -26,9 +26,9 @@
                         </div>
                     <form role="form" method="post" action="{{ route('login') }}">
                     @include ('alert.alert')
-                    
+
                         {{ csrf_field() }}
-                        <div class="form-group mb-3 {{ $errors->has('email') ? ' has-error' : '' }}">
+                        <div class="form-group mb-3 {{ $errors->has('email') ? ' has-danger' : '' }}">
                             <div class="input-group input-group-alternative">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-email-83"></i></span>
