@@ -25,6 +25,8 @@
                             <small>Or sign in with credentials</small>
                         </div>
                     <form role="form" method="post" action="{{ route('login') }}">
+                    @include ('alert.alert')
+                    
                         {{ csrf_field() }}
                         <div class="form-group mb-3 {{ $errors->has('email') ? ' has-error' : '' }}">
                             <div class="input-group input-group-alternative">
@@ -34,9 +36,9 @@
                                 <input class="form-control" placeholder="Email" type="email" name="email" autocomplete="off" autofocus required>
 
                                     @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
+                                    <small class="help-block">
+                                        {{ $errors->first('email') }}
+                                    </small>
                                     @endif
 
                             </div>
