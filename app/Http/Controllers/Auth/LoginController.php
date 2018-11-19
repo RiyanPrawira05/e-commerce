@@ -36,4 +36,27 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function showLoginForm()
+    {
+        return view('auth.login');
+    }
+
+    /**
+     * Where action users after login.
+     *
+     * @var string
+     */
+    public function authenticated()
+    {
+        switch (Auth::user()->jabatan) { // jabatan ini dia ambil dari user yg sedang login dan memilih ke table jabatan
+            case '1':
+                return redirect->route('kemana'); // ini untuk dia redirect kemana jikalau user dengan hak akses admin
+                break;
+            case '2':
+                return redirect->route('kemana'); // ini untuk dia redirect kemana jikalau user dengan hak akses pengguna
+                break;
+        }
+        return redirect('/home'); // ini default jika value / nomor jabatan user tidak masuk ke salah satu yg diatas dia otomatis ke sini
+    }
 }

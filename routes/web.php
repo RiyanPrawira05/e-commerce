@@ -19,7 +19,10 @@ Route::get('/pass', function () {
     return bcrypt('123456');
 });
 
-
-Auth::routes();
+Route::get('/', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('/', 'Auth\LoginController@login')->name('login');
+Route::get('/daftar', 'Auth\RegisterController@showRegisterForm')->name('register');
+Route::post('/daftar', 'Auth\RegisterController@register')->name('register');
+Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
 Route::get('/home', 'HomeController@index')->name('home');
