@@ -24,38 +24,23 @@
                         <div class="text-center text-muted mb-4">
                             <small>Or sign in with credentials</small>
                         </div>
-                    <form role="form" method="post" action="{{ route('login') }}">
-                    @include ('alert.alert')
-                    
+                    @include('template.alert')
+                    <form role="form" method="post" action="{{ route('login') }}">                    
                         {{ csrf_field() }}
-                        <div class="form-group mb-3 {{ $errors->has('email') ? ' has-error' : '' }}">
+                        <div class="form-group mb-3 {{ $errors->has('email') ? ' has-danger' : '' }}">
                             <div class="input-group input-group-alternative">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                 </div>
-                                <input class="form-control" placeholder="Email" type="email" name="email" autocomplete="off" autofocus required>
-
-                                    @if ($errors->has('email'))
-                                    <small class="help-block">
-                                        {{ $errors->first('email') }}
-                                    </small>
-                                    @endif
-
+                                <input class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="Email" type="email" name="email" autocomplete="off" autofocus required>
                             </div>
                          </div>
-                        <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
+                        <div class="form-group {{ $errors->has('password') ? ' has-danger' : '' }}">
                             <div class="input-group input-group-alternative">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                 </div>
-                                <input class="form-control" placeholder="Password" type="password" name="password"required>
-
-                                    @if ($errors->has('password'))
-                                        <span class="help-block">
-                                            <strong>{{ $errors->first('password') }}</strong>
-                                        </span>
-                                    @endif
-
+                                <input class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="Password" type="password" name="password"required>
                             </div>
                         </div>
                         <div class="custom-control custom-control-alternative custom-checkbox">
