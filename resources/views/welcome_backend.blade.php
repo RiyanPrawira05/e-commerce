@@ -51,7 +51,7 @@
                 @if (Route::has('login'))
                 @auth
                     <li class="nav-item">
-                        <a class="nav-link nav-link-icon" href="{{ url('/home_backend') }}"><i class="ni ni-planet"></i><span class="nav-link-inner--text">Home</span></a>
+                        <a class="nav-link nav-link-icon" href="{{ route('welcome') }}"><i class="ni ni-planet"></i><span class="nav-link-inner--text">Home</span></a>
                     </li>
                 @else
                     <li class="nav-item">

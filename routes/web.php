@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('welcome_backend');
-});
+})->name('welcome');
 
 Route::get('/pass', function () {
     return bcrypt('123456');
