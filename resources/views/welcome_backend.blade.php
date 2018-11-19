@@ -48,20 +48,23 @@
 
             <!-- Navbar items -->
             <ul class="navbar-nav ml-auto">
+                @if (Route::has('login'))
                 @auth
                     <li class="nav-item">
                         <a class="nav-link nav-link-icon" href="{{ url('/home_backend') }}"><i class="ni ni-planet"></i><span class="nav-link-inner--text">Home</span></a>
                     </li>
-                @endauth
-
-                @guest
+                @else
                     <li class="nav-item">
                         <a class="nav-link nav-link-icon" href="{{ route('login') }}"><i class="ni ni-key-25"></i><span class="nav-link-inner--text"> Login </span></a>
                     </li>
+
+                @if (Route::has('register'))
                     <li class="nav-item">
                         <a class="nav-link nav-link-icon" href="{{ route('register') }}"><i class="ni ni-circle-08"></i><span class="nav-link-inner--text"> Register </span></a>
                     </li>
-                @endguest
+                @endif
+                @endauth
+                @endif
             </ul>
             </div>
         </div>
