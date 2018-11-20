@@ -11,4 +11,13 @@ class Product extends Model
     protected $fillable = [
     	'product', 'foto', 'jenis', 'category', 'harga', 'size', 'deskripsi',
     ];
+
+    public function jenis()
+    {
+    	return $this->belongsTo('App\Jenis', 'jenis', 'id_jenis');
+    }
+    public function category()
+    {
+    	return $this->belongsTo('App\Category', 'category', 'id_category');
+    }
 }

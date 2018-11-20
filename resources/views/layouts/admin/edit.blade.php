@@ -10,8 +10,6 @@
                 <div class="card-header bg-transparent pb-5">CREATE</div>
                     <div class="card-body px-lg-5 py-lg-5">
 
-                    @include('template.alert')
-
                     <form role="form" method="post" action="{{ route('update', $users->id_users) }}">
                         {{ csrf_field() }}
                         <div class="form-group mb-3 {{ $errors->has('name') ? ' has-danger' : '' }}">
@@ -50,7 +48,7 @@
                             <label class="custom-control-label" for="user">2</label>
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary my-4">Create</button>
+                            <button type="submit" class="btn btn-primary my-4">Update</button>
                         </div>
                     </form>
                 </div>

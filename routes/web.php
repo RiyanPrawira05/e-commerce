@@ -11,6 +11,10 @@
 |
 */
 
+// Route::get('/pass', function () {
+//     return bcrypt('admin');
+// });
+
 // Auth::Routes();
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('/login', 'Auth\LoginController@login')->name('login');
@@ -18,7 +22,7 @@ Route::get('/daftar', 'Auth\RegisterController@showRegisterForm')->name('registe
 Route::post('/daftar', 'Auth\RegisterController@register')->name('register');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
-// Admin
+// Home
 Route::get('/', function () {
     return view('welcome_backend');
 })->name('welcome');
@@ -29,4 +33,13 @@ Route::get('/users', 'UserController@index')->name('users');
 Route::get('/users/create', 'UserController@create')->name('create');
 Route::post('/users/add', 'UserController@store')->name('add');
 Route::get('/users/{id}/edit', 'UserController@edit')->name('edit');
-Route::get('/users/{id}/update', 'UserController@update')->name('update');
+Route::post('/users/{id}/update', 'UserController@update')->name('update');
+Route::get('/users/{id}/destroy', 'UserController@destroy')->name('destroy');
+
+// Product
+Route::get('/product', 'ProductController@index')->name('product');
+Route::get('/product/create', 'ProductController@create')->name('create');
+Route::post('/product/update', 'ProductController@store')->name('store');
+
+
+

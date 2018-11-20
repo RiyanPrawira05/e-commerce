@@ -125,8 +125,8 @@
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="">
-							<i class="ni ni-pin-3 text-orange"></i> Maps
+						<a class="nav-link" href="{{ route('product') }}">
+							<i class="ni ni-pin-3 text-orange"></i>Product
 						</a>
 					</li>
 					<li class="nav-item">

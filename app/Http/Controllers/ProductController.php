@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Product;
+use App\Jenis;
+use App\Category;
+
 class ProductController extends Controller
 {
     /**
@@ -13,7 +17,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $product = Product::all();
+        $jenis = Jenis::all();
+        $category = Category::all();
+        return view('layouts.admin.product', compact('product', 'jenis', 'category'));
     }
 
     /**
@@ -23,7 +30,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('layouts.admin.create_product');
     }
 
     /**
@@ -34,7 +41,29 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $this->validate($request, [
+
+            'product' => 'required|string|min:5',
+            'foto' => 'required|mimes:jpg,png,jpeg',
+            'jenis' => 'required',
+            'category' => 'required',
+            'harga' => 'required|numeric',
+            'size' => 'required',
+            'deskripsi' => 'min:5',
+
+        ]);
+
+        $data = new Product;
+        $data->product = $request->product;
+        $data->foto = $request->foto;
+        $data->jenis = $request->jenis;
+        $data->category = $request->category;
+        $data->harga = $request->harga;
+        $data->size = $request->size;
+        $data->deskripsi = $request->deskripsi;
+        $data->save();
+
+        return redirect()->route('product')->with('success', 'Data Berhasil Ditambahkan');
     }
 
     /**

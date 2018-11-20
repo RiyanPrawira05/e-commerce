@@ -41,7 +41,7 @@ class UserController extends Controller
 
             'name' => 'required|max:60|string',
             'email' => 'required|max:80|unique:users',
-            'password' => 'required|min:4',
+            'password' => 'min:4',
             'jabatan' => 'required',
 
         ]);
@@ -92,7 +92,7 @@ class UserController extends Controller
         $this->validate($request, [
 
             'name' => 'required|max:60|string',
-            'email' => 'required|max:80|unique:users',
+            'email' => 'required|max:80',
             'password' => 'required|min:4',
             'jabatan' => 'required',
 
@@ -101,7 +101,11 @@ class UserController extends Controller
         $data = User::find($id);
         $data->name = $request->name;
         $data->email = $request->email;
-        $data->password = $request->password;
+
+        if ($data->password){
+            $data->password = bcrypt($request->password);
+        }
+
         $data->jabatan = $request->jabatan;
         $data->save();
 
@@ -116,6 +120,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $users = User::find($id)->delete();
+        return redirect()->route('users')->with('success', 'Data Berhasil di Delete');
     }
 }
