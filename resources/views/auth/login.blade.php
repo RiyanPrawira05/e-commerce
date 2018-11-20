@@ -27,14 +27,14 @@
 
                     @include('template.alert')
 
-                    <form role="form" method="post" action="{{ route('login') }}">                    
+                    <form role="form" method="post" action="{{ route('login') }}">
                         {{ csrf_field() }}
                         <div class="form-group mb-3 {{ $errors->has('email') ? ' has-danger' : '' }}">
                             <div class="input-group input-group-alternative">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                 </div>
-                                <input class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="Email" type="email" name="email" autocomplete="off" autofocus required>
+                                <input class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="Email" type="email" name="email" autofocus required>
                             </div>
                          </div>
                         <div class="form-group {{ $errors->has('password') ? ' has-danger' : '' }}">
@@ -42,7 +42,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                 </div>
-                                <input class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="Password" type="password" name="password"required>
+                                <input class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="Password" type="password" name="password" required>
                             </div>
                         </div>
                         <div class="custom-control custom-control-alternative custom-checkbox">
@@ -62,7 +62,7 @@
                     <a href="#" class="text-light"><small>Forgot password?</small></a>
                 </div>
                 <div class="col-6 text-right">
-                    <a href="#" class="text-light"><small>Create new account</small></a>
+                    <a href="{{ route('register') }}" class="text-light"><small>Create new account</small></a>
                 </div>
             </div>
         </div>

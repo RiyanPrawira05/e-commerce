@@ -54,19 +54,19 @@
 					<div class=" dropdown-header noti-title">
 						<h6 class="text-overflow m-0">Welcome!</h6>
 					</div>
-						<a href="./examples/profile.html" class="dropdown-item">
+						<a href="" class="dropdown-item">
 							<i class="ni ni-single-02"></i>
 							<span>My profile</span>
 						</a>
-						<a href="./examples/profile.html" class="dropdown-item">
+						<a href="" class="dropdown-item">
 							<i class="ni ni-settings-gear-65"></i>
 							<span>Settings</span>
 						</a>
-						<a href="./examples/profile.html" class="dropdown-item">
+						<a href="" class="dropdown-item">
 							<i class="ni ni-calendar-grid-58"></i>
 							<span>Activity</span>
 						</a>
-						<a href="./examples/profile.html" class="dropdown-item">
+						<a href="" class="dropdown-item">
 							<i class="ni ni-support-16"></i>
 							<span>Support</span>
 						</a>
@@ -115,13 +115,13 @@
 					
 				@auth
 					<li class="nav-item">
-						<a class="nav-link" href="">
-							<i class="ni ni-tv-2 text-primary"></i> Dashboard
+						<a class="nav-link" href="{{ route('home') }}">
+							<i class="ni ni-planet text-primary"></i> Dashboard
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="">
-							<i class="ni ni-planet text-blue"></i> Icons
+						<a class="nav-link" href="{{ route('users') }}">
+							<i class="ni ni-circle-08 text-green"></i> Users
 						</a>
 					</li>
 					<li class="nav-item">
@@ -213,7 +213,7 @@
 							<img alt="Image placeholder" src="{{ asset('backend/img/theme/team-4-800x800.jpg') }}">
 						</span>
 						<div class="media-body ml-2 d-none d-lg-block">
-							<span class="mb-0 text-sm  font-weight-bold">Jessica Jones</span>
+							<span class="mb-0 text-sm  font-weight-bold">{{ Auth::user()->name }}</span>
 						</div>
 					</div>
 				</a>
@@ -237,128 +237,125 @@
 							<span>Support</span>
 						</a>
 							<div class="dropdown-divider"></div>
-								<a href="#!" class="dropdown-item"><i class="ni ni-user-run"></i><span>Logout</span></a>
+								<a href="{{ route('logout') }}" class="dropdown-item"><i class="ni ni-user-run"></i><span>Logout</span></a>
 							</div>
 						</li>
 					</ul>
 				</div>
 			</nav>
 
-			 <!-- Header -->
-    <div class="header bg-gradient-primary pb-3 pt-5 pt-md-8">
-      <div class="container-fluid">
-        <div class="header-body">
-          <!-- Card stats -->
-          <div class="row">
-            <div class="col-xl-3 col-lg-6">
-              <div class="card card-stats mb-4 mb-xl-0">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Traffic</h5>
-                      <span class="h2 font-weight-bold mb-0">350,897</span>
-                    </div>
-                    <div class="col-auto">
-                      <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
-                        <i class="fas fa-chart-bar"></i>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="mt-3 mb-0 text-muted text-sm">
-                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                    <span class="text-nowrap">Since last month</span>
-                  </p>
-                </div>
-              </div>
+			<!-- Header -->
+    		<div class="header bg-gradient-primary pb-3 pt-5 pt-md-8">
+    			<div class="container-fluid">
+    				<div class="header-body">
+
+          	<!-- Card stats -->
+        	<div class="row">
+            	<div class="col-xl-3 col-lg-6">
+              		<div class="card card-stats mb-4 mb-xl-0">
+                		<div class="card-body">
+                  			<div class="row">
+                    			<div class="col">
+                      				<h5 class="card-title text-uppercase text-muted mb-0">Traffic</h5>
+                      				<span class="h2 font-weight-bold mb-0">350,897</span>
+                    			</div>
+                    		<div class="col-auto">
+                      			<div class="icon icon-shape bg-danger text-white rounded-circle shadow"><i class="fas fa-chart-bar"></i>
+                      		</div>
+                    	</div>
+                 	 </div>
+                 		 <p class="mt-3 mb-0 text-muted text-sm">
+                    		<span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                    		<span class="text-nowrap">Since last month</span>
+                  		</p>
+                	</div>
+              	</div>
             </div>
             <div class="col-xl-3 col-lg-6">
-              <div class="card card-stats mb-4 mb-xl-0">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">New users</h5>
-                      <span class="h2 font-weight-bold mb-0">2,356</span>
+            	<div class="card card-stats mb-4 mb-xl-0">
+                	<div class="card-body">
+                		<div class="row">
+                    		<div class="col">
+                      			<h5 class="card-title text-uppercase text-muted mb-0">New users</h5>
+                      			<span class="h2 font-weight-bold mb-0">2,356</span>
+                    		</div>
+                    	<div class="col-auto">
+                      		<div class="icon icon-shape bg-warning text-white rounded-circle shadow"><i class="fas fa-chart-pie"></i>
+                      	</div>
                     </div>
-                    <div class="col-auto">
-                      <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
-                        <i class="fas fa-chart-pie"></i>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="mt-3 mb-0 text-muted text-sm">
-                    <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 3.48%</span>
-                    <span class="text-nowrap">Since last week</span>
-                  </p>
+            	</div>
+                	<p class="mt-3 mb-0 text-muted text-sm">
+	                    <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 3.48%</span>
+	                    <span class="text-nowrap">Since last week</span>
+                  	</p>
                 </div>
-              </div>
-            </div>
-            <div class="col-xl-3 col-lg-6">
-              <div class="card card-stats mb-4 mb-xl-0">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Sales</h5>
-                      <span class="h2 font-weight-bold mb-0">924</span>
-                    </div>
+        	</div>
+       	</div>
+       	<div class="col-xl-3 col-lg-6">
+        	<div class="card card-stats mb-4 mb-xl-0">
+            	<div class="card-body">
+                	<div class="row">
+                    	<div class="col">
+                      		<h5 class="card-title text-uppercase text-muted mb-0">Sales</h5>
+                      		<span class="h2 font-weight-bold mb-0">924</span>
+                    	</div>
                     <div class="col-auto">
-                      <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
-                        <i class="fas fa-users"></i>
-                      </div>
+                   		<div class="icon icon-shape bg-yellow text-white rounded-circle shadow"><i class="fas fa-users"></i>
                     </div>
-                  </div>
-                  <p class="mt-3 mb-0 text-muted text-sm">
-                    <span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
-                    <span class="text-nowrap">Since yesterday</span>
-                  </p>
                 </div>
-              </div>
             </div>
-            <div class="col-xl-3 col-lg-6">
-              <div class="card card-stats mb-4 mb-xl-0">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col">
-                      <h5 class="card-title text-uppercase text-muted mb-0">Performance</h5>
-                      <span class="h2 font-weight-bold mb-0">49,65%</span>
-                    </div>
-                    <div class="col-auto">
-                      <div class="icon icon-shape bg-info text-white rounded-circle shadow">
-                        <i class="fas fa-percent"></i>
-                      </div>
-                    </div>
-                  </div>
-                  <p class="mt-3 mb-0 text-muted text-sm">
-                    <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
-                    <span class="text-nowrap">Since last month</span>
-                  </p>
-                </div>
-              </div>
+           		<p class="mt-3 mb-0 text-muted text-sm">
+                	<span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
+                	<span class="text-nowrap">Since yesterday</span>
+                </p>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-
-	<!-- Header -->
-	<div class="header bg-gradient-primary pb-1 pt-5 pt-md-6">
-		<div class="container-fluid">
-			<div class="header-body"></div>
-		</div>
+    <div class="col-xl-3 col-lg-6">
+    	<div class="card card-stats mb-4 mb-xl-0">
+        	<div class="card-body">
+               	<div class="row">
+               		<div class="col">
+                    	<h5 class="card-title text-uppercase text-muted mb-0">Performance</h5>
+                    	<span class="h2 font-weight-bold mb-0">49,65%</span>
+                    </div>
+                <div class="col-auto">
+                    <div class="icon icon-shape bg-info text-white rounded-circle shadow"><i class="fas fa-percent"></i>
+            	</div>
+            </div>
+        </div>
+        <p class="mt-3 mb-0 text-muted text-sm">
+            <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
+           	<span class="text-nowrap">Since last month</span>
+		</p>
 	</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
-	<!-- Page content -->
-	<div class="container-fluid" style="margin-top: 15px;">
-		@yield('content')
+<!-- Header -->
+<div class="header bg-gradient-primary pb-1 pt-5 pt-md-6">
+	<div class="container-fluid">
+		<div class="header-body"></div>
 	</div>
+</div>
 
-		<!-- Core -->
-		<script src="{{ asset('backend/vendor/jquery/dist/jquery.min.js') }}"></script>
-		<script src="{{ asset('backend/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
-		<!-- Optional JS -->
-		<script src="{{ asset('backend/vendor/chart.js/dist/Chart.min.js') }}"></script>
-		<script src="{{ asset('backend/vendor/chart.js/dist/Chart.extension.js') }}"></script>
-		<!-- Argon JS -->
-		<script src="{{ asset('backend/js/argon.js') }}"></script>
+<!-- Page content -->
+<div class="container-fluid" style="margin-top: 15px;">
+	@yield('content')
+</div>
 
-	</body>
+<!-- Core -->
+<script src="{{ asset('backend/vendor/jquery/dist/jquery.min.js') }}"></script>
+<script src="{{ asset('backend/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+<!-- Optional JS -->
+<script src="{{ asset('backend/vendor/chart.js/dist/Chart.min.js') }}"></script>
+<script src="{{ asset('backend/vendor/chart.js/dist/Chart.extension.js') }}"></script>
+<!-- Argon JS -->
+<script src="{{ asset('backend/js/argon.js') }}"></script>
+
+</body>
 </html>
