@@ -15,7 +15,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('layouts.admin.user', compact('users'));
+        return view('backend.pengguna.index', compact('users'));
     }
 
     /**
@@ -25,7 +25,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('layouts.admin.create');
+        return view('backend.pengguna.create');
     }
 
     /**
@@ -40,7 +40,7 @@ class UserController extends Controller
        $this->validate($request, [
 
             'name' => 'required|max:60|string',
-            'email' => 'required|max:80|unique:users',
+            'email' => 'required|max:80|unique:users,email',
             'password' => 'min:4',
             'jabatan' => 'required',
 
@@ -53,7 +53,7 @@ class UserController extends Controller
         $data->jabatan = $request->jabatan;
         $data->save();
 
-        return redirect()->route('users')->with('success', 'Data Berhasil ditambahkan');
+        return redirect()->route('users.index')->with('success', 'Data Berhasil ditambahkan');
     }
 
     /**
@@ -76,7 +76,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $users = User::find($id);
-        return view('layouts.admin.edit', compact('users'));
+        return view('backend.pengguna.edit', compact('users'));
     }
 
     /**
@@ -88,12 +88,11 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         $this->validate($request, [
 
             'name' => 'required|max:60|string',
             'email' => 'required|max:80',
-            'password' => 'required|min:4',
+            'password' => 'min:4',
             'jabatan' => 'required',
 
         ]);
@@ -109,7 +108,7 @@ class UserController extends Controller
         $data->jabatan = $request->jabatan;
         $data->save();
 
-        return redirect()->route('users')->with('success', 'Data Berhasil di Update');
+        return redirect()->back()->with('success', 'Data Berhasil di Update');
     }
 
     /**
@@ -122,5 +121,26 @@ class UserController extends Controller
     {
         $users = User::find($id)->delete();
         return redirect()->route('users')->with('success', 'Data Berhasil di Delete');
+    }
+
+    /**
+     * Update the Password.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function password(Request $request, $id)
+    {
+        $this->validate($request, [
+            'password' => 'required|min:4|confirmed',
+
+        ]);
+
+        $data = User::find($id);
+        $data->password = bcrypt($request->password);
+        $data->save();
+
+        return redirect()->back()->with('success', 'Password Berhasil di ubah');
     }
 }

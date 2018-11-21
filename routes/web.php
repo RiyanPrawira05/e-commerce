@@ -11,11 +11,11 @@
 |
 */
 
-// Route::get('/pass', function () {
-//     return bcrypt('admin');
-// });
+Route::get('/pass', function () {
+    return bcrypt('123456');
+});
 
-// Auth::Routes();
+// Route untuk Authentication
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('/login', 'Auth\LoginController@login')->name('login');
 Route::get('/daftar', 'Auth\RegisterController@showRegisterForm')->name('register');
@@ -29,12 +29,14 @@ Route::get('/', function () {
 Route::get('/home', 'HomeController@index')->name('home');
 
 // Users
-Route::get('/users', 'UserController@index')->name('users');
-Route::get('/users/create', 'UserController@create')->name('create');
-Route::post('/users/add', 'UserController@store')->name('add');
-Route::get('/users/{id}/edit', 'UserController@edit')->name('edit');
-Route::post('/users/{id}/update', 'UserController@update')->name('update');
-Route::get('/users/{id}/destroy', 'UserController@destroy')->name('destroy');
+Route::resource('users', 'UserController', ['names' => 'users']);
+Route::post('/users/{id}/change-password', 'UserController@password')->name('users.password');
+// Route::get('/users', 'UserController@index')->name('users');
+// Route::get('/users/create', 'UserController@create')->name('create');
+// Route::post('/users/create', 'UserController@store')->name('store');
+// Route::get('/users/{id}/edit', 'UserController@edit')->name('edit');
+// Route::post('/users/{id}/edit', 'UserController@update')->name('update');
+// Route::get('/users/{id}/destroy', 'UserController@destroy')->name('destroy');
 
 // Product
 Route::get('/product', 'ProductController@index')->name('product');
