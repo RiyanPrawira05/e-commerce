@@ -130,8 +130,8 @@
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="">
-							<i class="ni ni-single-02 text-yellow"></i> User profile
+						<a class="nav-link" href="{{ route('jenis') }}">
+							<i class="ni ni-single-02 text-yellow"></i>Jenis
 						</a>
 					</li>
 					<li class="nav-item">

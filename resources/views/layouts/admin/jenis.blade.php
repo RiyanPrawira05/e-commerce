@@ -6,14 +6,9 @@
     <table class="table align-items-center">
         <thead class="thead-light">
             @include('template.alert')
-            <th class="mb-0 text-sm">Data Product : {!! $product->count() !!}</th>
+            <th class="mb-0 text-sm">Data Jenis : {!! $jenis->count() !!}</th>
             <tr>
-                <th scope="col">Foto</th>
-                <th scope="col">Product</th>
-                <th scope="col">Jenis</th>
-                <th scope="col">Category</th>
-                <th scope="col">Harga</th>
-                <th scope="col">Size</th>
+                <th scope="col">Bahan</th>
                 <th scope="col">Deskripsi</th>
                 <th scope="col">
                     <a href="{{ route('create') }}"><i class="fas fa-plus-circle text-sm text-success"></i></a>
@@ -21,37 +16,18 @@
             </tr>
         </thead>
         <tbody>
-        @if (count($product) > 0)
-        @foreach ($product as $products)
+        @if (count($jenis) > 0)
+        @foreach ($jenis as $model)
             <tr>
-                <td>
-                    {{ $products->foto }}
-                </td>
                 <th scope="row">
                     <div class="media align-items-center">
                         <div class="media-body">
-                            <span class="mb-0 text-sm">{{ $products->product }}</span>
+                            <span class="mb-0 text-sm">{{ $model->bahan }}</span>
                         </div>
                     </div>
                 </th>
                 <td>
-                    {{ $products->jenis->bahan }}
-                </td>
-                <td>
-                    {{ $products->category }}
-                </td>
-                <th>
-                    <span class="mb-0 text-md text-green"> {!! $products->harga !!} </span>
-                </th>
-                <th scope="row">
-                    <div class="media align-items-center">
-                        <div class="media-body">
-                            <span class="mb-0 text-sm">{{ $products->size }}</span>
-                        </div>
-                    </div>
-                </th>
-                <td>
-                    {{ $products->deskripsi }}
+                    {{ $model->deskripsi }}
                 </td>
                 <td class="text-right">
                     <div class="dropdown">

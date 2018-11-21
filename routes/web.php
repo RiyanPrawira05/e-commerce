@@ -41,5 +41,9 @@ Route::get('/product', 'ProductController@index')->name('product');
 Route::get('/product/create', 'ProductController@create')->name('create');
 Route::post('/product/update', 'ProductController@store')->name('store');
 
+// Jenis
+Route::get('/jenis', 'JenisController@index')->name('jenis');
+
+
 
 
