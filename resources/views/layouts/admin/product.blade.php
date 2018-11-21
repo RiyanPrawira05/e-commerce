@@ -35,7 +35,7 @@
                     </div>
                 </th>
                 <td>
-                    {{ $products->jenis->bahan }}
+                    {{ $products->jenis }}
                 </td>
                 <td>
                     {{ $products->category }}

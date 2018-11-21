@@ -121,17 +121,17 @@
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="{{ route('users') }}">
-							<i class="ni ni-circle-08 text-green"></i> Users
+							<i class="ni ni-circle-08 text-danger"></i> Users
 						</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="{{ route('product') }}">
-							<i class="ni ni-pin-3 text-orange"></i>Product
+							<i class="ni ni-shop text-warning"></i>Product
 						</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="{{ route('jenis') }}">
-							<i class="ni ni-single-02 text-yellow"></i>Jenis
+							<i class="ni ni-tag text-info"></i>Jenis
 						</a>
 					</li>
 					<li class="nav-item">

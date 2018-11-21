@@ -11,4 +11,6 @@ class Jenis extends Model
     protected $fillable = [
     	'bahan', 'slug_bahan', 'deskripsi',
     ];
+
+    public $timestamps = false;
 }

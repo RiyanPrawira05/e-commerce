@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Jenis;
+use App\Jenis;
 
 class JenisController extends Controller
 {
@@ -25,7 +25,7 @@ class JenisController extends Controller
      */
     public function create()
     {
-        //
+        return view('layouts.admin.create_jenis');
     }
 
     /**
@@ -36,7 +36,21 @@ class JenisController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+
+            'bahan' => 'required|string|min:4|max:20',
+            'slug_bahan' => 'required|string|min:4|max:20',
+            'deskripsi' => 'min:5|max:30',
+
+        ]);
+
+        $data = new Jenis;
+        $data->bahan = $request->bahan;
+        $data->slug_bahan = $request->slug_bahan;
+        $data->deskripsi = $request->deskripsi;
+        $data->save();
+
+        return redirect()->route('jenis')->with('success', 'Data Berhasil Ditambahkan');
     }
 
     /**
@@ -58,7 +72,8 @@ class JenisController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Jenis::find($id);
+        return view('layouts.admin.edit_jenis', compact('data'));
     }
 
     /**
@@ -70,7 +85,21 @@ class JenisController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+
+            'bahan' => 'required|string|min:4|max:20',
+            'slug_bahan' => 'required|string|min:4|max:20',
+            'deskripsi' => 'min:5|max:30',
+
+        ]);
+
+        $data = Jenis::find($id);
+        $data->bahan = $request->bahan;
+        $data->slug_bahan = $request->slug_bahan;
+        $data->deskripsi = $request->deskripsi;
+        $data->save();
+
+        return redirect()->route('jenis')->with('success', 'Data Berhasil Di Update');
     }
 
     /**
@@ -81,6 +110,7 @@ class JenisController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Jenis::find($id)->delete();
+        return redirect()->route('jenis')->with('success', 'Data Berhasil Di Hapus');
     }
 }
