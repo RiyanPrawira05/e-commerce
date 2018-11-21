@@ -33,6 +33,7 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-jenis-83"></i></span>
                                 </div>
+                                
                                 <select class="form-control {{ $errors->has('jenis') ? ' is-invalid' : '' }}" placeholder="Jenis" name="jenis" required></select>
                             </div>
                         </div>

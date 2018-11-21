@@ -124,6 +124,21 @@
 							<i class="ni ni-circle-08 text-primary"></i> Data Pengguna
 						</a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ route('product') }}">
+							<i class="ni ni-pin-3 text-orange"></i>Product
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ route('jenis') }}">
+							<i class="ni ni-single-02 text-yellow"></i>Jenis
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="">
+							<i class="ni ni-bullet-list-67 text-red"></i> Tables
+						</a>
+					</li>
 				@else
 					<li class="nav-item">
 						<a class="nav-link" href="{{ route('login') }}">
