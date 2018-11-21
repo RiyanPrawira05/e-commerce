@@ -15,7 +15,7 @@ class JenisController extends Controller
     public function index()
     {
         $jenis = Jenis::all();
-        return view('layouts.admin.jenis', compact('jenis'));
+        return view('backend.jenis.index', compact('jenis'));
     }
 
     /**
@@ -25,7 +25,7 @@ class JenisController extends Controller
      */
     public function create()
     {
-        return view('layouts.admin.create_jenis');
+        return view('backend.jenis.create');
     }
 
     /**
@@ -40,7 +40,7 @@ class JenisController extends Controller
 
             'bahan' => 'required|string|min:4|max:20',
             'slug_bahan' => 'required|string|min:4|max:20',
-            'deskripsi' => 'min:5|max:30',
+            'deskripsi' => 'string|min:5|max:30|nullable',
 
         ]);
 
@@ -50,7 +50,7 @@ class JenisController extends Controller
         $data->deskripsi = $request->deskripsi;
         $data->save();
 
-        return redirect()->route('jenis')->with('success', 'Data Berhasil Ditambahkan');
+        return redirect()->route('jenis.index')->with('success', 'Data Berhasil Ditambahkan');
     }
 
     /**
@@ -72,8 +72,8 @@ class JenisController extends Controller
      */
     public function edit($id)
     {
-        $data = Jenis::find($id);
-        return view('layouts.admin.edit_jenis', compact('data'));
+        $jenis = Jenis::find($id);
+        return view('backend.jenis.edit', compact('jenis'));
     }
 
     /**
@@ -99,7 +99,7 @@ class JenisController extends Controller
         $data->deskripsi = $request->deskripsi;
         $data->save();
 
-        return redirect()->route('jenis')->with('success', 'Data Berhasil Di Update');
+        return redirect()->route('jenis.index')->with('success', 'Data Berhasil Di Update');
     }
 
     /**
@@ -111,6 +111,6 @@ class JenisController extends Controller
     public function destroy($id)
     {
         $data = Jenis::find($id)->delete();
-        return redirect()->route('jenis')->with('success', 'Data Berhasil Di Hapus');
+        return redirect()->back()->with('success', 'Data Berhasil Di Hapus');
     }
 }
