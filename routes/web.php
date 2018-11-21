@@ -42,12 +42,11 @@ Route::post('/users/{id}/change-password', 'UserController@password')->name('use
 // Route::get('/users/{id}/destroy', 'UserController@destroy')->name('destroy');
 
 // Product
-Route::get('/product', 'ProductController@index')->name('product');
-Route::get('/product/create', 'ProductController@create')->name('create');
-Route::post('/product/add', 'ProductController@store')->name('store');
+Route::resource('product', 'ProductController', ['names' => 'product']);
 
 // Jenis
 Route::resource('jenis', 'JenisController', ['names' => 'jenis']);
+
 // Route::get('/jenis/create', 'JenisController@create')->name('create');
 // Route::post('/jenis/add', 'JenisController@store')->name('add');
 // Route::get('/jenis/{id}/edit', 'JenisController@edit')->name('edit');

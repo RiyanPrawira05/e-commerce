@@ -125,7 +125,7 @@
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="{{ route('product') }}">
+						<a class="nav-link" href="{{ route('product.index') }}">
 							<i class="ni ni-shop text-warning"></i>Product
 						</a>
 					</li>

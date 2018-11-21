@@ -20,7 +20,7 @@ class ProductController extends Controller
         $product = Product::all();
         $jenis = Jenis::all();
         $category = Category::all();
-        return view('layouts.admin.product', compact('product', 'jenis', 'category'));
+        return view('backend.product.index', compact('product', 'jenis', 'category'));
     }
 
     /**
@@ -30,7 +30,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('layouts.admin.create_product');
+        return view('backend.product.create');
     }
 
     /**
@@ -44,7 +44,7 @@ class ProductController extends Controller
          $this->validate($request, [
 
             'product' => 'required|string|min:5',
-            'foto' => 'required|mimes:jpg,png,jpeg',
+            'foto' => 'required|mimes:jpg,png,jpeg,gif',
             'jenis' => 'required',
             'category' => 'required',
             'harga' => 'required|numeric',
@@ -63,7 +63,7 @@ class ProductController extends Controller
         $data->deskripsi = $request->deskripsi;
         $data->save();
 
-        return redirect()->route('product')->with('success', 'Data Berhasil Ditambahkan');
+        return redirect()->route('product.index')->with('success', 'Data Berhasil Ditambahkan');
     }
 
     /**
