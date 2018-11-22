@@ -14,7 +14,7 @@ class JenisController extends Controller
      */
     public function index()
     {
-        $jenis = Jenis::all();
+        $jenis = Jenis::paginate(2);
         return view('backend.jenis.index', compact('jenis'));
     }
 
@@ -50,7 +50,7 @@ class JenisController extends Controller
         $data->deskripsi = $request->deskripsi;
         $data->save();
 
-        return redirect()->to('/test')->with('success', 'Data Berhasil Ditambahkan');
+        return redirect()->route('jenis.index')->with('success', 'Data Berhasil Ditambahkan');
     }
 
     /**

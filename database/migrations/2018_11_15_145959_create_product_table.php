@@ -20,7 +20,6 @@ class CreateProductTable extends Migration
             $table->integer('jenis')->comment('Jenis, ex: Jeans, Chino, dll')->unsigned();
             $table->integer('category')->comment('Kategori Baju, ex: Mens, Womens, Celana, dll')->unsigned();
             $table->string('harga');
-            $table->string('size', 200);
             $table->text('deskripsi');
             $table->timestamps();
 

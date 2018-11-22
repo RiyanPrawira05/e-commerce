@@ -174,5 +174,8 @@
                         @endif
                   </tbody>
                </table>
+               <div class="justify-content-center">
+                  {{ $jenis->links() }}
+               </div>
             </div>
    @endsection
