@@ -16,6 +16,7 @@
             <form class="horizontal" action="{{ Route('jenis.store') }}" method="POST">
                 {{ csrf_field() }}
                 <div class="col-md-12">
+                    @include('template.alert')
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">

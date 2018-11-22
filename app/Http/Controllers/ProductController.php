@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Jenis;
 use App\Category;
+use File;
 
 class ProductController extends Controller
 {
@@ -30,7 +31,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('backend.product.create');
+        $jenis = Jenis::all();
+        $category = Category::all();
+        return view('backend.product.create', compact('jenis', 'category'));
     }
 
     /**
@@ -43,19 +46,32 @@ class ProductController extends Controller
     {
          $this->validate($request, [
 
-            'product' => 'required|string|min:5',
-            'foto' => 'required|mimes:jpg,png,jpeg,gif',
+            'product' => 'required|string|min:4',
+            'foto' => 'required|mimes:jpg,png,jpeg,gif|max:4000',
             'jenis' => 'required',
             'category' => 'required',
             'harga' => 'required|numeric',
             'size' => 'required',
-            'deskripsi' => 'min:5',
+            'deskripsi' => 'string|min:3',
 
         ]);
 
         $data = new Product;
         $data->product = $request->product;
-        $data->foto = $request->foto;
+        
+        if ($request->foto) {
+
+            $foto = $request->foto;
+            $extension = $foto->getClientOriginalExtension();
+            $folder = 'berkas/product';
+            $newName = rand(100000,1001238912).$extension;
+            if (!is_dir($folder)) {
+                File::makeDirectory($folder,0777,true);
+            }
+            $foto->move($folder, $newName);
+            $data->foto = $newName;
+        } 
+
         $data->jenis = $request->jenis;
         $data->category = $request->category;
         $data->harga = $request->harga;
@@ -63,7 +79,7 @@ class ProductController extends Controller
         $data->deskripsi = $request->deskripsi;
         $data->save();
 
-        return redirect()->route('product.index')->with('success', 'Data Berhasil Ditambahkan');
+        return redirect()->back()->with('success', 'Data Berhasil Ditambahkan');
     }
 
     /**

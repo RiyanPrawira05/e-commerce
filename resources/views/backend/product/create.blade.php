@@ -16,6 +16,7 @@
             <form class="horizontal" action="{{ Route('product.store') }}" method="POST" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="col-md-12">
+                    @include('template.alert')
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
@@ -33,7 +34,9 @@
                             <div class="form-group">
                                 <label class="form-control-label">Jenis</label>
                                 <select name="jenis" class="form-control form-control-alternative" required>
-                                    <option></option>
+                                @foreach ($jenis as $tipe)
+                                    <option value="{{ $tipe->id_jenis }}">{{ $tipe->slug_bahan }}</option>
+                                @endforeach
                                 </select>
                             </div>
                         </div>
@@ -41,7 +44,9 @@
                             <div class="form-group">
                                 <label class="form-control-label">Category</label>
                                 <select name="category" class="form-control form-control-alternative" required>
-                                    <option></option>
+                                @foreach ($category as $categories)
+                                    <option value="{{ $categories->id_category }}">{{ $categories->slug_category }}</option>
+                                @endforeach
                                 </select>
                             </div>
                         </div>

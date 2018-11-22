@@ -130,7 +130,7 @@
                         <tr>
                             <td>{{ $products->foto }}</td>
                             <td><span class="font-weight-bold">{{ $products->product }}</span></td>
-                            <td>{{ $products->jenis }}</td>
+                            <td>{{ $products->pilihJenis->slug_bahan }}</td>
                             <td>{{ $products->category }}</td>
                             <td>{{ $products->harga }}</td>
                             <td>{{ $products->size }}</td>

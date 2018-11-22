@@ -38,7 +38,7 @@ class JenisController extends Controller
     {
         $this->validate($request, [
 
-            'bahan' => 'required|string|min:4|max:20',
+            'bahan' => 'required|min:4|max:20|string|unique:jenis,bahan',
             'slug_bahan' => 'required|string|min:4|max:20',
             'deskripsi' => 'string|min:5|max:30|nullable',
 
@@ -50,7 +50,7 @@ class JenisController extends Controller
         $data->deskripsi = $request->deskripsi;
         $data->save();
 
-        return redirect()->route('jenis.index')->with('success', 'Data Berhasil Ditambahkan');
+        return redirect()->to('/test')->with('success', 'Data Berhasil Ditambahkan');
     }
 
     /**

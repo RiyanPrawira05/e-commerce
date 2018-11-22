@@ -12,7 +12,7 @@ class Product extends Model
     	'product', 'foto', 'jenis', 'category', 'harga', 'size', 'deskripsi',
     ];
 
-    public function jenis()
+    public function pilihJenis()
     {
     	return $this->belongsTo('App\Jenis', 'jenis', 'id_jenis');
     }
