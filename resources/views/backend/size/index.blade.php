@@ -1,6 +1,6 @@
    @extends('layouts.backend')
 
-   @section('brand') Jenis @endsection
+   @section('brand') Size @endsection
 
    @section('header')
    <!-- Card stats -->
@@ -99,10 +99,10 @@
             <div class="card-header border-0">
                <div class="row align-items-center">
                   <div class="col">
-                     <h3 class="mb-0 text-default">Data Jenis</h3>
+                     <h3 class="mb-0 text-default">Data Size</h3>
                   </div>
                   <div class="col text-right">
-                     <a href="{{ Route('jenis.create') }}" class="btn btn-icon-only btn-sm btn-default fas fa-plus-circle text-md text-white"></a>
+                     <a href="{{ Route('size.create') }}" class="btn btn-icon-only btn-sm btn-default fas fa-plus-circle text-md text-white"></a>
                   </div>
                </div>
             </div>
@@ -113,34 +113,34 @@
                   <table class="table align-items-center">
                      <thead class="thead-light">
                         <tr>
-                           <th scope="col">Slug</th>
-                           <th scope="col">Bahan</th>
+                           <th scope="col">Size</th>
                            <th scope="col">Deskripsi</th>
                            <th scope="col"></th>
                         </tr>
                      </thead>
                      <tbody>
 
-                        @if (count($jenis) > 0)
-                        @foreach ($jenis as $model)
+                        @if (count($size) > 0)
+                        @foreach ($size as $ukuran)
                         <tr>
                            <td>
-                              <span class="badge badge-dot mr-4"><i class="bg-success"></i> <span class="mb-0 text-sm"><b>{!! $model->slug_bahan !!}</b></span>
+                              @if ($ukuran->size == 'S')
+                              <span class="badge badge-dot mr-4"><i class="bg-danger"></i> <span class="mb-0 text-sm"><b>{{ $ukuran->size }}</b></span>
+                              @elseif ($ukuran->size == 'M')
+                              <span class="badge badge-dot mr-4"><i class="bg-warning"></i> <span class="mb-0 text-sm"><b>{{ $ukuran->size }}</b></span>
+                              @elseif ($ukuran->size == 'L')
+                              <span class="badge badge-dot mr-4"><i class="bg-info"></i> <span class="mb-0 text-sm"><b>{{ $ukuran->size }}</b></span>
+                              @elseif ($ukuran->size == 'XL')
+                              <span class="badge badge-dot mr-4"><i class="bg-success"></i> <span class="mb-0 text-sm"><b>{{ $ukuran->size }}</b></span>
+                              @endif
                            </td>
-                           <th scope="row">
+                           <th>
                               <div class="media align-items-center">
                                  <div class="media-body">
-                                    <span class="mb-0 text-sm">{{ $model->bahan }}</span>
+                                    <span class="mb-0 text-sm">{{ $ukuran->deskripsi }}</span>
                                  </div>
                               </div>
                            </th>
-                           @if (!empty($model->deskripsi))
-                              <td>
-                                 {{ $model->deskripsi }}
-                              </td>
-                           @else
-                              <th><span class="mb-0 text-danger">Deskripsi Belum Di Isi</span></th>
-                           @endif
                            <td class="text-right">
                                  <div class="dropdown">
                                     <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -152,13 +152,13 @@
                                  <div class=" dropdown-header noti-title">
                                     <h6 class="text-overflow m-0 text-light">Actions</h6>
                                  </div>
-                                    <a class="btn dropdown-item" href="{{ route('jenis.edit', $model->id_jenis) }}">
+                                    <a class="btn dropdown-item" href="{{ Route('size.edit', $ukuran->id_size) }}">
                                         <i class="fas fa-user-edit text-default"></i>
                                         <span class="text-default">Edit</span>
                                     </a>
-                                 <form action="{{ Route('jenis.destroy', $model->id_jenis) }}" method="POST">
-                                    {{ method_field('DELETE') }}
+                                 <form action="{{ Route('size.destroy', $ukuran->id_size) }}" method="POST">
                                     {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
                                        <button class="btn dropdown-item" type="submit">
                                           <i class="fas fa-user-times text-default"></i>
                                           <span class="text-default">Delete</span>
@@ -174,8 +174,5 @@
                         @endif
                   </tbody>
                </table>
-               <div class="justify-content-center">
-                  {{ $jenis->links() }}
-               </div>
             </div>
    @endsection

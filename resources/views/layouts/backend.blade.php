@@ -115,28 +115,33 @@
 					
 				@auth
 					<li class="nav-item">
-						<a class="nav-link" href="{{ route('home') }}">
+						<a class="nav-link" href="{{ Route('home') }}">
 							<i class="ni ni-planet text-primary"></i> Dashboard
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="{{ route('users.index') }}">
-							<i class="ni ni-circle-08 text-primary"></i> Data Pengguna
+						<a class="nav-link" href="{{ Route('users.index') }}">
+							<i class="ni ni-circle-08 text-primary"></i>Data Pengguna
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="{{ route('product.index') }}">
+						<a class="nav-link" href="{{ Route('product.index') }}">
 							<i class="ni ni-shop text-warning"></i>Product
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="{{ route('jenis.index') }}">
+						<a class="nav-link" href="{{ Route('jenis.index') }}">
 							<i class="ni ni-tag text-info"></i>Jenis
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="">
-							<i class="ni ni-bullet-list-67 text-red"></i> Tables
+						<a class="nav-link" href="{{ Route('category.index') }}">
+							<i class="ni ni-bullet-list-67 text-red"></i>Category
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ Route('size.index') }}">
+							<i class="ni ni-bullet-list-67 text-red"></i>Size
 						</a>
 					</li>
 				@else

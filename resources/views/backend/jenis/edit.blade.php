@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('brand') Pengguna @endsection
+@section('brand') Jenis @endsection
 
 @section('content')
 <div class="row">
@@ -15,10 +15,11 @@
             </div>
             <form class="horizontal" action="{{ Route('jenis.update', $jenis->id_jenis) }}" method="POST">
                 {{ csrf_field() }}
-                <input type="hidden" name="_method" value="PUT">
+                {{ method_field('PUT') }}
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-12">
+                            @include('template.alert')
                             <div class="form-group">
                                 <label class="form-control-label">Bahan</label>
                                 <input type="text" name="bahan" class="form-control form-control-alternative" placeholder="Chino" value="{{ $jenis->bahan }}" required autofocus>

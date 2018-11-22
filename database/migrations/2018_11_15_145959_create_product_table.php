@@ -20,11 +20,13 @@ class CreateProductTable extends Migration
             $table->integer('jenis')->comment('Jenis, ex: Jeans, Chino, dll')->unsigned();
             $table->integer('category')->comment('Kategori Baju, ex: Mens, Womens, Celana, dll')->unsigned();
             $table->string('harga');
+            $table->integer('size')->unsigned();
             $table->text('deskripsi');
             $table->timestamps();
 
             $table->foreign('jenis')->references('id_jenis')->on('jenis');
             $table->foreign('category')->references('id_category')->on('category');
+            $table->foreign('size')->references('id_size')->on('product_size');
 
         });
     }

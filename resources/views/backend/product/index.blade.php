@@ -128,12 +128,12 @@
                     @if (count($product) > 0)
                     @foreach ($product as $products)
                         <tr>
-                            <td>{{ $products->foto }}</td>
+                            <td><img src="{{ $products->foto }}" alt="" class="rounded-circle"></td>
                             <td><span class="font-weight-bold">{{ $products->product }}</span></td>
                             <td>{{ $products->pilihJenis->slug_bahan }}</td>
-                            <td>{{ $products->category }}</td>
+                            <td>{{ $products->pilihCategory->slug_category }}</td>
                             <td>{{ $products->harga }}</td>
-                            <td>{{ $products->size }}</td>
+                            <td>{{ $products->pilihSize->size }}</td>
                             <td>{{ $products->deskripsi }}</td>
                             <td class="text-right">
                                 <div class="dropdown">
@@ -147,7 +147,7 @@
                                     <h6 class="text-overflow m-0 text-light">Actions</h6>
                                 </div>
 
-                                    <a class="btn dropdown-item" href="">
+                                    <a class="btn dropdown-item" href="{{ Route('product.edit', $product->id) }}">
                                         <i class="fas fa-user-edit text-default"></i>
                                         <span class="text-default">Edit</span>
                                     </a>

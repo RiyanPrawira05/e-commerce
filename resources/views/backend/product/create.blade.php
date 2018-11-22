@@ -70,7 +70,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="form-control-label">Deskripsi</label>
-                                <textarea name="deskripsi" class="form-control form-control-alternative"  required></textarea>
+                                <textarea name="deskripsi" class="form-control form-control-alternative"></textarea>
                             </div>
                         </div>
                         <div class="col-md-12 mb-2">

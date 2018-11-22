@@ -18,7 +18,7 @@
             </div>
             <form class="horizontal" action="{{ Route('users.update', $users->id_users) }}" method="POST">
                 {{ csrf_field() }}
-                <input type="hidden" name="_method" value="PUT">
+                {{ method_field('PUT') }}
                 <div class="col-md-12">
                     <div class="row">
                         <div class="col-md-12">

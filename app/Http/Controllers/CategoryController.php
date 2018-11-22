@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Category;
 
 class CategoryController extends Controller
 {
@@ -13,7 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $category = Category::all();
+        return view('backend.category.index', compact('category'));
     }
 
     /**
@@ -23,7 +25,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.category.create');
     }
 
     /**
@@ -34,7 +36,19 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            
+            'category'=> 'required|min:3|string|unique:category,category',
+            'slug_category'=> 'required|min:3|string',
+
+        ]);
+
+        $category = new Category;
+        $category->category = $request->category;
+        $category->slug_category = $request->slug_category;
+        $category->save();
+
+        return redirect()->route('category.index')->with('success', 'Data Berhasil Di Tambah');
     }
 
     /**
@@ -56,7 +70,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Category::find($id);
+        return view('backend.category.edit', compact('data'));
     }
 
     /**
@@ -68,7 +83,19 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         $this->validate($request, [
+            
+            'category'=> 'min:3|string',
+            'slug_category'=> 'min:3|string',
+
+        ]);
+
+        $category = Category::find($id);
+        $category->category = $request->category;
+        $category->slug_category = $request->slug_category;
+        $category->save();
+
+        return redirect()->route('category.index')->with('success', 'Data Berhasil Di Update');
     }
 
     /**
@@ -79,6 +106,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Category::find($id)->delete();
+        return redirect()->back()->with('success', 'Data Berhasil Di Hapus');
     }
 }

@@ -53,7 +53,12 @@ Route::resource('jenis', 'JenisController', ['names' => 'jenis']);
 // Route::post('/jenis/{id}/update', 'JenisController@update')->name('update');
 // Route::get('/jenis/{id}/delete', 'JenisController@destroy')->name('destroy');
 
-// Catgory
+// Category
+Route::resource('category', 'CategoryController', ['names' => 'category']);
+
+// Size
+Route::resource('size', 'SizeController', ['names' => 'size']);
+
 
 
 

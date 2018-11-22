@@ -16,8 +16,14 @@ class Product extends Model
     {
     	return $this->belongsTo('App\Jenis', 'jenis', 'id_jenis');
     }
-    public function category()
+
+    public function pilihCategory()
     {
     	return $this->belongsTo('App\Category', 'category', 'id_category');
+    }
+
+    public function pilihSize()
+    {
+        return $this->belongsTo('App\Size', 'size', 'id_size');
     }
 }

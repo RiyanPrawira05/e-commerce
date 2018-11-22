@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Jenis;
+use App\Productsize;
 
-class JenisController extends Controller
+class SizeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class JenisController extends Controller
      */
     public function index()
     {
-        $jenis = Jenis::paginate(2);
-        return view('backend.jenis.index', compact('jenis'));
+        $size = Productsize::all();
+        return view('backend.size.index', compact('size'));
     }
 
     /**
@@ -25,7 +25,7 @@ class JenisController extends Controller
      */
     public function create()
     {
-        return view('backend.jenis.create');
+        return view('backend.size.create');
     }
 
     /**
@@ -38,19 +38,17 @@ class JenisController extends Controller
     {
         $this->validate($request, [
 
-            'bahan' => 'required|min:4|max:50|string|unique:jenis,bahan',
-            'slug_bahan' => 'required|string|min:4|max:50',
-            'deskripsi' => 'string|min:5',
+            'size' => 'required',
+            'deskripsi' => 'min:4',
 
         ]);
 
-        $data = new Jenis;
-        $data->bahan = $request->bahan;
-        $data->slug_bahan = $request->slug_bahan;
-        $data->deskripsi = $request->deskripsi;
-        $data->save();
+        $size = new Productsize;
+        $size->size = $request->size;
+        $size->deskripsi = $request->deskripsi;
+        $size->save();
 
-        return redirect()->route('jenis.index')->with('success', 'Data Berhasil Ditambahkan');
+        return redirect()->route('size.index')->with('success', 'Data Berhasil Di Tambahkan');
     }
 
     /**
@@ -72,8 +70,8 @@ class JenisController extends Controller
      */
     public function edit($id)
     {
-        $jenis = Jenis::find($id);
-        return view('backend.jenis.edit', compact('jenis'));
+        $size = Productsize::find($id);
+        return view('backend.size.edit', compact('size'));
     }
 
     /**
@@ -87,19 +85,17 @@ class JenisController extends Controller
     {
         $this->validate($request, [
 
-            'bahan' => 'string|min:4|max:50',
-            'slug_bahan' => 'string|min:4|max:50',
-            'deskripsi' => 'min:5',
+            'size' => 'max:300',
+            'deskripsi' => 'min:4',
 
         ]);
 
-        $data = Jenis::find($id);
-        $data->bahan = $request->bahan;
-        $data->slug_bahan = $request->slug_bahan;
-        $data->deskripsi = $request->deskripsi;
-        $data->save();
+        $size = Productsize::find($id);
+        $size->size = $request->size;
+        $size->deskripsi = $request->deskripsi;
+        $size->save();
 
-        return redirect()->route('jenis.index')->with('success', 'Data Berhasil Di Update');
+        return redirect()->route('size.index')->with('success', 'Data Berhasil Di Update');
     }
 
     /**
@@ -110,7 +106,7 @@ class JenisController extends Controller
      */
     public function destroy($id)
     {
-        $data = Jenis::find($id)->delete();
+        $size = Productsize::find($id)->delete();
         return redirect()->back()->with('success', 'Data Berhasil Di Hapus');
     }
 }

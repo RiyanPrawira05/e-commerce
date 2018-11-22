@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Jenis;
 use App\Category;
+use App\Size;
 use File;
 
 class ProductController extends Controller
@@ -21,7 +22,8 @@ class ProductController extends Controller
         $product = Product::all();
         $jenis = Jenis::all();
         $category = Category::all();
-        return view('backend.product.index', compact('product', 'jenis', 'category'));
+        $size = Productsize::all();
+        return view('backend.product.index', compact('product', 'jenis', 'category', 'size'));
     }
 
     /**
@@ -31,9 +33,11 @@ class ProductController extends Controller
      */
     public function create()
     {
+        $product = Product::all();
         $jenis = Jenis::all();
         $category = Category::all();
-        return view('backend.product.create', compact('jenis', 'category'));
+        $size = Size::all();
+        return view('backend.product.create', compact('product', 'jenis', 'category', 'size'));
     }
 
     /**
@@ -101,7 +105,11 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::all();
+        $jenis = Jenis::all();
+        $category = Category::all();
+        $size = Size::all();
+        return view('backend.product.edit', compact('product', 'jenis', 'category', 'size'));
     }
 
     /**
@@ -113,7 +121,42 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         $this->validate($request, [
+
+            'product' => 'string|min:4',
+            'foto' => 'mimes:jpg,png,jpeg,gif|max:4000',
+            'jenis' => 'numeric',
+            'category' => 'numeric',
+            'harga' => 'numeric',
+            'size' => 'numeric',
+            'deskripsi' => 'string|min:3',
+
+        ]);
+
+        $data = Product::find($id);
+        $data->product = $request->product;
+        
+        if ($request->foto) {
+
+            $foto = $request->foto;
+            $extension = $foto->getClientOriginalExtension();
+            $folder = 'berkas/product';
+            $newName = rand(100000,1001238912).$extension;
+            if (!is_dir($folder)) {
+                File::makeDirectory($folder,0777,true);
+            }
+            $foto->move($folder, $newName);
+            $data->foto = $newName;
+        } 
+
+        $data->jenis = $request->jenis;
+        $data->category = $request->category;
+        $data->harga = $request->harga;
+        $data->size = $request->size;
+        $data->deskripsi = $request->deskripsi;
+        $data->save();
+
+        return redirect()->back()->with('success', 'Data Berhasil Ditambahkan');
     }
 
     /**
@@ -124,6 +167,7 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Product::find($id)->delete();
+        return redirect()->back()->with('success', 'Data Berhasil Di Delete');
     }
 }
