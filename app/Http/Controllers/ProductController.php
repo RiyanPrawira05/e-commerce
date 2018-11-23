@@ -68,7 +68,7 @@ class ProductController extends Controller
             $foto = $request->foto; // deklarasi foto = inputan file foto
             $extension = $foto->getClientOriginalExtension(); // extensi foto
             $folder = 'berkas/product'; // nama folder
-            $newName = rand(100000,1001238912).$extension; // nama file = random.extensi(jpg or png), rand = 100000 sampai 1001238912
+            $newName = rand(100000,1001238912).'.'.$extension; // nama file = random.extensi(jpg or png), rand = 100000 sampai 1001238912
             if (!is_dir($folder)) { // jika tidak ada folder
                 File::makeDirectory($folder,0777,true); // buat folder
             }

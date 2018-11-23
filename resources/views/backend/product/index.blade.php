@@ -128,13 +128,17 @@
                     @if (count($product) > 0)
                     @foreach ($product as $products)
                         <tr>
-                            <td><img src="{{ asset($products->foto) }}" alt="" class="rounded-circle"></td>
+                            <td><img src="{{ asset('berkas/product/$products->foto') }}" alt="" class="rounded-circle"></td>
                             <td><span class="font-weight-bold">{{ $products->product }}</span></td>
                             <td>{{ $products->pilihJenis->slug_bahan }}</td>
                             <td>{{ $products->pilihCategory->slug_category }}</td>
                             <td>{{ $products->harga }}</td>
                             <td>{{ $products->pilihSize->size }}</td>
+                            @if (!empty($products->deskripsi))
                             <td>{{ $products->deskripsi }}</td>
+                            @else
+                              <td>Deskripsi Belum Di Isi</td>
+                            @endif
                             <td class="text-right">
                                 <div class="dropdown">
                                     <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
