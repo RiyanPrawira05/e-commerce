@@ -56,8 +56,11 @@ Route::resource('jenis', 'JenisController', ['names' => 'jenis']);
 // Category
 Route::resource('category', 'CategoryController', ['names' => 'category']);
 
-// Size
+// Product Size
 Route::resource('size', 'SizeController', ['names' => 'size']);
+
+// Warna
+Route::resource('color', 'WarnaController', ['names' => 'colors']);
 
 
 

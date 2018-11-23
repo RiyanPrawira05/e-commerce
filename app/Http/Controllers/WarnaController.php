@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Warna;
 
 class WarnaController extends Controller
 {
@@ -13,7 +14,8 @@ class WarnaController extends Controller
      */
     public function index()
     {
-        //
+        $colors = Warna::paginate(3);
+        return view('backend.warna.index', compact('colors'));
     }
 
     /**
@@ -23,7 +25,7 @@ class WarnaController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.warna.create');
     }
 
     /**
@@ -34,7 +36,16 @@ class WarnaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+
+            'warna' => 'required|string|min:3|max:35|unique:warna,warna',
+
+        ]);
+
+        $colors = new Warna;
+        $colors->warna = $request->warna;
+        $colors->save();
+        return redirect()->route('colors.index')->with('success', 'Data Berhasil Di Tambahkan');
     }
 
     /**
@@ -56,7 +67,8 @@ class WarnaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $colors = Warna::find($id);
+        return view('backend.warna.edit', compact('colors'));
     }
 
     /**
@@ -68,7 +80,16 @@ class WarnaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+
+            'warna' => 'string|min:3|max:35|unique:warna,warna',
+
+        ]);
+
+        $colors = Warna::find($id);
+        $colors->warna = $request->warna;
+        $colors->save();
+        return redirect()->route('colors.index')->with('success', 'Data Berhasil Di Update');
     }
 
     /**
@@ -79,6 +100,7 @@ class WarnaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $colors = Warna::find($id)->delete();
+        return redirect()->back()->with('success', 'Data Berhasil Di Delete');
     }
 }

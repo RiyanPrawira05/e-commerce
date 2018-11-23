@@ -128,7 +128,7 @@
                     @if (count($product) > 0)
                     @foreach ($product as $products)
                         <tr>
-                            <td><img src="{{ $products->foto }}" alt="" class="rounded-circle"></td>
+                            <td><img src="{{ asset($products->foto) }}" alt="" class="rounded-circle"></td>
                             <td><span class="font-weight-bold">{{ $products->product }}</span></td>
                             <td>{{ $products->pilihJenis->slug_bahan }}</td>
                             <td>{{ $products->pilihCategory->slug_category }}</td>
@@ -147,7 +147,7 @@
                                     <h6 class="text-overflow m-0 text-light">Actions</h6>
                                 </div>
 
-                                    <a class="btn dropdown-item" href="{{ Route('product.edit', $product->id) }}">
+                                    <a class="btn dropdown-item" href="">
                                         <i class="fas fa-user-edit text-default"></i>
                                         <span class="text-default">Edit</span>
                                     </a>
@@ -169,7 +169,6 @@
                     @endif
                     </tbody>
                 </table>
-                {{ $product->links('pagin.pagin') }}
             </div>
         </div>
     </div>

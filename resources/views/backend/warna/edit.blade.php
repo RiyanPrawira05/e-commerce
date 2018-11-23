@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('brand') Size @endsection
+@section('brand') Colors @endsection
 
 @section('content')
 <div class="row">
@@ -9,25 +9,20 @@
             <div class="card-header border-0">
                 <div class="row align-items-center">
                     <div class="col">
-                        <a href="{{ Route('size.index') }}" class="btn btn-sm btn-primary"><i class="fas fa-chevron-circle-left"></i> Back </a>
+                        <a href="{{ Route('colors.index') }}" class="btn btn-sm btn-primary"><i class="fas fa-chevron-circle-left"></i> Back </a>
                     </div>
                 </div>
             </div>
-            <form class="horizontal" action="{{ Route('size.store') }}" method="POST">
+            <form class="horizontal" action="{{ Route('colors.update', $colors->id_warna) }}" method="POST">
                 {{ csrf_field() }}
+                {{ method_field('PUT') }}
                 <div class="col-md-12">
                     @include('template.alert')
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label class="form-control-label">Size</label>
-                                <input type="text" name="size" class="form-control form-control-alternative" placeholder="s,m,l,xl,cm" required autofocus>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="form-control-label">Deskripsi</label>
-                                <textarea name="deskripsi" class="form-control form-control-alternative" placeholder="Ukuran all untuk semua ukuran" required></textarea>
+                                <label class="form-control-label">Warna</label>
+                                <input type="text" name="warna" class="form-control form-control-alternative" placeholder="Red,Blue,Green,Black" value="{{ $colors->warna }}" required autofocus>
                             </div>
                         </div>
                         <div class="col-md-12 mb-2">

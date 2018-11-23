@@ -54,10 +54,9 @@
                             <div class="form-group">
                                 <label class="form-control-label">Size</label>
                                 <select name="size" class="form-control form-control-alternative" required>
-                                    <option value="s">S</option>
-                                    <option value="m">M</option>
-                                    <option value="l">L</option>
-                                    <option value="xl">XL</option>
+                                @foreach ($size as $ukuran)
+                                    <option value="{{ $ukuran->id_size }}">{{ $ukuran->size }}</option>
+                                @endforeach
                                 </select>
                             </div>
                         </div>
@@ -70,7 +69,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="form-control-label">Deskripsi</label>
-                                <textarea name="deskripsi" class="form-control form-control-alternative"></textarea>
+                                <textarea name="deskripsi" class="form-control form-control-alternative" placeholder="New Arrival, Hot Offer"></textarea>
                             </div>
                         </div>
                         <div class="col-md-12 mb-2">

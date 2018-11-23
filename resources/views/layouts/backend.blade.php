@@ -144,6 +144,11 @@
 							<i class="ni ni-bullet-list-67 text-red"></i>Size
 						</a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ Route('colors.index') }}">
+							<i class="ni ni-bullet-list-67 text-red"></i>Colors
+						</a>
+					</li>
 				@else
 					<li class="nav-item">
 						<a class="nav-link" href="{{ route('login') }}">

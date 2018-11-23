@@ -19,7 +19,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $product = Product::paginate(2);
+        $product = Product::all();
         $jenis = Jenis::all();
         $category = Category::all();
         $size = Productsize::all();
@@ -36,7 +36,7 @@ class ProductController extends Controller
         $product = Product::all();
         $jenis = Jenis::all();
         $category = Category::all();
-        $size = Size::all();
+        $size = Productsize::all();
         return view('backend.product.create', compact('product', 'jenis', 'category', 'size'));
     }
 
@@ -73,7 +73,7 @@ class ProductController extends Controller
                 File::makeDirectory($folder,0777,true); // buat folder
             }
             $foto->move($folder, $newName); // si foto pindah/masuk ke folder yang sudan dibikin dan dinamakan file nya = file.extensi (rand.extensi (jpg or png))
-            $data->foto = $newName; // menyimpan $request->foto dan berbentuk rand namanya
+            $data->foto = $newName; // menyimpan $request->foto ke database dan berbentuk rand.extensi (jpg or png) nama filenya
         } 
 
         $data->jenis = $request->jenis;
@@ -108,7 +108,7 @@ class ProductController extends Controller
         $product = Product::all();
         $jenis = Jenis::all();
         $category = Category::all();
-        $size = Size::all();
+        $size = Productsize::all();
         return view('backend.product.edit', compact('product', 'jenis', 'category', 'size'));
     }
 
