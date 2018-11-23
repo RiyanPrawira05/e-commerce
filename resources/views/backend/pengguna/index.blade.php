@@ -162,6 +162,7 @@
                     @endif
                     </tbody>
                 </table>
+                {{ $users->links('pagin.pagin') }}
             </div>
         </div>
     </div>

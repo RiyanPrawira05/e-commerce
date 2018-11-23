@@ -166,5 +166,6 @@
                         @endif
                   </tbody>
                </table>
+               {{ $category->links('pagin.pagin') }}
             </div>
    @endsection

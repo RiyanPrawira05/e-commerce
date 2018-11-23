@@ -174,5 +174,6 @@
                         @endif
                   </tbody>
                </table>
+               {{ $size->links('pagin.pagin') }}
             </div>
    @endsection

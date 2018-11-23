@@ -40,7 +40,7 @@ class JenisController extends Controller
 
             'bahan' => 'required|min:4|max:50|string|unique:jenis,bahan',
             'slug_bahan' => 'required|string|min:4|max:50',
-            'deskripsi' => 'string|min:5',
+            'deskripsi' => 'min:5|string|nullable',
 
         ]);
 

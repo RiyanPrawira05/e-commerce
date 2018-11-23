@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Jenis;
 use App\Category;
-use App\Size;
+use App\Productsize;
 use File;
 
 class ProductController extends Controller
@@ -56,24 +56,24 @@ class ProductController extends Controller
             'category' => 'required',
             'harga' => 'required|numeric',
             'size' => 'required',
-            'deskripsi' => 'string|min:3',
+            'deskripsi' => 'string|min:3|nullable',
 
         ]);
 
         $data = new Product;
         $data->product = $request->product;
         
-        if ($request->foto) {
+        if ($request->foto) { // jika ada inputan foto
 
-            $foto = $request->foto;
-            $extension = $foto->getClientOriginalExtension();
-            $folder = 'berkas/product';
-            $newName = rand(100000,1001238912).$extension;
-            if (!is_dir($folder)) {
-                File::makeDirectory($folder,0777,true);
+            $foto = $request->foto; // deklarasi foto = inputan file foto
+            $extension = $foto->getClientOriginalExtension(); // extensi foto
+            $folder = 'berkas/product'; // nama folder
+            $newName = rand(100000,1001238912).$extension; // nama file = random.extensi(jpg or png), rand = 100000 sampai 1001238912
+            if (!is_dir($folder)) { // jika tidak ada folder
+                File::makeDirectory($folder,0777,true); // buat folder
             }
-            $foto->move($folder, $newName);
-            $data->foto = $newName;
+            $foto->move($folder, $newName); // si foto pindah/masuk ke folder yang sudan dibikin dan dinamakan file nya = file.extensi (rand.extensi (jpg or png))
+            $data->foto = $newName; // menyimpan $request->foto dan berbentuk rand namanya
         } 
 
         $data->jenis = $request->jenis;
