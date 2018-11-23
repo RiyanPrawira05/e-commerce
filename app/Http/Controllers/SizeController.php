@@ -14,7 +14,7 @@ class SizeController extends Controller
      */
     public function index()
     {
-        $size = Productsize::all();
+        $size = Productsize::paginate(3);
         return view('backend.size.index', compact('size'));
     }
 
