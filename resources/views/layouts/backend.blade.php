@@ -154,6 +154,11 @@
 							<i class="ni ni-bullet-list-67 text-red"></i>Stock
 						</a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ Route('LD.index') }}">
+							<i class="ni ni-bullet-list-67 text-red"></i>Lingkar Dada
+						</a>
+					</li>
 				@else
 					<li class="nav-item">
 						<a class="nav-link" href="{{ route('login') }}">
