@@ -28,7 +28,7 @@ class LingkardadaController extends Controller
     public function create()
     {
         $products = Product::all();
-        return view('backend.lingkardada.index', compact('lingkardada', 'products'));
+        return view('backend.lingkardada.create', compact('lingkardada', 'products'));
     }
 
     /**

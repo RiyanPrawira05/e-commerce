@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('brand') Lingkar Dada @endsection
+@section('brand') Alamat Pengguna @endsection
 
 @section('header')
 <!-- Card stats -->
@@ -99,10 +99,10 @@
             <div class="card-header border-0">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h3 class="mb-0 text-default">Data Lingkar Dada</h3>
+                        <h3 class="mb-0 text-default">Data Alamat</h3>
                     </div>
                     <div class="col text-right">
-                        <a href="{{ Route('LD.create') }}" class="btn btn-icon-only btn-sm btn-default fas fa-plus-circle text-md text-white"></a>
+                        <a href="{{ Route('alamat.create') }}" class="btn btn-icon-only btn-sm btn-default fas fa-plus-circle text-md text-white"></a>
                     </div>
                 </div>
             </div>
@@ -113,25 +113,25 @@
                 <table class="table align-items-center">
                     <thead class="thead-light">
                         <tr>
-                            <th scope="col">Lingkar Dada</th>
-                            <th scope="col">Produk</th>
+                            <th scope="col">Alamat</th>
+                            <th scope="col">Pengguna</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
-                    @if (count($lingkardada) > 0)
-                    @foreach ($lingkardada as $ld)
+                    @if (count($alamat) > 0)
+                    @foreach ($alamat as $addres)
                         <tr>
-                            <td>
-                              <span class="badge badge-dot mr-4"><i class="bg-default"></i> <span class="mb-0 text-sm"><b>{!! $ld->ukuran !!}</b></span>
-                            </td>
                             <th scope="row">
                               <div class="media align-items-center">
                                  <div class="media-body">
-                                    <span class="mb-0 text-sm">{{ $ld->pilihProduct->product }}</span>
+                                    <span class="mb-0 text-sm">{{ $addres->alamat }}</span>
                                  </div>
                               </div>
                             </th>
+                            <td>
+                              <span class="badge badge-dot mr-4"><i class="bg-default"></i> <span class="mb-0 text-sm"><b>{{ $addres->pilihUser->name }}</b></span>
+                            </td>
                             <td class="text-right">
                                 <div class="dropdown">
                                     <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -144,11 +144,11 @@
                                     <h6 class="text-overflow m-0 text-light">Actions</h6>
                                 </div>
 
-                                    <a class="btn dropdown-item" href="{{ Route('LD.edit', $ld->id_lingkar_dada) }}">
+                                    <a class="btn dropdown-item" href="{{ Route('alamat.edit', $addres->id_alamat) }}">
                                         <i class="fas fa-user-edit text-default"></i>
                                         <span class="text-default">Edit</span>
                                     </a>
-                                    <form action="{{ Route('LD.destroy', $ld->id_lingkar_dada) }}" method="POST">
+                                    <form action="{{ Route('alamat.destroy', $addres->id_alamat) }}" method="POST">
                                     {{ method_field('DELETE') }}
                                     {{ csrf_field() }}
                                       <button class="btn dropdown-item" type="submit">
@@ -166,7 +166,7 @@
                     @endif
                     </tbody>
                 </table>
-                {{ $lingkardada->links('pagin.pagin') }}
+                {{ $alamat->links('pagin.pagin') }}
             </div>
         </div>
     </div>

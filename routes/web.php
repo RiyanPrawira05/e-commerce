@@ -41,6 +41,9 @@ Route::post('/users/{id}/change-password', 'UserController@password')->name('use
 // Route::post('/users/{id}/edit', 'UserController@update')->name('update');
 // Route::get('/users/{id}/destroy', 'UserController@destroy')->name('destroy');
 
+// Alamat Pengguna
+Route::resource('alamat', 'AlamatController', ['names' => 'alamat']);
+
 // Product
 Route::resource('product', 'ProductController', ['names' => 'product']);
 

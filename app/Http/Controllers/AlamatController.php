@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Alamat;
+use App\User;
 
 class AlamatController extends Controller
 {
@@ -13,7 +15,9 @@ class AlamatController extends Controller
      */
     public function index()
     {
-        //
+        $alamat = Alamat::paginate(3);
+        $users = User::all();
+        return view('backend.alamat.index',compact('alamat', 'users'));
     }
 
     /**
@@ -23,7 +27,8 @@ class AlamatController extends Controller
      */
     public function create()
     {
-        //
+        $users = User::all();
+        return view('backend.alamat.create',compact('users'));
     }
 
     /**
@@ -34,7 +39,19 @@ class AlamatController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+
+            'alamat' => 'required|min:10',
+            'users' => 'required|numeric',
+
+        ]);
+
+        $alamat = new Alamat;
+        $alamat->alamat = $request->alamat;
+        $alamat->users = $request->users;
+        $alamat->save();
+
+        return redirect()->route('alamat.index')->with('success', 'Data Berhasil di Tambahkan');
     }
 
     /**
@@ -56,7 +73,9 @@ class AlamatController extends Controller
      */
     public function edit($id)
     {
-        //
+        $alamat = Alamat::find($id);
+        $users = User::all();
+        return view('backend.alamat.edit',compact('alamat', 'users'));
     }
 
     /**
@@ -68,7 +87,19 @@ class AlamatController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+
+            'alamat' => 'min:10',
+            'users' => '',
+
+        ]);
+
+        $alamat = Alamat::find($id);
+        $alamat->alamat = $request->alamat;
+        $alamat->users = $request->users;
+        $alamat->save();
+
+        return redirect()->route('alamat.index')->with('success', 'Data Berhasil di Update');
     }
 
     /**
@@ -79,6 +110,7 @@ class AlamatController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $alamat = Alamat::find($id)->delete();
+        return redirect()->back()->with('success', 'Data Berhasil di Hapus');
     }
 }

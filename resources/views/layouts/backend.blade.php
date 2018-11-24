@@ -125,6 +125,11 @@
 						</a>
 					</li>
 					<li class="nav-item">
+						<a class="nav-link" href="{{ Route('alamat.index') }}">
+							<i class="ni ni-circle-08 text-primary"></i>Alamat Pengguna
+						</a>
+					</li>
+					<li class="nav-item">
 						<a class="nav-link" href="{{ Route('product.index') }}">
 							<i class="ni ni-shop text-warning"></i>Product
 						</a>

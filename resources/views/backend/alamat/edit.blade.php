@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('brand') Lingkar Dada @endsection
+@section('brand') Alamat Pengguna @endsection
 
 @section('content')
 <div class="row">
@@ -9,11 +9,11 @@
             <div class="card-header border-0">
                 <div class="row align-items-center">
                     <div class="col">
-                        <a href="{{ Route('LD.index') }}" class="btn btn-sm btn-primary"><i class="fas fa-chevron-circle-left"></i> Back </a>
+                        <a href="{{ Route('alamat.index') }}" class="btn btn-sm btn-primary"><i class="fas fa-chevron-circle-left"></i> Back </a>
                     </div>
                 </div>
             </div>
-            <form class="horizontal" action="{{ Route('LD.update', $lingkardada->id_lingkar_dada) }}" method="POST">
+            <form class="horizontal" action="{{ Route('alamat.update', $alamat->id_alamat) }}" method="POST">
                 {{ csrf_field() }}
                 {{ method_field('PUT') }}
                 <div class="col-md-12">
@@ -21,16 +21,16 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label class="form-control-label">Ukuran</label>
-                                <input type="text" name="ukuran" class="form-control form-control-alternative" placeholder="192cm,150cm,185cm" value="{{ $lingkardada->ukuran }}" required autofocus>
+                                <label class="form-control-label">Alamat</label>
+                                <textarea name="users" class="form-control form-control-alternative" placeholder="Jl.sanggar kencana No.22" required autofocus>{{ $alamat->alamat }}</textarea>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label class="form-control-label">Product</label>
-                                <select name="product" class="form-control form-control-alternative" required>
-                                @foreach ($products as $product)
-                                    <option value="{{ $product->id_product }}" {{ $product->id_product == $lingkardada->id_lingkar_dada ? 'selected' : '' }}>{{ $product->product }}</option>
+                                <label class="form-control-label">Nama Pengguna</label>
+                                <select name="pengguna" class="form-control form-control-alternative" required>
+                                @foreach ($users as $user)
+                                    <option value="{{ $user->id_users }}" {{ $user->id_users == $alamat->users }}>{{ $user->name }}</option>
                                 @endforeach
                                 </select>
                             </div>
