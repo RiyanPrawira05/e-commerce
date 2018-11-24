@@ -22,15 +22,15 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="form-control-label">Alamat</label>
-                                <textarea name="users" class="form-control form-control-alternative" placeholder="Jl.sanggar kencana No.22" required autofocus>{{ $alamat->alamat }}</textarea>
+                                <textarea name="alamat" class="form-control form-control-alternative" placeholder="Jl.sanggar kencana No.22" required autofocus>{{ $alamat->alamat }}</textarea>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="form-control-label">Nama Pengguna</label>
-                                <select name="pengguna" class="form-control form-control-alternative" required>
+                                <select name="users" class="form-control form-control-alternative" required>
                                 @foreach ($users as $user)
-                                    <option value="{{ $user->id_users }}" {{ $user->id_users == $alamat->users }}>{{ $user->name }}</option>
+                                    <option value="{{ $user->id_users }}" {{ $user->id_users == $alamat->users ? 'selected' : '' }}>{{ $user->name }}</option>
                                 @endforeach
                                 </select>
                             </div>
