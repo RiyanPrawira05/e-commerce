@@ -11,4 +11,16 @@ class Productwarna extends Model
     protected $fillable = [
     	'product', 'warna',
     ];
+
+    public $timestamps = false;
+
+    public function pilihProduct()
+    {
+    	return $this->belongsTo('App\Product', 'product', 'id_product');
+    }
+
+    public function pilihWarna()
+    {
+        return $this->belongsTo('App\Warna', 'warna', 'id_warna');
+    }
 }

@@ -71,6 +71,9 @@ Route::resource('stock', 'StockController', ['names' => 'stock']);
 // Lingkar Dada 
 Route::resource('lingkardada', 'LingkardadaController', ['names' => 'LD']);
 
+// Product Warna 
+Route::resource('productwarna', 'ProductwarnaController', ['names' => 'Pcolors']);
+
 
 
 
