@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Stock;
+use App\Product;
+use App\Category;
 
 class StockController extends Controller
 {
@@ -13,7 +16,10 @@ class StockController extends Controller
      */
     public function index()
     {
-        //
+        $stocks = Stock::paginate(3);
+        $products = Product::all();
+        $category = Category::all();
+        return view('backend.stock.index', compact('stocks', 'products', 'category'));
     }
 
     /**
@@ -23,7 +29,9 @@ class StockController extends Controller
      */
     public function create()
     {
-        //
+        $products = Product::all();
+        $category = Category::all();
+        return view('backend.stock.create', compact('products', 'category'));
     }
 
     /**
@@ -34,7 +42,21 @@ class StockController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+
+            'stock' => 'required',
+            'product' => 'required|numeric',
+            'category' => 'required|numeric',
+
+        ]);
+
+        $stock = new Stock;
+        $stock->stock = $request->stock;
+        $stock->product = $request->product;
+        $stock->category = $request->category;
+        $stock->save();
+
+        return redirect()->route('stock.index')->with('success', 'Data Berhasil Di Tambahkan');
     }
 
     /**
@@ -56,7 +78,10 @@ class StockController extends Controller
      */
     public function edit($id)
     {
-        //
+        $stocks = Stock::find($id);
+        $products = Product::all();
+        $category = Category::all();
+        return view('backend.stock.edit', compact('stocks', 'products', 'category'));
     }
 
     /**
@@ -68,7 +93,21 @@ class StockController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+
+            'stock' => 'required',
+            'product' => 'required|numeric',
+            'category' => 'required|numeric',
+
+        ]);
+
+        $stock = Stock::find($id);
+        $stock->stock = $request->stock;
+        $stock->product = $request->product;
+        $stock->category = $request->category;
+        $stock->save();
+
+        return redirect()->route('stock.index')->with('success', 'Data Berhasil Di Update');
     }
 
     /**
@@ -79,6 +118,7 @@ class StockController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $stocks = Stock::find($id)->delete();
+        return redirect()->back()->with('success', 'Data Berhasil Di Delete');
     }
 }

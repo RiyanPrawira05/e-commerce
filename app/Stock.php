@@ -11,4 +11,16 @@ class Stock extends Model
     protected $fillable = [
     	'stock', 'product', 'category',
     ];
+
+    public $timestamps = false;
+
+    public function pilihProduct()
+    {
+    	return $this->belongsTo('App\Product', 'product', 'id_product');
+    }
+
+    public function pilihCategory()
+    {
+        return $this->belongsTo('App\Category', 'category', 'id_category');
+    }
 }

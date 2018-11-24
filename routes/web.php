@@ -63,7 +63,7 @@ Route::resource('size', 'SizeController', ['names' => 'size']);
 Route::resource('color', 'WarnaController', ['names' => 'colors']);
 
 // Stock
-Route::resource('stock', 'WarnaController', ['names' => 'stock']);
+Route::resource('stock', 'StockController', ['names' => 'stock']);
 
 
 
