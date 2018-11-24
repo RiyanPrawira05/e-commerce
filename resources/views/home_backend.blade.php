@@ -94,7 +94,7 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-sm-12 col-md-12 col-lg-12">
         <div class="card bg-gradient-default shadow">
             <div class="card-header bg-transparent border-0">
                 <div class="row align-items-center">
