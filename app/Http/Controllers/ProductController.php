@@ -105,7 +105,7 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $product = Product::all();
+        $product = Product::find($id);
         $jenis = Jenis::all();
         $category = Category::all();
         $size = Productsize::all();
