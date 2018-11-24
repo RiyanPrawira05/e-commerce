@@ -11,4 +11,11 @@ class Lingkardada extends Model
     protected $fillable = [
     	'ukuran', 'product',
     ];
+
+    public $timestamps = false;
+
+    public function pilihProduct()
+    {
+    	return $this->belongsTo('App\Product', 'product', 'id_product');
+    }
 }
