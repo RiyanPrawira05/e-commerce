@@ -62,6 +62,9 @@ Route::resource('size', 'SizeController', ['names' => 'size']);
 // Warna
 Route::resource('color', 'WarnaController', ['names' => 'colors']);
 
+// Stock
+Route::resource('stock', 'WarnaController', ['names' => 'stock']);
+
 
 
 

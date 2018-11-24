@@ -173,6 +173,7 @@
                     @endif
                     </tbody>
                 </table>
+                {{ $product->links('pagin.pagin') }}
             </div>
         </div>
     </div>

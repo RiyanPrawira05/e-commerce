@@ -149,6 +149,11 @@
 							<i class="ni ni-bullet-list-67 text-red"></i>Colors
 						</a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ Route('stock.index') }}">
+							<i class="ni ni-bullet-list-67 text-red"></i>Stock
+						</a>
+					</li>
 				@else
 					<li class="nav-item">
 						<a class="nav-link" href="{{ route('login') }}">

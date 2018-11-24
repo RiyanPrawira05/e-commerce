@@ -19,7 +19,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $product = Product::all();
+        $product = Product::paginate(3);
         $jenis = Jenis::all();
         $category = Category::all();
         $size = Productsize::all();
