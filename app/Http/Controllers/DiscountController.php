@@ -44,16 +44,16 @@ class DiscountController extends Controller
     {
          $this->validate($request, [
 
-            'kode' => 'required|numeric',
+            'kode' => 'required|numeric|min:5',
             'potongan' => 'required',
             'users' => 'required',
             'product' => 'required',
-            'open_discount' => 'required|date|after:start_date',
-            'expired_discount' => 'required|date|after:start_date', //after tomorrow?
+            'open_discount' => 'required|date',
+            'expired_discount' => 'required|date', //after tomorrow?
 
         ]);
 
-        $discounts = new Product;
+        $discounts = new Discount;
         $discounts->kode = $request->kode;
         $discounts->potongan = $request->potongan;
         $discounts->users = $request->users;

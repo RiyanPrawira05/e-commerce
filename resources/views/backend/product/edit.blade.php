@@ -47,7 +47,7 @@
                                 <label class="form-control-label">Category</label>
                                 <select name="category" class="form-control form-control-alternative" required>
                                 @foreach ($category as $categories)
-                                    <option value="{{ $categories->id_category }}" {{ $categories->id_category == $product->category ? 'selected' : ''}}>{{ $categories->slug_category }}</option>
+                                    <option value="{{ $categories->id_category }}" {{ $categories->id_category == $product->category ? 'selected' : ''}}>{{ $categories->category }}</option>
                                 @endforeach
                                 </select>
                             </div>

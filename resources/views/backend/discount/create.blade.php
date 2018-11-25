@@ -56,7 +56,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                                     </div>
-                                        <input class="form-control datepicker" placeholder="Select date" name="open_discount" type="text" value="06/20/2018">
+                                        <input class="form-control datepicker" placeholder="mm-dd-yyyy" name="open_discount" type="date" data-date-format="mm/dd/yyyy">
                                 </div>
                             </div>
                         </div>
@@ -66,7 +66,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                                     </div>
-                                        <input class="form-control datepicker" placeholder="Select date" name="expired_discount" type="text" value="06/20/2018">
+                                        <input class="form-control datepicker" placeholder="mm-dd-yyyy" name="expired_discount" type="date" data-date-format="mm/dd/yyyy">
                                 </div>
                             </div>
                         </div>

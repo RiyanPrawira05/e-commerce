@@ -131,7 +131,7 @@
                             <td><img src="{{ asset($products->foto) }}" alt="" class="rounded-circle" width="50" height="50"></td>
                             <td><span class="font-weight-bold">{{ $products->product }}</span></td>
                             <td>{{ $products->pilihJenis->slug_bahan }}</td>
-                            <td>{{ $products->pilihCategory->slug_category }}</td>
+                            <td>{{ $products->pilihCategory->category }}</td>
                             <td>{{ $products->harga }}</td>
                             <td>{{ $products->pilihSize->size }}</td>
                             @if (!empty($products->deskripsi))

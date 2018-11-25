@@ -45,7 +45,7 @@
                                 <label class="form-control-label">Category</label>
                                 <select name="category" class="form-control form-control-alternative" required>
                                 @foreach ($category as $categories)
-                                    <option value="{{ $categories->id_category }}">{{ $categories->slug_category }}</option>
+                                    <option value="{{ $categories->id_category }}">{{ $categories->category }}</option>
                                 @endforeach
                                 </select>
                             </div>
