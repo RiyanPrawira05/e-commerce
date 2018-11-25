@@ -77,6 +77,12 @@ Route::resource('productwarna', 'ProductwarnaController', ['names' => 'Pcolors']
 // Via 
 Route::resource('pembayaran/via', 'ViaController', ['names' => 'via']);
 
+// Pembayaran 
+Route::resource('pembayaran', 'PembayaranController', ['names' => 'pembayaran']);
+
+// Status 
+Route::resource('status', 'StatusController', ['names' => 'status']);
+
 
 
 

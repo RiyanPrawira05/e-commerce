@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Pembayaran;
+use App\Via;
 
 class PembayaranController extends Controller
 {
@@ -13,7 +15,9 @@ class PembayaranController extends Controller
      */
     public function index()
     {
-        //
+        $pembayaran = Pembayaran::paginate(3);
+        $via = Via::all();
+        return view('backend.pembayaran.index', compact('pembayaran', 'via'));
     }
 
     /**
@@ -23,7 +27,8 @@ class PembayaranController extends Controller
      */
     public function create()
     {
-        //
+        $via = Via::all();
+        return view('backend.pembayaran.create', compact('via'));
     }
 
     /**
@@ -34,7 +39,16 @@ class PembayaranController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+
+            'via' => 'required',
+
+        ]);
+
+        $pembayaran = new Pembayaran;
+        $pembayaran->via = $request->via;
+        $pembayaran->save();
+        return redirect()->route('pembayaran.index')->with('success', 'Data Berhasil Di Tambahkan');
     }
 
     /**
@@ -56,7 +70,9 @@ class PembayaranController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pembayaran = Pembayaran::find($id);
+        $via = Via::all();
+        return view('backend.pembayaran.edit', compact('pembayaran', 'via'));
     }
 
     /**
@@ -68,7 +84,16 @@ class PembayaranController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+
+            'via' => 'string',
+
+        ]);
+
+        $pembayaran = Pembayaran::find($id);
+        $pembayaran->via = $request->via;
+        $pembayaran->save();
+        return redirect()->route('pembayaran.index')->with('success', 'Data Berhasil Di Update');
     }
 
     /**
@@ -79,6 +104,7 @@ class PembayaranController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pembayaran = Pembayaran::find($id)->delete();
+        return redirect()->back()->with('success', 'Data Berhasil di Delete');
     }
 }

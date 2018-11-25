@@ -174,6 +174,16 @@
 							<i class="ni ni-bullet-list-67 text-red"></i>Via Pembayaran
 						</a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ Route('pembayaran.index') }}">
+							<i class="ni ni-bullet-list-67 text-red"></i>Pembayaran
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ Route('status.index') }}">
+							<i class="ni ni-bullet-list-67 text-red"></i>Status
+						</a>
+					</li>
 				@else
 					<li class="nav-item">
 						<a class="nav-link" href="{{ route('login') }}">

@@ -38,7 +38,7 @@ class ViaController extends Controller
     {
          $this->validate($request, [
 
-            'via' => 'required',
+            'via' => 'required|string',
 
         ]);
 

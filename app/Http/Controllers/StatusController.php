@@ -13,7 +13,7 @@ class StatusController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**

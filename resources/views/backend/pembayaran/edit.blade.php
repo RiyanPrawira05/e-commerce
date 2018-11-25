@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('brand') Colors @endsection
+@section('brand') Pembayaran @endsection
 
 @section('content')
 <div class="row">
@@ -9,19 +9,24 @@
             <div class="card-header border-0">
                 <div class="row align-items-center">
                     <div class="col">
-                        <a href="{{ Route('colors.index') }}" class="btn btn-sm btn-primary"><i class="fas fa-chevron-circle-left"></i> Back </a>
+                        <a href="{{ Route('pembayaran.index') }}" class="btn btn-sm btn-primary"><i class="fas fa-chevron-circle-left"></i> Back </a>
                     </div>
                 </div>
             </div>
-            <form class="horizontal" action="{{ Route('colors.store') }}" method="POST">
+            <form class="horizontal" action="{{ Route('pembayaran.update', $pembayaran->id_pembayaran) }}" method="POST">
                 {{ csrf_field() }}
+                {{ method_field('PUT') }}
                 <div class="col-md-12">
                     @include('template.alert')
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label class="form-control-label">Warna</label>
-                                <input type="text" name="warna" class="form-control form-control-alternative" placeholder="Red,Blue,Green,Black" required autofocus>
+                                <label class="form-control-label">Pembayaran</label>
+                                <select name="via" class="form-control form-control-alternative">
+                                    @foreach($via as $melalui)
+                                        <option value="{{ $melalui->id_via}}" {{ $melalui->id_via == $pembayaran->via ? 'selected' : ''}}>{{ $melalui->via }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <div class="col-md-12 mb-4">

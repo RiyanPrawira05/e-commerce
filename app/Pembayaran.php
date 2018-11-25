@@ -11,4 +11,10 @@ class Pembayaran extends Model
     protected $fillable = [
     	'via', 'tgl_pembayaran',
     ];
+
+    public $timestamps = false;
+    public function pilihPembayaran()
+    {
+    	return $this->belongsTo('App\Via', 'via', 'id_via');
+    }
 }

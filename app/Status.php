@@ -11,4 +11,11 @@ class Status extends Model
     protected $fillable = [
     	'status', 'users',
     ];
+
+    public $timestamps = false;
+
+    public function pilihPengguna()
+    {
+    	return $this->belongsTo('App\User', 'users', 'id_users');
+    }
 }
