@@ -74,6 +74,8 @@ Route::resource('lingkardada', 'LingkardadaController', ['names' => 'LD']);
 // Product Warna 
 Route::resource('productwarna', 'ProductwarnaController', ['names' => 'Pcolors']);
 
+// Via 
+Route::resource('pembayaran/via', 'ViaController', ['names' => 'via']);
 
 
 

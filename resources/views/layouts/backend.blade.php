@@ -169,6 +169,11 @@
 							<i class="ni ni-bullet-list-67 text-red"></i>Product Colors
 						</a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ Route('via.index') }}">
+							<i class="ni ni-bullet-list-67 text-red"></i>Via Pembayaran
+						</a>
+					</li>
 				@else
 					<li class="nav-item">
 						<a class="nav-link" href="{{ route('login') }}">

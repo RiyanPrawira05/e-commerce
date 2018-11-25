@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Via;
 
 class ViaController extends Controller
 {
@@ -13,7 +14,8 @@ class ViaController extends Controller
      */
     public function index()
     {
-        //
+        $via = Via::paginate(3);
+        return view('backend.via.index', compact('via'));
     }
 
     /**
@@ -23,7 +25,7 @@ class ViaController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.via.create');
     }
 
     /**
@@ -34,7 +36,16 @@ class ViaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $this->validate($request, [
+
+            'via' => 'required',
+
+        ]);
+
+        $via = new Via;
+        $via->via = $request->via;
+        $via->save();
+        return redirect()->route('via.index')->with('success', 'Data Berhasil Di Tambahkan');
     }
 
     /**
@@ -56,7 +67,8 @@ class ViaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $via = Via::find($id);
+        return view('backend.via.edit', compact('via'));
     }
 
     /**
@@ -68,7 +80,16 @@ class ViaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+
+            'via' => 'string',
+
+        ]);
+
+        $via = Via::find($id);
+        $via->via = $request->via;
+        $via->save();
+        return redirect()->route('via.index')->with('success', 'Data Berhasil Di Update');
     }
 
     /**
@@ -79,6 +100,7 @@ class ViaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $via = Via::find($id)->delete();
+        return redirect()->back()->with('success', 'Data Berhasil di Hapus');
     }
 }
