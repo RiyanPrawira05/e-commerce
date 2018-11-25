@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Discount;
+use App\User;
+use App\Product;
 
 class DiscountController extends Controller
 {
@@ -13,7 +16,10 @@ class DiscountController extends Controller
      */
     public function index()
     {
-        //
+        $discounts = Discount::paginate(3);
+        $users = User::all();
+        $products = Product::all();
+        return view('backend.discount.index', compact('discounts', 'users', 'products'));
     }
 
     /**
@@ -23,7 +29,9 @@ class DiscountController extends Controller
      */
     public function create()
     {
-        //
+        $users = User::all();
+        $products = Product::all();
+        return view('backend.discount.create', compact('users', 'products'));
     }
 
     /**
@@ -34,7 +42,27 @@ class DiscountController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $this->validate($request, [
+
+            'kode' => 'required|numeric',
+            'potongan' => 'required',
+            'users' => 'required',
+            'product' => 'required',
+            'open_discount' => 'required|date|after:start_date',
+            'expired_discount' => 'required|date|after:start_date', //after tomorrow?
+
+        ]);
+
+        $discounts = new Product;
+        $discounts->kode = $request->kode;
+        $discounts->potongan = $request->potongan;
+        $discounts->users = $request->users;
+        $discounts->product = $request->product;
+        $discounts->open_discount = $request->open_discount;
+        $discounts->expired_discount = $request->expired_discount;
+        $discounts->save();
+
+        return redirect()->route('discount.index')->with('success', 'Data Berhasil Ditambahkan');
     }
 
     /**

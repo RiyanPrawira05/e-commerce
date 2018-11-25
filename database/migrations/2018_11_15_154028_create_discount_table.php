@@ -15,7 +15,7 @@ class CreateDiscountTable extends Migration
     {
         Schema::create('discount', function (Blueprint $table) {
             $table->increments('id_discount');
-            $table->char('kode', 20)->comment('Kode Diskon');
+            $table->string('kode', 20)->comment('Kode Diskon');
             $table->string('potongan')->comment('ex: 10%');
             $table->integer('users')->unsigned();
             $table->integer('product')->unsigned();

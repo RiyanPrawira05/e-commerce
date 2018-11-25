@@ -83,6 +83,9 @@ Route::resource('pembayaran', 'PembayaranController', ['names' => 'pembayaran'])
 // Status 
 Route::resource('status', 'StatusController', ['names' => 'status']);
 
+// Discount 
+Route::resource('discount', 'DiscountController', ['names' => 'discount']);
+
 
 
 

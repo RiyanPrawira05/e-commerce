@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Status;
+use App\User;
 
 class StatusController extends Controller
 {
@@ -13,7 +15,9 @@ class StatusController extends Controller
      */
     public function index()
     {
-        
+        $status = Status::paginate(3);
+        $users = User::all();
+        return view('backend.status.index', compact('status', 'users'));
     }
 
     /**
@@ -23,7 +27,8 @@ class StatusController extends Controller
      */
     public function create()
     {
-        //
+        $users = User::all();
+        return view('backend.status.create', compact('users'));
     }
 
     /**
@@ -34,7 +39,18 @@ class StatusController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+
+            'status' => 'required|string',
+            'users' => 'required|numeric',
+
+        ]);
+
+        $status = new Status;
+        $status->status = $request->status;
+        $status->users = $request->users;
+        $status->save();
+        return redirect()->route('status.index')->with('success', 'Data Berhasil Di Tambahkan');
     }
 
     /**
@@ -56,7 +72,9 @@ class StatusController extends Controller
      */
     public function edit($id)
     {
-        //
+        $status = Status::find($id);
+        $users = User::all();
+        return view('backend.status.edit', compact('status', 'users'));
     }
 
     /**
@@ -68,7 +86,18 @@ class StatusController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+
+            'status' => 'string',
+            'users' => 'numeric',
+
+        ]);
+
+        $status = Status::find($id);
+        $status->status = $request->status;
+        $status->users = $request->users;
+        $status->save();
+        return redirect()->route('status.index')->with('success', 'Data Berhasil Di Update');
     }
 
     /**
@@ -79,6 +108,7 @@ class StatusController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $status = Status::find($id)->delete();
+        return redirect()->back()->with('success', 'Data Berhasil di Delete');
     }
 }

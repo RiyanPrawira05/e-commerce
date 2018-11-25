@@ -11,4 +11,16 @@ class Discount extends Model
     protected $fillable = [
     	'kode', 'potongan', 'users', 'product', 'open_discount', 'expired_discount',
     ];
+
+    public $timestamps = false;
+
+    public function pilihPengguna()
+    {
+    	return $this->belongsTo('App\User', 'users', 'id_users');
+    }
+
+    public function pilihProduct()
+    {
+    	return $this->belongsTo('App\Product', 'product', 'id_product');
+    }
 }

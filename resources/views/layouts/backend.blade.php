@@ -184,6 +184,11 @@
 							<i class="ni ni-bullet-list-67 text-red"></i>Status
 						</a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ Route('discount.index') }}">
+							<i class="ni ni-bullet-list-67 text-red"></i>Discount
+						</a>
+					</li>
 				@else
 					<li class="nav-item">
 						<a class="nav-link" href="{{ route('login') }}">
@@ -281,6 +286,8 @@
 <script src="{{ asset('backend/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
 <!-- Optional JS -->
 <script src="{{ asset('backend/vendor/chart.js/dist/Chart.min.js') }}"></script>
+<!-- Date Pickers-->
+<script src="{{ asset('backend/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
 <script src="{{ asset('backend/vendor/chart.js/dist/Chart.extension.js') }}"></script>
 <!-- Argon JS -->
 <script src="{{ asset('backend/js/argon.js') }}"></script>
