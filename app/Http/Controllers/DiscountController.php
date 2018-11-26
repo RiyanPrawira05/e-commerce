@@ -48,7 +48,7 @@ class DiscountController extends Controller
             'potongan' => 'required',
             'users' => 'required',
             'product' => 'required',
-            'open_discount' => 'required', //date?
+            'open_discount' => 'required',
             'expired_discount' => 'required', //after tomorrow?
 
         ]);
@@ -58,8 +58,8 @@ class DiscountController extends Controller
         $discounts->potongan = $request->potongan;
         $discounts->users = $request->users;
         $discounts->product = $request->product;
-        $discounts->open_discount = $request->open_discount;
-        $discounts->expired_discount = $request->expired_discount;
+        $discounts->open_discount = $request->open_discount.' 00:00:00';
+        $discounts->expired_discount = $request->expired_discount.' 00:00:00';
         $discounts->save();
 
         return redirect()->route('discount.index')->with('success', 'Data Berhasil Ditambahkan');

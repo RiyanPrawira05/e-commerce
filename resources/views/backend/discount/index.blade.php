@@ -141,8 +141,8 @@
                             <td><span class="font-weight-bold">{{ $discount->potongan }}</span></td>
                             <td>{{ $discount->pilihProduct->product }}</td>
                             <td>{{ $discount->pilihPengguna->name }}</td>
-                            <td>{{ $discount->open_discount }}</td>
-                            <td>{{ $discount->expired_discount }}</td>
+                            <td>{{ \Carbon\Carbon::parse($discount->open_discount)->format('Y-m-d') }}</td>
+                            <td>{{ \Carbon\Carbon::parse($discount->expired_discount)->diffForHumans() }}</td>
                             <td class="text-right">
                                 <div class="dropdown">
                                     <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
