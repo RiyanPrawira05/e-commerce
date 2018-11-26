@@ -17,9 +17,14 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $product = Product::paginate(3);
+        $result = Product::query();
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $product = $result->where('product', 'LIKE', '%'.$search.'%')->orWhere('harga');
+        }
+        $product = $result->orderBy('created_at', 'DESC')->paginate(3);
         $jenis = Jenis::all();
         $category = Category::all();
         $size = Productsize::all();

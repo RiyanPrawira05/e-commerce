@@ -48,8 +48,8 @@ class DiscountController extends Controller
             'potongan' => 'required',
             'users' => 'required',
             'product' => 'required',
-            'open_discount' => 'required|date',
-            'expired_discount' => 'required|date', //after tomorrow?
+            'open_discount' => 'required', //date?
+            'expired_discount' => 'required', //after tomorrow?
 
         ]);
 

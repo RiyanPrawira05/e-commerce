@@ -13,9 +13,14 @@ class StatusController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $status = Status::paginate(3);
+        $result = Status::query();
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $status = $result->where('status', 'LIKE', '%'.$search.'%');
+        }
+        $status = $result->orderBy('created_at', 'DESC')->paginate(3);
         $users = User::all();
         return view('backend.status.index', compact('status', 'users'));
     }
