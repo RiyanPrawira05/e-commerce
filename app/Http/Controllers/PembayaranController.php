@@ -13,14 +13,11 @@ class PembayaranController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $result = Pembayaran::query();
-        if ($request->filled('search')) {
-            $search = $request->search;
-            $pembayaran = $result->whereHas('pilihPembayaran');
-        }
-        $pembayaran = $result->orderBy('created_at', 'DESC')->paginate(3);
+        $pembayaran = Pembayaran::whereHas('pilihPembayaran', function($query){
+            $query->where('via')->paginate(3);
+        });
         $via = Via::all();
         return view('backend.pembayaran.index', compact('pembayaran', 'via'));
     }
