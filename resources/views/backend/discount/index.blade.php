@@ -142,7 +142,7 @@
                             <td>{{ $discount->pilihProduct->product }}</td>
                             <td>{{ $discount->pilihPengguna->name }}</td>
                             <td>{{ \Carbon\Carbon::parse($discount->open_discount)->format('Y-m-d') }}</td>
-                            <td>{{ \Carbon\Carbon::parse($discount->expired_discount)->diffForHumans() }}</td>
+                            <td>{{ \Carbon\Carbon::parse($discount->expired_discount)->diffForHumans($discount->open_discount) }}</td>
                             <td class="text-right">
                                 <div class="dropdown">
                                     <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -155,11 +155,11 @@
                                     <h6 class="text-overflow m-0 text-light">Actions</h6>
                                 </div>
 
-                                    <a class="btn dropdown-item" href="">
+                                    <a class="btn dropdown-item" href="{{ Route('discount.edit', $discount->id_discount) }}">
                                         <i class="fas fa-user-edit text-default"></i>
                                         <span class="text-default">Edit</span>
                                     </a>
-                                    <form action="" method="POST">
+                                    <form action="{{ Route('discount.destroy', $discount->id_discount) }}" method="POST">
                                     {{ method_field('DELETE') }}
                                     {{ csrf_field() }}
                                       <button class="btn dropdown-item" type="submit">

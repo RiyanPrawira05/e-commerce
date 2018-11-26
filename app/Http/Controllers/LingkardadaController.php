@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Lingkardada;
-use App\Product;
 
 class LingkardadaController extends Controller
 {
@@ -16,8 +15,7 @@ class LingkardadaController extends Controller
     public function index()
     {
         $lingkardada = Lingkardada::paginate(3);
-        $products = Product::all();
-        return view('backend.lingkardada.index', compact('lingkardada', 'products'));
+        return view('backend.lingkardada.index', compact('lingkardada'));
     }
 
     /**
@@ -27,8 +25,7 @@ class LingkardadaController extends Controller
      */
     public function create()
     {
-        $products = Product::all();
-        return view('backend.lingkardada.create', compact('lingkardada', 'products'));
+        return view('backend.lingkardada.create');
     }
 
     /**
@@ -42,13 +39,13 @@ class LingkardadaController extends Controller
         $this->validate($request, [
 
             'ukuran' => 'required',
-            'product' => 'required|numeric',
+            'deskripsi' => 'min:5'
 
         ]);
 
         $lingkardada = new Lingkardada;
         $lingkardada->ukuran = $request->ukuran;
-        $lingkardada->product = $request->product;
+        $lingkardada->deskripsi = $request->deskripsi;
         $lingkardada->save();
 
         return redirect()->route('LD.index')->with('success', 'Data Berhasil di Tambahkan');
@@ -74,8 +71,7 @@ class LingkardadaController extends Controller
     public function edit($id)
     {
         $lingkardada = Lingkardada::find($id);
-        $products = Product::all();
-        return view('backend.lingkardada.edit', compact('lingkardada', 'products'));
+        return view('backend.lingkardada.edit', compact('lingkardada'));
     }
 
     /**
@@ -90,13 +86,13 @@ class LingkardadaController extends Controller
         $this->validate($request, [
 
             'ukuran' => 'required',
-            'product' => 'required|numeric',
+            'deskripsi' => 'min:5',
 
         ]);
 
         $lingkardada = Lingkardada::find($id);
         $lingkardada->ukuran = $request->ukuran;
-        $lingkardada->product = $request->product;
+        $lingkardada->deskripsi = $request->deskripsi;
         $lingkardada->save();
 
         return redirect()->route('LD.index')->with('success', 'Data Berhasil di Update');

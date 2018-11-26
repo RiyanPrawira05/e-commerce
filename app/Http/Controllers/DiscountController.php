@@ -84,7 +84,10 @@ class DiscountController extends Controller
      */
     public function edit($id)
     {
-        //
+        $discounts = Discount::find($id);
+        $users = User::all();
+        $products = Product::all();
+        return view('backend.discount.edit', compact('discounts', 'users', 'products'));
     }
 
     /**
@@ -96,7 +99,27 @@ class DiscountController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+         $this->validate($request, [
+
+            'kode' => 'required|numeric|min:5',
+            'potongan' => 'required',
+            'users' => 'required',
+            'product' => 'required',
+            'open_discount' => 'required',
+            'expired_discount' => 'required', //after tomorrow?
+
+        ]);
+
+        $discounts = Discount::find($id);
+        $discounts->kode = $request->kode;
+        $discounts->potongan = $request->potongan;
+        $discounts->users = $request->users;
+        $discounts->product = $request->product;
+        $discounts->open_discount = $request->open_discount.' 00:00:00';
+        $discounts->expired_discount = $request->expired_discount.' 00:00:00';
+        $discounts->save();
+
+        return redirect()->route('discount.index')->with('success', 'Data Berhasil di Update');
     }
 
     /**
@@ -107,6 +130,7 @@ class DiscountController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $discounts = Discount::find($id)->delete();
+        return redirect()->back()->with('success', 'Data Berhasil di Hapus');
     }
 }

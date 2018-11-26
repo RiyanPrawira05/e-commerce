@@ -56,7 +56,7 @@ class ProductController extends Controller
          $this->validate($request, [
 
             'product' => 'required|string|min:4',
-            'foto' => 'required|mimes:jpg,png,jpeg,gif|max:4000',
+            'foto' => 'required|mimes:jpg,png,jpeg,gif|max:20000',
             'jenis' => 'required',
             'category' => 'required',
             'harga' => 'required|numeric',
@@ -92,7 +92,7 @@ class ProductController extends Controller
             }
         }
 
-        return redirect()->back()->with('success', 'Data Berhasil Ditambahkan');
+        return redirect()->route('product.index')->with('success', 'Data Berhasil Ditambahkan');
     }
 
     /**
@@ -133,7 +133,7 @@ class ProductController extends Controller
          $this->validate($request, [
 
             'product' => 'string|min:4',
-            'foto' => 'mimes:jpg,png,jpeg,gif|max:4000',
+            'foto' => 'mimes:jpg,png,jpeg,gif|max:8000',
             'jenis' => 'numeric',
             'category' => 'numeric',
             'harga' => 'numeric',
@@ -161,11 +161,15 @@ class ProductController extends Controller
         $data->jenis = $request->jenis;
         $data->category = $request->category;
         $data->harga = $request->harga;
-        $data->size = $request->size;
         $data->deskripsi = $request->deskripsi;
         $data->save();
+        if ($request->size) {
+            foreach ($request->size as $key => $value) {
+                $data->pilihSize()->attach($value);
+            }
+        }
 
-        return redirect()->back()->with('success', 'Data Berhasil Ditambahkan');
+        return redirect()->route('product.index')->with('success', 'Data Berhasil Ditambahkan');
     }
 
     /**

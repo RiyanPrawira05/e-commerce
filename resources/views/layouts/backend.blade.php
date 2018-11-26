@@ -15,6 +15,9 @@
 	<link href="{{ asset('backend/vendor/@fortawesome/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
 	<!-- Argon CSS -->
 	<link type="text/css" href="{{ asset('backend/css/argon.css') }}" rel="stylesheet">
+
+	@yield('css')
+	
 </head>
 
 <body>
@@ -165,11 +168,6 @@
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="{{ Route('Pcolors.index') }}">
-							<i class="ni ni-bullet-list-67 text-red"></i>Product Colors
-						</a>
-					</li>
-					<li class="nav-item">
 						<a class="nav-link" href="{{ Route('via.index') }}">
 							<i class="ni ni-bullet-list-67 text-red"></i>Via Pembayaran
 						</a>
@@ -291,6 +289,8 @@
 <script src="{{ asset('backend/vendor/chart.js/dist/Chart.extension.js') }}"></script>
 <!-- Argon JS -->
 <script src="{{ asset('backend/js/argon.js') }}"></script>
+
+@yield('script')
 
 </body>
 </html>

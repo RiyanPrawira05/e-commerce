@@ -2,6 +2,8 @@
 
 @section('brand') Product @endsection
 
+@section('css') <link href="{{ asset('backend/select2-4.0.6-rc.1/dist/css/select2.min.css') }}" rel="stylesheet"> @endsection
+
 @section('content')
 <div class="row">
     <div class="col-md-12">
@@ -13,7 +15,7 @@
                     </div>
                 </div>
             </div>
-            <form class="horizontal" action="{{ Route('product.store') }}" method="POST" enctype="multipart/form-data">
+            <form class="horizontal dropzone" action="{{ Route('product.store') }}" method="POST" enctype="multipart/form-data" id="mydropZone">
                 {{ csrf_field() }}
                 <div class="col-md-12">
                     @include('template.alert')
@@ -53,7 +55,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="form-control-label">Size</label>
-                                <select multiple="multiple" name="size[]" class="form-control form-control-alternative" required>
+                                <select multiple="multiple" name="size[]" class="form-control form-control-alternative select2" required>
                                 @foreach ($size as $ukuran)
                                     <option value="{{ $ukuran->id_size }}">{{ $ukuran->size }}</option>
                                 @endforeach
@@ -81,4 +83,27 @@
         </div>
     </div>
 </div>
+
+@section('script') 
+
+<script src="{{ asset('backend/select2-4.0.6-rc.1/dist/js/select2.min.js') }}"></script>
+<script src="{{ asset('backend/js/dropzone.js') }}"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#mydropZone').dropzone({ url: "{{ Route('product.store') }}" });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.select2').select2({
+            placeholder: "s,m,l,xl",
+            maximumSelectionLength: 4,
+        });
+    });
+</script>
+
+@endsection
+
 @endsection

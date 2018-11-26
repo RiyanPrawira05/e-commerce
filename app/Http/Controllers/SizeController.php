@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Size as Productsize;
+use App\Size;
 
 class SizeController extends Controller
 {
@@ -14,10 +14,10 @@ class SizeController extends Controller
      */
     public function index(Request $request)
     {
-        $result = Productsize::query();
+        $result = Size::query();
         if ($request->filled('search')) {
             $search = $request->search;
-            $size = $result->where('size', 'LIKE', '%'.$search.'%');
+            $size = $result->whereHas('size', 'LIKE', '%'.$search.'%');
         }
         $size = $result->orderBy('created_at', 'DESC')->paginate(3);
         return view('backend.size.index', compact('size'));
@@ -48,7 +48,7 @@ class SizeController extends Controller
 
         ]);
 
-        $size = new Productsize;
+        $size = new Size;
         $size->size = $request->size;
         $size->deskripsi = $request->deskripsi;
         $size->save();
@@ -75,7 +75,7 @@ class SizeController extends Controller
      */
     public function edit($id)
     {
-        $size = Productsize::find($id);
+        $size = Size::find($id);
         return view('backend.size.edit', compact('size'));
     }
 
@@ -95,7 +95,7 @@ class SizeController extends Controller
 
         ]);
 
-        $size = Productsize::find($id);
+        $size = Size::find($id);
         $size->size = $request->size;
         $size->deskripsi = $request->deskripsi;
         $size->save();
@@ -111,7 +111,7 @@ class SizeController extends Controller
      */
     public function destroy($id)
     {
-        $size = Productsize::find($id)->delete();
+        $size = Size::find($id)->delete();
         return redirect()->back()->with('success', 'Data Berhasil Di Hapus');
     }
 }

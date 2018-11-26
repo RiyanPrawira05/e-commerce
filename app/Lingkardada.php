@@ -9,13 +9,9 @@ class Lingkardada extends Model
     protected $table = 'lingkardada';
     protected $primaryKey = 'id_lingkar_dada';
     protected $fillable = [
-    	'ukuran', 'product',
+    	'ukuran', 'deskripsi',
     ];
 
     public $timestamps = false;
 
-    public function pilihProduct()
-    {
-    	return $this->belongsTo('App\Product', 'product', 'id_product');
-    }
 }

@@ -16,10 +16,7 @@ class CreateLingkardadaTable extends Migration
         Schema::create('lingkardada', function (Blueprint $table) {
             $table->increments('id_lingkar_dada');
             $table->string('ukuran', 100);
-            $table->integer('product')->unsigned();
-            $table->timestamp('created_at')->nullable();
-
-            $table->foreign('product')->references('id_product')->on('product');
+            $table->string('deskripsi', 100);
         });
     }
 

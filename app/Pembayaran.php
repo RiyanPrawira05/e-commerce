@@ -9,10 +9,11 @@ class Pembayaran extends Model
     protected $table = 'pembayaran';
     protected $primaryKey = 'id_pembayaran';
     protected $fillable = [
-    	'via', 'tgl_pembayaran',
+    	'via',
     ];
 
     public $timestamps = false;
+    
     public function pilihPembayaran()
     {
     	return $this->belongsTo('App\Via', 'via', 'id_via');

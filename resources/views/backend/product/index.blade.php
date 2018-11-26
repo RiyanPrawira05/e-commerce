@@ -138,20 +138,30 @@
                     @if (count($product) > 0)
                     @foreach ($product as $products)
                         <tr>
-                            <td><img src="{{ asset($products->foto) }}" alt="" class="rounded-circle" width="50" height="50"></td>
-                            <td><span class="font-weight-bold">{{ $products->product }}</span></td>
-                            <td>{{ $products->pilihJenis->slug_bahan }}</td>
-                            <td>{{ $products->pilihCategory->category }}</td>
-                            <td>{{ $products->harga }}</td>
+                            <td><img src="{{ asset($products->foto) }}" alt="" class="rounded-circle" width="70" height="70"></td>
+                            <td><span class="font-weight-bold"><strong>{{ $products->product }}</strong></span></td>
+                            <td><span class="font-weight-bold">{{ $products->pilihJenis->slug_bahan }}</span></td>
+                            <td><span class="font-weight-bold">{{ $products->pilihCategory->category }}</span></td>
+                            <td><span class="font-weight-bold">{{ $products->harga }}</span></td>
                             <td>
-                              @foreach($products->pilihSize as $size)
-                              {{ $size->size }},
-                              @endforeach
+                            @foreach($products->pilihSize as $size)
+
+                                @if ($size->size == 'S')
+                                  <span class="badge badge-dot mr-3"><i class="bg-danger"></i><span class="mb-0 text-sm"></span><b> {{ $size->size }}</b></span>
+                                @elseif ($size->size == 'M')
+                                  <span class="badge badge-dot mr-3"><i class="bg-warning"></i><span class="mb-0 text-sm"></span><b> {{ $size->size }}</b></span>
+                                @elseif ($size->size == 'M')
+                                  <span class="badge badge-dot mr-3"><i class="bg-info"></i><span class="mb-0 text-sm"></span><b> {{ $size->size }}</b></span>
+                                @elseif ($size->size == 'XL')
+                                  <span class="badge badge-dot mr-3"><i class="bg-success"></i><span class="mb-0 text-sm"></span><b> {{ $size->size }}</b></span>
+                                @endif
+
+                            @endforeach
                             </td>
                             @if (!empty($products->deskripsi))
-                            <td>{{ $products->deskripsi }}</td>
+                            <td><span class="font-weight-bold">{{ $products->deskripsi }}</span></td>
                             @else
-                              <td>Deskripsi Belum Di Isi</td>
+                              <th class="text-danger">Deskripsi Belum Di Isi</th>
                             @endif
                             <td class="text-right">
                                 <div class="dropdown">
@@ -183,7 +193,7 @@
                         </tr>
                     @endforeach
                     @else
-                        <td align="center" class="mb-0 text-danger">Data Tidak Ditemukan !!</td>
+                        <th class="mb-0 text-danger">Data Tidak Ditemukan !!</th>
                     @endif
                     </tbody>
                 </table>
@@ -192,4 +202,5 @@
         </div>
     </div>
 </div>
+
 @endsection

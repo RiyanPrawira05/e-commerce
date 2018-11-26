@@ -27,12 +27,8 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label class="form-control-label">Product</label>
-                                <select name="product" class="form-control form-control-alternative" required>
-                                @foreach ($products as $product)
-                                    <option value="{{ $product->id_product }}" {{ $product->id_product == $lingkardada->product ? 'selected' : '' }}>{{ $product->product }}</option>
-                                @endforeach
-                                </select>
+                                <label class="form-control-label">Deskripsi</label>
+                                <textarea name="deskripsi" class="form-control form-control-alternative" required autofocus>{{ $lingkardada->deskripsi }}</textarea>
                             </div>
                         </div>
                         <div class="col-md-12 mb-2">

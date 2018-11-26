@@ -124,7 +124,7 @@
                     <thead class="thead-light">
                         <tr>
                             <th scope="col">Lingkar Dada</th>
-                            <th scope="col">Produk</th>
+                            <th scope="col">Deskripsi</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
@@ -133,15 +133,19 @@
                     @foreach ($lingkardada as $ld)
                         <tr>
                             <td>
-                              <span class="badge badge-dot mr-4"><i class="bg-default"></i> <span class="mb-0 text-sm"><b>{!! $ld->ukuran !!}</b></span>
+                              <span class="badge badge-dot mr-2"><i class="bg-default"></i> <span class="mb-0 text-sm"><b>{!! $ld->ukuran !!}</b></span>
                             </td>
-                            <th scope="row">
+                            @if (!empty($ld->deskripsi))
+                            <td>
                               <div class="media align-items-center">
                                  <div class="media-body">
-                                    <span class="mb-0 text-sm">{{ $ld->pilihProduct->product }}</span>
+                                    <span class="mb-0 text-sm">{{ $ld->deskripsi }}</span>
                                  </div>
                               </div>
-                            </th>
+                            </td>
+                            @else
+                            <th class="mb-0 text-danger">Deskripsi belum di isi</th>
+                            @endif
                             <td class="text-right">
                                 <div class="dropdown">
                                     <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
