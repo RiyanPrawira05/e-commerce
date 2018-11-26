@@ -97,6 +97,16 @@
     <div class="col-md-12">
         <div class="card shadow">
             <div class="card-header border-0">
+                <div class="text-center">
+                  <form class="horizontal" method="GET">
+                      <div class="col-md-12">
+                          <div class="form-group">
+                              <button type="submit" class="btn btn-sm btn-primary mb-3"><span class="fas fa-search"></span></button>
+                              <input class="form-control form-control-alternative" type="text" name="search" placeholder="Type here for Search" value="{{ request()->search }}" autofocus>
+                          </div>
+                      </div>
+                  </form>
+                </div>
                 <div class="row align-items-center">
                     <div class="col">
                         <h3 class="mb-0 text-default">Data Status</h3>

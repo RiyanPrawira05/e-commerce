@@ -12,9 +12,14 @@ class WarnaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $colors = Warna::paginate(3);
+        $result = Warna::query();
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $colors = $result->where('warna', 'LIKE', '%'.$search.'%');
+        }
+        $colors = $result->orderBy('created_at', 'DESC')->paginate(3);
         return view('backend.warna.index', compact('colors'));
     }
 

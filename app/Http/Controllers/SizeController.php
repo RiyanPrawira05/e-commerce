@@ -12,9 +12,14 @@ class SizeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $size = Productsize::paginate(3);
+        $result = Productsize::query();
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $size = $result->where('size', 'LIKE', '%'.$search.'%');
+        }
+        $size = $result->orderBy('created_at', 'DESC')->paginate(3);
         return view('backend.size.index', compact('size'));
     }
 

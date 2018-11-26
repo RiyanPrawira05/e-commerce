@@ -14,9 +14,14 @@ class ProductwarnaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $productwarna = Productwarna::paginate(3);
+        $result = Productwarna::query();
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $productwarna = $result->where('warna', 'LIKE', '%'.$search.'%');
+        }
+        $productwarna = $result->orderBy('created_at', 'DESC')->paginate(3);
         $warna = Warna::all();
         $product = Product::all();
         return view('backend.productwarna.index', compact('productwarna', 'warna', 'product'));

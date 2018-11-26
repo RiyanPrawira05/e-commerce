@@ -12,10 +12,20 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::paginate(2);
-        return view('backend.pengguna.index', compact('users'));
+        $result = User::query();
+
+        if ($request->filled('search'))
+        {
+
+        $search = $request->search;
+        $users = $result->where('name', 'LIKE', '%'.$search.'%')->orwhere('email', 'LIKE', '%' .$request->search. '%' );
+
+        }
+
+        $users = $result->orderBy('created_at', 'DESC')->paginate(3);
+        return view('backend.pengguna.index', compact('users', 'pesan'));
     }
 
     /**

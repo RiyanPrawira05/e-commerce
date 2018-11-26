@@ -12,9 +12,15 @@ class ViaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $via = Via::paginate(3);
+        $result = Via::query();
+
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $via = $result->where('via', 'LIKE', '%'.$search.'%');
+        }
+        $via = $result->orderBy('created_at', 'DESC')->paginate(3);
         return view('backend.via.index', compact('via'));
     }
 

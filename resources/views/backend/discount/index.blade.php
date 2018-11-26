@@ -97,6 +97,16 @@
     <div class="col-md-12">
         <div class="card shadow">
             <div class="card-header border-0">
+                <div class="text-center">
+                    <form class="horizontal" method="GET">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-sm btn-primary mb-3"><span class="fas fa-search"></span></button>
+                                <input class="form-control form-control-alternative" type="text" name="search" placeholder="Type here for Search" value="{{ request()->search }}" autofocus>
+                            </div>
+                        </div>
+                    </form>
+                </div>
                 <div class="row align-items-center">
                     <div class="col">
                         <h3 class="mb-0 text-default">Data Produk</h3>
@@ -131,8 +141,8 @@
                             <td><span class="font-weight-bold">{{ $discount->potongan }}</span></td>
                             <td>{{ $discount->pilihProduct->product }}</td>
                             <td>{{ $discount->pilihPengguna->name }}</td>
-                            <td>{{ $discount->open_discount }}</td>
-                            <td>{{ $discount->expired_discount }}</td>
+                            <td>{{ \Carbon\Carbon::parse($discount->open_discount)->format('Y-m-d') }}</td>
+                            <td>{{ \Carbon\Carbon::parse($discount->expired_discount)->diffForHumans() }}</td>
                             <td class="text-right">
                                 <div class="dropdown">
                                     <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
