@@ -25,12 +25,6 @@
                                 <input type="text" name="ukuran" class="form-control form-control-alternative" placeholder="192cm,150cm,185cm" value="{{ $lingkardada->ukuran }}" required autofocus>
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="form-control-label">Deskripsi</label>
-                                <textarea name="deskripsi" class="form-control form-control-alternative" required autofocus>{{ $lingkardada->deskripsi }}</textarea>
-                            </div>
-                        </div>
                         <div class="col-md-12 mb-2">
                             <button type="submit" class="btn btn-default">Created</button>
                         </div>

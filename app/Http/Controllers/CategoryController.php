@@ -12,9 +12,14 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $category = Category::paginate(2);
+        $result = Category::query();
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $category = $result->where('category', 'LIKE', '%'.$search.'%')->orwhere('slug_category', 'LIKE', '%'.$search.'%');
+        }
+        $category = $result->orderBy('created_at', 'DESC')->paginate(3);
         return view('backend.category.index', compact('category'));
     }
 

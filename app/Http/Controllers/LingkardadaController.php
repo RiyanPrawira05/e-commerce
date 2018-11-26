@@ -12,9 +12,14 @@ class LingkardadaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $lingkardada = Lingkardada::paginate(3);
+        $result = Lingkardada::query();
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $lingkardada = $result->where('lingkardada', 'LIKE', '%'.$search.'%');
+        }
+        $lingkardada = $result->orderBy('created_at', 'DESC')->paginate(3);
         return view('backend.lingkardada.index', compact('lingkardada'));
     }
 
@@ -39,13 +44,11 @@ class LingkardadaController extends Controller
         $this->validate($request, [
 
             'ukuran' => 'required',
-            'deskripsi' => 'min:5'
 
         ]);
 
         $lingkardada = new Lingkardada;
         $lingkardada->ukuran = $request->ukuran;
-        $lingkardada->deskripsi = $request->deskripsi;
         $lingkardada->save();
 
         return redirect()->route('LD.index')->with('success', 'Data Berhasil di Tambahkan');
@@ -86,13 +89,11 @@ class LingkardadaController extends Controller
         $this->validate($request, [
 
             'ukuran' => 'required',
-            'deskripsi' => 'min:5',
 
         ]);
 
         $lingkardada = Lingkardada::find($id);
         $lingkardada->ukuran = $request->ukuran;
-        $lingkardada->deskripsi = $request->deskripsi;
         $lingkardada->save();
 
         return redirect()->route('LD.index')->with('success', 'Data Berhasil di Update');

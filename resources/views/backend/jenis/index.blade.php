@@ -123,8 +123,8 @@
                   <table class="table align-items-center">
                      <thead class="thead-light">
                         <tr>
-                           <th scope="col">Slug</th>
                            <th scope="col">Bahan</th>
+                           <th scope="col">Slug</th>
                            <th scope="col">Deskripsi</th>
                            <th scope="col"></th>
                         </tr>
@@ -135,12 +135,12 @@
                         @foreach ($jenis as $model)
                         <tr>
                            <td>
-                              <span class="badge badge-dot mr-4"><i class="bg-success"></i> <span class="mb-0 text-sm"><b>{!! $model->slug_bahan !!}</b></span>
+                              <span class="badge badge-dot mr-4"><i class="bg-success"></i><span class="mb-0 text-sm"></span><b>{{ $model->bahan }}</b></span>
                            </td>
                            <th scope="row">
                               <div class="media align-items-center">
                                  <div class="media-body">
-                                    <span class="mb-0 text-sm">{{ $model->bahan }}</span>
+                                    <span class="mb-0 text-sm">{{ $model->slug_bahan }}</span>
                                  </div>
                               </div>
                            </th>

@@ -12,9 +12,14 @@ class JenisController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $jenis = Jenis::paginate(2);
+        $result = Jenis::query();
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $jenis = $result->where('bahan', 'LIKE', '%'.$search.'%');
+        }
+        $jenis = $result->orderBy('created_at', 'DESC')->paginate(3);
         return view('backend.jenis.index', compact('jenis'));
     }
 

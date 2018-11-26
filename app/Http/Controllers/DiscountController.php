@@ -14,9 +14,14 @@ class DiscountController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $discounts = Discount::paginate(3);
+        $result = Discount::query();
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $discounts = $result->where('potongan', 'LIKE', '%'.$search.'%');
+        }
+        $discounts = $result->orderBy('created_at', 'DESC')->paginate(3);
         $users = User::all();
         $products = Product::all();
         return view('backend.discount.index', compact('discounts', 'users', 'products'));

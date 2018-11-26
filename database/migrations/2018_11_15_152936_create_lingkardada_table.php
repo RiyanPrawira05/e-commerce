@@ -16,7 +16,7 @@ class CreateLingkardadaTable extends Migration
         Schema::create('lingkardada', function (Blueprint $table) {
             $table->increments('id_lingkar_dada');
             $table->string('ukuran', 100);
-            $table->string('deskripsi', 100);
+            $table->timestamp('created_at')->nullable();
         });
     }
 

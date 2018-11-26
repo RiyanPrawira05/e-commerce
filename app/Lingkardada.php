@@ -9,7 +9,7 @@ class Lingkardada extends Model
     protected $table = 'lingkardada';
     protected $primaryKey = 'id_lingkar_dada';
     protected $fillable = [
-    	'ukuran', 'deskripsi',
+    	'ukuran',
     ];
 
     public $timestamps = false;
