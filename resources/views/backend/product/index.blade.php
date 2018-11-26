@@ -145,7 +145,7 @@
                             <td><span class="font-weight-bold">{{ $products->harga }}</span></td>
                             <td>
                             @foreach($products->pilihSize as $size)
-
+                              <!-- Memanggil fungsi dimobel dan lakukan Perulangan untuk select multiple size karena name html nya berbentuk array[] -->
                                 @if ($size->size == 'S')
                                   <span class="badge badge-dot mr-3"><i class="bg-danger"></i><span class="mb-0 text-sm"></span><b> {{ $size->size }}</b></span>
                                 @elseif ($size->size == 'M')

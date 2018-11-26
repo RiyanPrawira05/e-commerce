@@ -87,8 +87,8 @@ class ProductController extends Controller
         $data->deskripsi = $request->deskripsi;
         $data->save();
         if ($request->size) {
-            foreach ($request->size as $key => $value) {
-                $data->pilihSize()->attach($value);
+            foreach ($request->size as $size) {
+                $data->pilihSize()->attach($size); // Memanggil fungsi dimobel dan lakukan Perulangan pakai attach untuk select multiple size karena name html nya berbentuk array[]
             }
         }
 
