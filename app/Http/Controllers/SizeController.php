@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Productsize;
+use App\Size as Productsize;
 
 class SizeController extends Controller
 {

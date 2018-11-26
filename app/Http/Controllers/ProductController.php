@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Jenis;
 use App\Category;
-use App\Productsize;
+use App\Size as Productsize;
 use File;
 
 class ProductController extends Controller
@@ -79,9 +79,13 @@ class ProductController extends Controller
         $data->jenis = $request->jenis;
         $data->category = $request->category;
         $data->harga = $request->harga;
-        $data->size = $request->size;
         $data->deskripsi = $request->deskripsi;
         $data->save();
+        if ($request->size) {
+            foreach ($request->size as $key => $value) {
+                $data->pilihSize()->attach($value);
+            }
+        }
 
         return redirect()->back()->with('success', 'Data Berhasil Ditambahkan');
     }

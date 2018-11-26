@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Productsize extends Model
+class Size extends Model
 {
-    protected $table = 'product_size';
+    protected $table = 'size';
     protected $primaryKey = 'id_size';
     protected $fillable = [
     	'size', 'deskripsi',

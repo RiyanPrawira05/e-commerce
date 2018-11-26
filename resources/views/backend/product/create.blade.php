@@ -53,7 +53,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="form-control-label">Size</label>
-                                <select multiple="multiple" name="size" class="form-control form-control-alternative" required>
+                                <select multiple="multiple" name="size[]" class="form-control form-control-alternative" required>
                                 @foreach ($size as $ukuran)
                                     <option value="{{ $ukuran->id_size }}">{{ $ukuran->size }}</option>
                                 @endforeach

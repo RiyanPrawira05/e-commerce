@@ -24,6 +24,6 @@ class Product extends Model
 
     public function pilihSize()
     {
-        return $this->belongsTo('App\Productsize', 'size', 'id_size');
+        return $this->belongsToMany('App\Size', 'product_size', 'id_product', 'id_size');
     }
 }

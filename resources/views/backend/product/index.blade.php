@@ -133,7 +133,11 @@
                             <td>{{ $products->pilihJenis->slug_bahan }}</td>
                             <td>{{ $products->pilihCategory->category }}</td>
                             <td>{{ $products->harga }}</td>
-                            <td>{{ $products->pilihSize->size }}</td>
+                            <td>
+                              @foreach($products->pilihSize as $size)
+                              {{ $size->size }},
+                              @endforeach
+                            </td>
                             @if (!empty($products->deskripsi))
                             <td>{{ $products->deskripsi }}</td>
                             @else
