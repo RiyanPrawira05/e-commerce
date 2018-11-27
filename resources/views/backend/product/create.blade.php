@@ -2,7 +2,10 @@
 
 @section('brand') Product @endsection
 
-@section('css') <link href="{{ asset('backend/select2-4.0.6-rc.1/dist/css/select2.min.css') }}" rel="stylesheet"> @endsection
+@section('css') 
+<link href="{{ asset('backend/select2-4.0.6-rc.1/dist/css/select2.min.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="{{ asset('backend/plugins/dist/css/dropify.min.css') }}">
+@endsection
 
 @section('content')
 <div class="row">
@@ -15,7 +18,7 @@
                     </div>
                 </div>
             </div>
-            <form class="horizontal dropzone" action="{{ Route('product.store') }}" method="POST" enctype="multipart/form-data" id="mydropZone">
+            <form class="horizontal" action="{{ Route('product.store') }}" method="POST" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="col-md-12">
                     @include('template.alert')
@@ -23,7 +26,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="form-control-label">Foto</label>
-                                <input type="file" name="foto" class="form-control form-control-alternative" placeholder="File: jpg, png, jpeg" required autofocus>
+                                <input type="file" name="foto" class="form-control form-control-alternative dropify dropify-event" id="foto" data-allowed-file-extensions="jpg jpeg png gif" data-max-file-size="2M" data-show-errors="true" data-height="300">
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -87,12 +90,47 @@
 @section('script') 
 
 <script src="{{ asset('backend/select2-4.0.6-rc.1/dist/js/select2.min.js') }}"></script>
-<script src="{{ asset('backend/js/dropzone.js') }}"></script>
+<script src="{{ asset('backend/plugins/dist/js/dropify.min.js') }}"></script>
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#mydropZone').dropzone({ url: "{{ Route('product.store') }}" });
+        $('.dropify').dropify();
     });
+</script>
+
+<script type="text/javascript">
+    $('.dropify').dropify({
+    messages: {
+        'default': 'Drag and drop or click your photos here',
+        'replace': 'Drag and drop or click your photos here to replace',
+        'remove':  'Remove',
+        'fileSize': 'The file size is too big',
+        'imageFormat': 'The image format is not allowed',
+        'maxWidth': 'The image width is too big',
+        'maxHeight': 'The image height is too big'
+    }
+
+});
+</script>
+
+<script type="text/javascript">
+
+            $(document).ready(function(){
+                // Basic
+                $('.dropify').dropify();
+
+
+                // Used events
+                var drEvent = $('.dropify-event').dropify();
+
+                drEvent.on('dropify.beforeClear', function(event, element){
+                    return confirm("Do you really want to delete \"" + element.filename + "\" ?");
+                });
+
+                drEvent.on('dropify.afterClear', function(event, element){
+                    alert('File deleted');
+                });
+            });
 </script>
 
 <script type="text/javascript">
