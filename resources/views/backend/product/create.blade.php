@@ -101,8 +101,8 @@
 <script type="text/javascript">
     $('.dropify').dropify({
     messages: {
-        'default': 'Drag and drop or click your photos here',
-        'replace': 'Drag and drop or click your photos here to replace',
+        'default': 'Drag and drop or click your photo product here',
+        'replace': 'Drag and drop or click your photo product here to replace',
         'remove':  'Remove',
         'fileSize': 'The file size is too big',
         'imageFormat': 'The image format is not allowed',
@@ -136,7 +136,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $('.select2').select2({
-            placeholder: 's,m,l,xl',
+            placeholder: 'Choose size product',
             maximumSelectionLength: 4,
         });
     });

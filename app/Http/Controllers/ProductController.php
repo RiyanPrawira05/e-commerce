@@ -137,8 +137,8 @@ class ProductController extends Controller
             'jenis' => 'numeric',
             'category' => 'numeric',
             'harga' => 'numeric',
-            'size' => 'numeric',
-            'deskripsi' => 'string|min:3',
+            'size' => 'required',
+            'deskripsi' => 'string|nullable',
 
         ]);
 
@@ -160,14 +160,14 @@ class ProductController extends Controller
 
         $data->jenis = $request->jenis;
         $data->category = $request->category;
-        $data->harga = $request->harga;
-        $data->deskripsi = $request->deskripsi;
-        $data->save();
         if ($request->size) {
             foreach ($request->size as $key => $value) {
                 $data->pilihSize()->attach($value);
             }
         }
+        $data->harga = $request->harga;
+        $data->deskripsi = $request->deskripsi;
+        $data->save();
 
         return redirect()->route('product.index')->with('success', 'Data Berhasil Ditambahkan');
     }

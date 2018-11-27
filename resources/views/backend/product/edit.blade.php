@@ -2,6 +2,11 @@
 
 @section('brand') Product @endsection
 
+@section('css') 
+<link href="{{ asset('backend/select2-4.0.6-rc.1/dist/css/select2.min.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="{{ asset('backend/plugins/dist/css/dropify.min.css') }}">
+@endsection
+
 @section('content')
 <div class="row">
     <div class="col-md-12">
@@ -13,6 +18,9 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-12">
+                 @include('template.alert')
+            </div>
             <form class="horizontal" action="{{ Route('product.update', $product->id_product) }}" method="POST" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 {{ method_field('PUT') }}
@@ -21,9 +29,14 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label class="form-control-label">Foto</label>
-                                <img src="{{ asset($product->foto) }}">
-                                <input type="file" name="foto" class="form-control form-control-alternative" placeholder="File: jpg, png, jpeg" required autofocus>
+                                <label class="form-control-label">Your Photos</label>
+                                <img src="{{ asset($product->foto) }}" class="dropify" disabled="disabled" data-default-file="{{ asset($product->foto) }}">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="form-control-label">Upload Photos</label>
+                                <input type="file" name="foto" class="form-control form-control-alternative dropify dropify-event" id="foto" data-allowed-file-extensions="jpg jpeg png gif" data-max-file-size="2M" data-show-errors="true" data-height="300">
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -55,7 +68,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="form-control-label">Size</label>
-                                <select multiple="multiple" name="size[]" class="form-control form-control-alternative" required>
+                                <select multiple="multiple" name="size[]" class="form-control form-control-alternative select2" required>
                                 @foreach ($size as $ukuran)
                                     <option value="{{ $ukuran->id_size }}" {{ $ukuran->id_size == $product->size ? 'selected' : ''}}>{{ $ukuran->size }}</option>
                                 @endforeach
@@ -74,7 +87,7 @@
                                 <textarea name="deskripsi" class="form-control form-control-alternative" placeholder="New Arrival, Hot Offer">{{ $product->deskripsi }}</textarea>
                             </div>
                         </div>
-                        <div class="col-md-12 mb-2">
+                        <div class="col-md-12 mb-3">
                             <button type="submit" class="btn btn-default">Created</button>
                         </div>
                     </div>
@@ -83,4 +96,62 @@
         </div>
     </div>
 </div>
+
+@section('script') 
+
+<script src="{{ asset('backend/select2-4.0.6-rc.1/dist/js/select2.min.js') }}"></script>
+<script src="{{ asset('backend/plugins/dist/js/dropify.min.js') }}"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.dropify').dropify();
+    });
+</script>
+
+<script type="text/javascript">
+    $('.dropify').dropify({
+    messages: {
+        'default': 'Drag and drop or click your photo product here',
+        'replace': 'Drag and drop or click your photo product here to replace',
+        'remove':  'Remove',
+        'fileSize': 'The file size is too big',
+        'imageFormat': 'The image format is not allowed',
+        'maxWidth': 'The image width is too big',
+        'maxHeight': 'The image height is too big'
+    }
+
+});
+</script>
+
+<script type="text/javascript">
+
+            $(document).ready(function(){
+                // Basic
+                $('.dropify').dropify();
+
+
+                // Used events
+                var drEvent = $('.dropify-event').dropify();
+
+                drEvent.on('dropify.beforeClear', function(event, element){
+                    return confirm("Do you really want to delete \"" + element.filename + "\" ?");
+                });
+
+                drEvent.on('dropify.afterClear', function(event, element){
+                    alert('File deleted');
+                });
+            });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.select2').select2({
+            placeholder: 'Choose size product',
+            maximumSelectionLength: 4,
+        });
+    });
+</script>
+
+@endsection
+
 @endsection
