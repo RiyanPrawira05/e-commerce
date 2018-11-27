@@ -119,72 +119,72 @@
 				@auth
 					<li class="nav-item">
 						<a class="nav-link" href="{{ Route('home') }}">
-							<i class="ni ni-planet text-primary"></i> Dashboard
+							<i class="ni ni-planet text-primary"></i> Home
 						</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="{{ Route('users.index') }}">
-							<i class="ni ni-circle-08 text-primary"></i>Data Pengguna
+							<i class="fas fa-users text-primary"></i>Users
 						</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="{{ Route('alamat.index') }}">
-							<i class="ni ni-circle-08 text-primary"></i>Alamat Pengguna
+							<i class="fas fa-map-marked-alt text-primary"></i>Alamat Pengguna
 						</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="{{ Route('product.index') }}">
-							<i class="ni ni-shop text-warning"></i>Product
+							<i class="fas fa-store-alt text-primary"></i>Product
 						</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="{{ Route('jenis.index') }}">
-							<i class="ni ni-tag text-info"></i>Jenis
+							<i class="fas fa-tags text-primary"></i>Jenis
 						</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="{{ Route('category.index') }}">
-							<i class="ni ni-bullet-list-67 text-red"></i>Category
+							<i class="fas fa-puzzle-piece text-primary"></i>Category
 						</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="{{ Route('size.index') }}">
-							<i class="ni ni-bullet-list-67 text-red"></i>Size
+							<i class="fas fa-tshirt text-primary"></i>Size
 						</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="{{ Route('colors.index') }}">
-							<i class="ni ni-bullet-list-67 text-red"></i>Colors
+							<i class="fas fa-palette text-primary"></i>Colors
 						</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="{{ Route('stock.index') }}">
-							<i class="ni ni-bullet-list-67 text-red"></i>Stock
+							<i class="fas fa-box-open text-primary"></i>Stock
 						</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="{{ Route('LD.index') }}">
-							<i class="ni ni-bullet-list-67 text-red"></i>Lingkar Dada
+							<i class="fas fa-divide text-primary"></i>Lingkar Dada
 						</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="{{ Route('via.index') }}">
-							<i class="ni ni-bullet-list-67 text-red"></i>Via Pembayaran
+							<i class="fas fa-luggage-cart text-primary"></i>Transaksi
 						</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="{{ Route('pembayaran.index') }}">
-							<i class="ni ni-bullet-list-67 text-red"></i>Pembayaran
+							<i class="fas fa-wallet text-primary"></i>Pembayaran
 						</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="{{ Route('status.index') }}">
-							<i class="ni ni-bullet-list-67 text-red"></i>Status
+							<i class="fas fa-exclamation-circle text-primary"></i>Status
 						</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="{{ Route('discount.index') }}">
-							<i class="ni ni-bullet-list-67 text-red"></i>Discount
+							<i class="fas fa-percentage text-red"></i>Discount
 						</a>
 					</li>
 				@else
