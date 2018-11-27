@@ -169,7 +169,7 @@
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="{{ Route('via.index') }}">
-							<i class="fas fa-luggage-cart text-primary"></i>Transaksi
+							<i class="fas fa-luggage-cart text-primary"></i>Via
 						</a>
 					</li>
 					<li class="nav-item">

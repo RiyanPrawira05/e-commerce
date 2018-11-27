@@ -1,4 +1,4 @@
-@extends('welcome_backend')
+@extends('backend.welcome.index')
 
 @section('content')
 
@@ -14,11 +14,11 @@
                     </div>
                 <div class="text-center">
                     <a href="#" class="btn btn-neutral btn-icon mr-4">
-                        <span class="btn-inner--icon"><img src="../assets/img/icons/common/github.svg"></span>
+                        <span class="btn-inner--icon"><img src="{{ asset('backend/img/icons/common/github.svg') }}"></span>
                         <span class="btn-inner--text">Github</span>
                     </a>
                     <a href="#" class="btn btn-neutral btn-icon">
-                        <span class="btn-inner--icon"><img src="../assets/img/icons/common/google.svg"></span>
+                        <span class="btn-inner--icon"><img src="{{ asset('backend/img/icons/common/google.svg') }}"></span>
                         <span class="btn-inner--text">Google</span>
                     </a>
                 </div>
@@ -27,13 +27,15 @@
                 <div class="text-center text-muted mb-4">
                     <small>Or sign up with credentials</small>
                 </div>
-            <form role="form">
+            @include('template.alert')
+            <form role="form" method="POST" action="{{ Route('register') }}">
+                {{ csrf_field() }}
                 <div class="form-group">
                     <div class="input-group input-group-alternative mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                            <span class="input-group-text"><i class="ni ni-circle-08"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Name" type="text">
+                        <input class="form-control" placeholder="Name" type="text" name="name" required autofocus>
                     </div>
                 </div>
                 <div class="form-group">
@@ -41,7 +43,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Email" type="email">
+                        <input class="form-control" placeholder="Email" type="email" name="email" required>
                     </div>
                 </div>
                 <div class="form-group">
@@ -49,7 +51,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Password" type="password">
+                        <input class="form-control" placeholder="Password" type="password" name="password" required>
                     </div>
                 </div>
                 <div class="form-group">
@@ -57,7 +59,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Confirm Password" type="password">
+                        <input class="form-control" placeholder="Confirm Password" name="Cpass" type="password" required>
                     </div>
                 </div>
                 <div class="text-muted font-italic">
@@ -74,7 +76,7 @@
                     </div>
                 </div>
                 <div class="text-center">
-                    <button type="button" class="btn btn-primary mt-4">Create account</button>
+                    <button type="submit" class="btn btn-primary mt-4">Create Account</button>
                 </div>
             </form>
         </div>

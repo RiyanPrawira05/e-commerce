@@ -66,12 +66,16 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    protected function create(Request $request, array $data)
     {
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        if ($request->password == $request->Cpass) {
+            return redirect()->back()->with('success', 'Registrasi Successfully');
+        }
     }
 }

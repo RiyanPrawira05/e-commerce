@@ -1,4 +1,4 @@
-@extends('welcome_backend')
+@extends('backend.welcome.index')
 
 @section('content')
 
@@ -24,17 +24,15 @@
                         <div class="text-center text-muted mb-4">
                             <small>Or sign in with credentials</small>
                         </div>
-
                     @include('template.alert')
-
-                    <form role="form" method="post" action="{{ route('login') }}">
+                    <form role="form" method="post" action="{{ Route('login') }}">
                         {{ csrf_field() }}
                         <div class="form-group mb-3 {{ $errors->has('email') ? ' has-danger' : '' }}">
                             <div class="input-group input-group-alternative">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                                 </div>
-                                <input class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="Email" type="email" name="email" autofocus required>
+                                <input class="form-control form-control-alternative {{ $errors->has('password') ? 'is-invalid' : '' }}" placeholder="Email" type="email" name="email" autofocus required>
                             </div>
                          </div>
                         <div class="form-group {{ $errors->has('password') ? ' has-danger' : '' }}">
@@ -59,7 +57,7 @@
             </div>
             <div class="row mt-3">
                 <div class="col-6">
-                    <a href="#" class="text-light"><small>Forgot password?</small></a>
+                    <a href="javascript:0;" class="text-light"><small>Forgot password?</small></a>
                 </div>
                 <div class="col-6 text-right">
                     <a href="{{ route('register') }}" class="text-light"><small>Create new account</small></a>

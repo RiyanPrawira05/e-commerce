@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('brand') Via Pembayaran @endsection
+@section('brand') Via @endsection
 
 @section('content')
 <div class="row">

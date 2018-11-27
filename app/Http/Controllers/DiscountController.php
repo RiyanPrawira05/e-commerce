@@ -19,7 +19,7 @@ class DiscountController extends Controller
         $result = Discount::query();
         if ($request->filled('search')) {
             $search = $request->search;
-            $discounts = $result->where('potongan', 'LIKE', '%'.$search.'%');
+            $discounts = $result->where('potongan', 'LIKE', '%'.$search.'%')->orwhere('kode', 'LIKE', '%'.$search.'%');
         }
         $discounts = $result->orderBy('created_at', 'DESC')->paginate(3);
         $users = User::all();
@@ -49,7 +49,7 @@ class DiscountController extends Controller
     {
          $this->validate($request, [
 
-            'kode' => 'required|numeric|min:5',
+            'kode' => 'required|numeric|min:5|unique:discount,kode',
             'potongan' => 'required',
             'users' => 'required',
             'product' => 'required',

@@ -20,14 +20,15 @@ Route::get('/pass', function () {
 // Route untuk Authentication
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('/login', 'Auth\LoginController@login')->name('login');
-Route::get('/daftar', 'Auth\RegisterController@showRegisterForm')->name('register');
-Route::post('/daftar', 'Auth\RegisterController@register')->name('register');
+Route::get('/registrasi', 'Auth\RegisterController@showRegisterForm')->name('register');
+Route::post('/registrasi', 'Auth\RegisterController@register')->name('register');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 
 // Home
 Route::get('/', function () {
-    return view('welcome_backend');
+    return view('backend.welcome.index');
 })->name('welcome');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 // Users

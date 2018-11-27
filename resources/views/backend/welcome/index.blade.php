@@ -3,8 +3,6 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
-    <meta name="author" content="Creative Tim">
     <title>RD-SHOPS Dashboard</title>
     <!-- Favicon -->
     <link href="{{ asset('backend/img/brand/favicon.png') }}" rel="icon" type="image/png">
@@ -12,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
     <!-- Icons -->
     <link href="{{ asset('backend/vendor/nucleo/css/nucleo.css') }}" rel="stylesheet">
-    <link href="{{ asset('backend/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet') }}">
+    <link href="{{ asset('backend/vendor/@fortawesome/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
     <!-- Argon CSS -->
     <link type="text/css" href="{{ asset('backend/css/argon.css') }}" rel="stylesheet">
 </head>
@@ -96,7 +94,7 @@
             <div class="row align-items-center justify-content-xl-between">
                 <div class="col-xl-6">
                     <div class="copyright text-center text-xl-left text-muted">
-                        &copy; 2018 <a href="https://www.creative-tim.com" class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
+                        &copy; 2018 <a href="javascript:0" class="font-weight-bold ml-1" target="_blank">Creative Tim</a>
                     </div>
                 </div>
                 <div class="col-xl-6">
