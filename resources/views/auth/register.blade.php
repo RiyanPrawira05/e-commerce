@@ -59,7 +59,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                         </div>
-                        <input class="form-control" placeholder="Confirm Password" name="Cpass" type="password" required>
+                        <input class="form-control" placeholder="Confirm Password" name="password_confirmation" type="password" required>
                     </div>
                 </div>
                 <div class="text-muted font-italic">
