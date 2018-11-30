@@ -18,11 +18,11 @@ class Product extends Model
     protected $searchable = [
         
         'columns' => [
-            'category.category' => 10,
-        ],
-        'joins' => [
-            'category' => ['product.id_product','category.id_category'],
-        ],
+
+            'product' => 10,
+            'deskripsi' => 10,
+        ]
+
     ];
 
     public function pilihJenis()

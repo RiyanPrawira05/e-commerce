@@ -8,14 +8,38 @@
         <div class="card shadow">
             <div class="card-header border-0">
                 <div class="text-center">
-                  <form class="horizontal" method="GET">
-                      <div class="col-md-12">
-                          <div class="form-group">
-                              <button type="submit" class="btn btn-sm btn-primary mb-3"><span class="fas fa-search"></span></button>
-                              <input class="form-control form-control-alternative" type="text" name="search" placeholder="Type here for Search" value="{{ request()->search }}" autofocus>
-                          </div>
-                      </div>
-                  </form>
+                    <form class="form-inline" style="margin-bottom: 40px;">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <select class="form-control form-control-alternative" name="category">
+                                    <option value="" selected disabled>-- Berdasarkan Kategori --</option>
+                                    @foreach($category as $key => $categories)
+                                        <option value="{{ $categories->id_category }}" {{ Request::get('category') == $categories->id_category ? 'selected' : '' }}>{{ $categories->category }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <select class="form-control form-control-alternative" name="jenis">
+                                    <option value="" selected disabled>-- Berdasarkan Jenis --</option>
+                                    @foreach($jenis as $keys => $tipe)
+                                        <option value="{{ $tipe->id_jenis }}" {{ Request::get('jenis') == $tipe->id_jenis ? 'selected' : '' }}>{{ $tipe->bahan }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                    <form class="harizontal">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input type="text" autocomplete="off" class="form-control form-control-alternative" placeholder="Search" name="search" value="{{ Request::get('search') }}">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <button type="submit" class="btn btn-sm btn-primary"><span class="fas fa-search"></span>&nbsp; Search</button>
+                        </div>
+                    </form>
                 </div>
                 <div class="row align-items-center">
                     <div class="col">
