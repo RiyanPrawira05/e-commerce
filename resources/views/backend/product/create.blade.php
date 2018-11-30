@@ -94,12 +94,8 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $('.dropify').dropify();
-    });
-</script>
+        $('.dropify').dropify({
 
-<script type="text/javascript">
-    $('.dropify').dropify({
     messages: {
         'default': 'Drag and drop or click your photo product here',
         'replace': 'Drag and drop or click your photo product here to replace',
@@ -108,9 +104,10 @@
         'imageFormat': 'The image format is not allowed',
         'maxWidth': 'The image width is too big',
         'maxHeight': 'The image height is too big'
-    }
+             }
 
-});
+        });
+    });
 </script>
 
 <script type="text/javascript">

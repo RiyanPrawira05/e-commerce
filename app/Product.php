@@ -2,14 +2,27 @@
 
 namespace App;
 
+use Nicolaslopezj\Searchable\SearchableTrait;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    use SearchableTrait;
+
     protected $table = 'product';
     protected $primaryKey = 'id_product';
     protected $fillable = [
     	'product', 'foto', 'jenis', 'category', 'harga', 'size', 'deskripsi',
+    ];
+
+    protected $searchable = [
+        
+        'columns' => [
+            'category.category' => 10,
+        ],
+        'joins' => [
+            'category' => ['category.id_category','product.category'],
+        ],
     ];
 
     public function pilihJenis()

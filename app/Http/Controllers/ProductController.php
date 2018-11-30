@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Product;
 use App\Jenis;
 use App\Category;
@@ -19,12 +18,18 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $result = Product::query();
+        // $product = Product::whereHas('pilihCategory', function($query) use ($request) {
+
+        //     $query->where('category', $request->search)->orWhere('harga', 'LIKE', '%'.$request->search.'%');
+        // });
+
+        $product = Product::query();
+
         if ($request->filled('search')) {
-            $search = $request->search;
-            $product = $result->where('product', 'LIKE', '%'.$search.'%')->orWhere('harga');
-        }
-        $product = $result->orderBy('created_at', 'DESC')->paginate(3);
+            $product = $product->search($request->search);
+        }        
+
+        $product = $product->orderBy('created_at', 'DESC')->paginate(3);
         $jenis = Jenis::all();
         $category = Category::all();
         $size = Productsize::all();
@@ -160,14 +165,17 @@ class ProductController extends Controller
 
         $data->jenis = $request->jenis;
         $data->category = $request->category;
+        $data->harga = $request->harga;
+        $data->deskripsi = $request->deskripsi;
+        $data->save();
+
+        $data->pilihSize()->detach();
+
         if ($request->size) {
             foreach ($request->size as $key => $value) {
                 $data->pilihSize()->attach($value);
             }
         }
-        $data->harga = $request->harga;
-        $data->deskripsi = $request->deskripsi;
-        $data->save();
 
         return redirect()->route('product.index')->with('success', 'Data Berhasil Ditambahkan');
     }
