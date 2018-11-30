@@ -8,21 +8,43 @@
         <div class="card shadow">
             <div class="card-header border-0">
                 <div class="text-center">
-                  <form class="horizontal" method="GET">
-                      <div class="col-md-12">
-                          <div class="form-group">
-                              <button type="submit" class="btn btn-sm btn-primary mb-3"><span class="fas fa-search"></span></button>
-                              <input class="form-control form-control-alternative" type="text" name="search" placeholder="Type here for Search" value="{{ request()->search }}" autofocus>
-                          </div>
-                      </div>
-                  </form>
+                    <form class="form-inline" style="margin-bottom: 30px;">
+                        <div class="col-xs-12 mr-3">
+                            <div class="form-group">
+                                <select class="form-control form-control-alternative mb-3" name="product">
+                                    <option value="" selected disabled>-- Berdasarkan Products --</option>
+                                    @foreach($products as $key => $product)
+                                        <option value="{{ $product->id_product }}" {{ Request::get('product') == $product->id_product ? 'selected' : '' }}>{{ $product->product }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 mr-3">
+                            <div class="form-group">
+                                <select class="form-control form-control-alternative mb-3" name="category">
+                                    <option value="" selected disabled>-- Berdasarkan Category --</option>
+                                    @foreach($category as $key => $categories)
+                                        <option value="{{ $categories->id_category }}" {{ Request::get('category') == $categories->id_category ? 'selected' : '' }}>{{ $categories->category }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 mr-3">
+                            <div class="form-group">
+                                <input class="form-control form-control-alternative" type="text" name="search" placeholder="Search" value="{{ Request::get('search') }}" autocomplete="off" size="60">
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <button type="submit" class="btn btn-sm btn-primary"><span class="fas fa-search"></span>&nbsp; SEARCH</button>
+                        </div>
+                    </form>
                 </div>
                 <div class="row align-items-center">
                     <div class="col">
                         <h3 class="mb-0 text-default">Data Stock</h3>
                     </div>
                     <div class="col text-right">
-                        <a href="{{ Route('stock.create') }}" class="btn btn-icon-only btn-sm btn-default fas fa-plus-circle text-md text-white"></a>
+                        <a href="{{ Route('stock.create') }}" class="btn btn-sm btn-default"><span class="fas fa-plus-circle text-md text-white"></span>&nbsp; ADD</a>
                     </div>
                 </div>
             </div>
@@ -37,6 +59,7 @@
                             <th scope="col">Produk</th>
                             <th scope="col">Category</th>
                             <th scope="col"></th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -44,48 +67,31 @@
                     @foreach ($stocks as $stock)
                         <tr>
                             <td>
-                              <span class="badge badge-dot mr-4"><i class="bg-default"></i> <span class="mb-0 text-sm"><b>{!! $stock->stock !!}</b></span>
+                                <span class="badge badge-dot mr-4"><i class="bg-default"></i> <span class="mb-0 text-sm"><b>{!! $stock->stock !!}</b></span>
                             </td>
-                            <th scope="row">
-                              <div class="media align-items-center">
-                                 <div class="media-body">
-                                    <span class="mb-0 text-sm">{{ $stock->pilihProduct->product }}</span>
-                                 </div>
-                              </div>
+                            <th>
+                                <div class="media align-items-center">
+                                    <div class="media-body">
+                                        <span class="mb-0 text-sm">{{ $stock->pilihProduct->product }}</span>
+                                    </div>
+                                </div>
                             </th>
-                            <th scope="row">
-                              <div class="media align-items-center">
-                                 <div class="media-body">
-                                    <span class="mb-0 text-sm">{{ $stock->pilihCategory->category }}</span>
-                                 </div>
-                              </div>
+                            <th>
+                                <div class="media align-items-center">
+                                    <div class="media-body">
+                                        <span class="mb-0 text-sm">{{ $stock->pilihCategory->category }}</span>
+                                    </div>
+                                </div>
                             </th>
-                            <td class="text-right">
-                                <div class="dropdown">
-                                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                      <i class="fas fa-ellipsis-v"></i>
-                                    </a>
-
-                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-
-                                <div class=" dropdown-header noti-title">
-                                    <h6 class="text-overflow m-0 text-light">Actions</h6>
-                                </div>
-
-                                    <a class="btn dropdown-item" href="{{ Route('stock.edit', $stock->id_stock) }}">
-                                        <i class="fas fa-user-edit text-default"></i>
-                                        <span class="text-default">Edit</span>
-                                    </a>
-                                    <form action="{{ Route('stock.destroy', $stock->id_stock) }}" method="POST">
-                                    {{ method_field('DELETE') }}
-                                    {{ csrf_field() }}
-                                      <button class="btn dropdown-item" type="submit">
-                                          <i class="fas fa-user-times text-default"></i>
-                                          <span class="text-default">Delete</span>
-                                      </button>
-                                    </form>
-                                </div>
-                                </div>
+                            <td>
+                                <a class="btn btn-sm btn-warning" href="{{ Route('stock.edit', $stock->id_stock) }}"><span class="fas fa-pencil-ruler"></span>&nbsp;EDIT</a>
+                            </td>
+                            <td>
+                                <form action="{{ Route('stock.destroy', $stock->id_stock) }}" method="POST">
+                                {{ method_field('DELETE') }}
+                                {{ csrf_field() }}
+                                    <button class="btn btn-sm btn-danger" type="submit"><span class="fas fa-eraser"></span>&nbsp;DELETE</button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach

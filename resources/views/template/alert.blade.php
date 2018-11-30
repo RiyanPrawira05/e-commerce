@@ -1,7 +1,7 @@
 
 @if(session('success'))
 <div class="alert alert-success alert-dismissible fade show" role="alert">
-    <span class="alert-inner--icon"><i class="ni ni-satisfied"></i></span>
+    <span class="alert-inner--icon text-default"><i class="ni ni-satisfied"></i></span>
     <span class="alert-inner--text">&nbsp;<strong class="text-default">Congratulations !</strong>
         {!! session('success') !!}
     </span>

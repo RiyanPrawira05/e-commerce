@@ -17,10 +17,25 @@ class StockController extends Controller
     public function index(Request $request)
     {
         $result = Stock::query();
-        if ($request->filled('search')) {
+
+        if ($request->filled('product')) 
+        {
+            $search = $request->product;
+            $stocks = $result->where('product', $search);
+        }
+
+        if ($request->filled('category')) 
+        {
+            $search = $request->category;
+            $stocks = $result->where('category', $search);
+        }
+
+        if ($request->filled('search')) 
+        {
             $search = $request->search;
             $stocks = $result->where('stock', 'LIKE', '%'.$search.'%');
         }
+
         $stocks = $result->orderBy('created_at', 'DESC')->paginate(3);
         $products = Product::all();
         $category = Category::all();

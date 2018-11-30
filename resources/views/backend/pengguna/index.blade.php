@@ -8,14 +8,20 @@
         <div class="card shadow">
             <div class="card-header border-0">
                 <div class="text-center">
-                  <form class="horizontal" method="GET">
-                      <div class="col-md-12">
-                          <div class="form-group">
-                              <button type="submit" class="btn btn-sm btn-primary mb-3"><span class="fas fa-search"></span></button>
-                              <input class="form-control form-control-alternative" type="text" name="search" placeholder="Type here for Search" value="{{ request()->search }}" autofocus>
-                          </div>
-                      </div>
-                  </form>
+                    <form class="harizontal" style="margin-bottom: 30px;">
+                        <div class="container">
+                            <div class="row align-items-center">
+                                <div class="col-md-12">
+                                    <div class="col-xs-12 mb-2">
+                                        <button type="submit" class="btn btn-sm btn-primary"><span class="fas fa-search"></span></button>
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control form-control-alternative mr-3" type="text" name="search" placeholder="Search" value="{{ Request::get('search') }}" autocomplete="off" size="37">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
                 <div class="row align-items-center">
                     <div class="col">

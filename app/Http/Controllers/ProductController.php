@@ -30,11 +30,11 @@ class ProductController extends Controller
         }
 
         if ($request->filled('jenis')) {
-            $product = $product->where('jenis', $request->category);
+            $product = $product->where('jenis', $request->jenis);
         }
         
         if ($request->filled('search')) {
-            $product = $product->search($request->search);
+            $product = $product->where('product', 'LIKE', '%'.$request->search.'%');
         }
 
         $product = $product->orderBy('created_at', 'DESC')->paginate(3);

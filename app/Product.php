@@ -19,8 +19,8 @@ class Product extends Model
         
         'columns' => [
 
-            'product' => 10,
-            'deskripsi' => 10,
+            'product.product' => 10,
+            'product.deskripsi' => 10,
         ]
 
     ];

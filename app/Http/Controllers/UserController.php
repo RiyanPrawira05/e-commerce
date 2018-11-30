@@ -14,18 +14,18 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $result = User::query();
+        $users = User::query();
 
         if ($request->filled('search'))
         {
 
         $search = $request->search;
-        $users = $result->where('name', 'LIKE', '%'.$search.'%')->orwhere('email', 'LIKE', '%' .$request->search. '%' );
+        $users = $users->where('name', 'LIKE', '%'.$search.'%')->orwhere('email', 'LIKE', '%' .$request->search. '%' );
 
         }
 
-        $users = $result->orderBy('created_at', 'DESC')->paginate(3);
-        return view('backend.pengguna.index', compact('users', 'pesan'));
+        $users = $users->orderBy('created_at', 'DESC')->paginate(3);
+        return view('backend.pengguna.index', compact('users'));
     }
 
     /**
