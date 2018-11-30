@@ -21,7 +21,7 @@ class Product extends Model
             'category.category' => 10,
         ],
         'joins' => [
-            'category' => ['category.id_category','product.category'],
+            'category' => ['product.id_product','category.id_category'],
         ],
     ];
 

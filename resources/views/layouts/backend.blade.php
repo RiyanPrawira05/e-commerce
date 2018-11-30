@@ -173,11 +173,6 @@
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="{{ Route('pembayaran.index') }}">
-							<i class="fas fa-wallet text-primary"></i>Pembayaran
-						</a>
-					</li>
-					<li class="nav-item">
 						<a class="nav-link" href="{{ Route('status.index') }}">
 							<i class="fas fa-exclamation-circle text-primary"></i>Status
 						</a>

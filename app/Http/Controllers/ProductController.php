@@ -23,13 +23,13 @@ class ProductController extends Controller
         //     $query->where('category', $request->search)->orWhere('harga', 'LIKE', '%'.$request->search.'%');
         // });
 
-        $product = Product::query();
+        $product = Product::orderBy('created_at', 'DESC');
 
         if ($request->filled('search')) {
             $product = $product->search($request->search);
         }        
 
-        $product = $product->orderBy('created_at', 'DESC')->paginate(3);
+        $product = $product->paginate(3);
         $jenis = Jenis::all();
         $category = Category::all();
         $size = Productsize::all();

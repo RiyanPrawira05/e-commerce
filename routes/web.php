@@ -61,7 +61,7 @@ Route::resource('jenis', 'JenisController', ['names' => 'jenis']);
 // Category
 Route::resource('category', 'CategoryController', ['names' => 'category']);
 
-// Product Size
+// Size
 Route::resource('size', 'SizeController', ['names' => 'size']);
 
 // Warna
@@ -73,14 +73,8 @@ Route::resource('stock', 'StockController', ['names' => 'stock']);
 // Lingkar Dada 
 Route::resource('lingkardada', 'LingkardadaController', ['names' => 'LD']);
 
-// Product Warna 
-Route::resource('productwarna', 'ProductwarnaController', ['names' => 'Pcolors']);
-
 // Via 
 Route::resource('pembayaran/via', 'ViaController', ['names' => 'via']);
-
-// Pembayaran 
-Route::resource('pembayaran', 'PembayaranController', ['names' => 'pembayaran']);
 
 // Status 
 Route::resource('status', 'StatusController', ['names' => 'status']);
