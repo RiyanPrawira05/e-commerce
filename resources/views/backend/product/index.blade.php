@@ -8,14 +8,26 @@
         <div class="card shadow">
             <div class="card-header border-0">
                 <div class="text-center">
-                  <form class="horizontal" method="GET">
-                      <div class="col-md-12">
-                          <div class="form-group">
-                              <button type="submit" class="btn btn-sm btn-primary mb-3"><span class="fas fa-search"></span></button>
-                              <input class="form-control form-control-alternative" type="text" name="search" placeholder="Type here for Search" value="{{ request()->search }}" autofocus>
-                          </div>
-                      </div>
-                  </form>
+                    <form class="form-inline" style="margin-bottom: 15px;">
+                        <div class="col-md-3">
+                            <select class="form-control" name="category" style="width: 100%">
+                                <option value="" selected disabled>-- Berdasarkan Kategori --</option>
+                                @foreach($category as $key => $value)
+                                    <option value="{{ $value->id_category }}" {{ Request::get('category') == $value->id_category ? 'selected' : '' }}>{{ $value->category }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" autocomplete="off" class="form-control"
+                                   placeholder="Berdasarkan Nomor Induk Pegawai / Nama Guru" name="nama"
+                                   style="width: 100%">
+                        </div>
+                        <div class="col-md-2">
+                            <button type="submit" class="btn btn-primary mb" style="width: 100%;">Cari
+                                Sekarang
+                            </button>
+                        </div>
+                    </form>
                 </div>
                 <div class="row align-items-center">
                     <div class="col">

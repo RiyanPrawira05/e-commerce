@@ -24,11 +24,12 @@ class ProductController extends Controller
         // });
 
         $product = Product::query();
-
+        if ($request->filled('category')) {
+            $product = $product->where('category', $request->category);
+        }
         if ($request->filled('search')) {
             $product = $product->search($request->search);
-        }        
-
+        }
         $product = $product->orderBy('created_at', 'DESC')->paginate(3);
         $jenis = Jenis::all();
         $category = Category::all();
