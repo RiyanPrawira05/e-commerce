@@ -8,16 +8,26 @@
         <div class="card shadow">
             <div class="card-header border-0">
                 <div class="text-center">
-                    <form class="harizontal" style="margin-bottom: 30px;">
+                    <form class="form-inline" style="margin-bottom: 30px;">
                         <div class="container">
                             <div class="row align-items-center">
-                                <div class="col-md-12">
-                                    <div class="col-xs-12 mb-2">
-                                        <button type="submit" class="btn btn-sm btn-primary"><span class="fas fa-search"></span></button>
-                                    </div>
+                                <div class="col-xs-12 mr-3">
                                     <div class="form-group">
-                                        <input class="form-control form-control-alternative mr-3" type="text" name="search" placeholder="Search" value="{{ Request::get('search') }}" autocomplete="off" size="37">
+                                        <select class="form-control form-control-alternative" name="jabatan">
+                                            <option value="" selected disabled>-- Berdasarkan Jabatan --</option>
+                                            @foreach ($jabatan as $keys => $posisi)
+                                                <option value="{{ $posisi->id_jabatan }}" {{ Request::get('jabatan') == $posisi->id_jabatan ? 'selected' : '' }}>{{ $posisi->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
+                                </div>
+                                <div class="col-xs-12 mr-3">
+                                    <div class="form-group">
+                                        <input type="text" autocomplete="off" class="form-control form-control-alternative" placeholder="Search" name="search" value="{{ Request::get('search') }}" size="35">
+                                    </div>
+                                </div>
+                                <div class="col-xs-12">
+                                    <button type="submit" class="btn btn-sm btn-primary"><span class="fas fa-search"></span>&nbsp; SEARCH</button>
                                 </div>
                             </div>
                         </div>

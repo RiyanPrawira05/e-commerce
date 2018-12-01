@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Jabatan;
 
 class UserController extends Controller
 {
@@ -14,18 +15,27 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $users = User::query();
+        $result = User::query();
+
+        if ($request->filled('jabatan'))
+        {
+
+        $search = $request->jabatan;
+        $users = $result->where('jabatan', $search);
+
+        }
 
         if ($request->filled('search'))
         {
 
         $search = $request->search;
-        $users = $users->where('name', 'LIKE', '%'.$search.'%')->orwhere('email', 'LIKE', '%' .$request->search. '%' );
+        $users = $result->where('name', 'LIKE', '%'.$search.'%')->orwhere('email', 'LIKE', '%' .$request->search. '%' );
 
         }
 
-        $users = $users->orderBy('created_at', 'DESC')->paginate(3);
-        return view('backend.pengguna.index', compact('users'));
+        $users = $result->orderBy('created_at', 'DESC')->paginate(3);
+        $jabatan = Jabatan::all();
+        return view('backend.pengguna.index', compact('users', 'jabatan'));
     }
 
     /**

@@ -15,10 +15,10 @@ class CreatePengirimanTable extends Migration
     {
         Schema::create('pengiriman', function (Blueprint $table) {
             $table->increments('id_pengiriman');
+            $table->string('no_resi')->comment('Nomer Resi Pengiriman');
             $table->enum('pengiriman', ['POS','JNE','JNT']);
-            $table->integer('alamat')->comment('Alamat User')->unsigned();
+            $table->integer('alamat')->comment('Alamat Users')->unsigned();
             $table->dateTime('tgl_pengiriman');
-            $table->timestamps();
 
             $table->foreign('alamat')->references('id_alamat')->on('alamat');
         });

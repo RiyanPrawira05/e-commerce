@@ -30,4 +30,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function opsiJabatan()
+    {
+        return $this->belongsTo('App\jabatan', 'jabatan', 'id_jabatan');
+    }
 }
