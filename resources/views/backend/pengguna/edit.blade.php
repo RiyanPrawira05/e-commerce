@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('brand') Pengguna @endsection
+@section('brand') Edit Pengguna @endsection
 
 @section('content')
 <div class="row">
@@ -15,6 +15,10 @@
             </div>
             <div class="col-md-12">
                 @include('template.alert')
+            </div>
+            <div class="col-md-12">
+                Change Data
+                <hr class="my-3">
             </div>
             <form class="horizontal" action="{{ Route('users.update', $users->id_users) }}" method="POST">
                 {{ csrf_field() }}
@@ -36,14 +40,16 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="form-control-label">Jabatan</label>
-                                <select class="form-control form-control-alternative" name="jabatan">
-                                  <option value="1" {{ $users->jabatan == 1 ? 'selected' : '' }}>Administrator</option>
-                                  <option value="2" {{ $users->jabatan == 2 ? 'selected' : '' }}>Pengguna</option>
+                                <select class="form-control form-control-alternative" name="jabatan" required>
+                                  <option value="" selected disabled>-- Pilih Jabatan --</option>
+                                  @foreach ($jabatan as $posisi => $value)
+                                    <option value="{{ $value->id_jabatan }}" {{ $users->jabatan == $value->id_jabatan ? 'selected' : '' }}>{{ $value->name }}</option>
+                                  @endforeach
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-12 mb-2">
-                            <button type="submit" class="btn btn-primary">Ubah Data</button>
+                            <button type="submit" class="btn btn-primary">Change Data</button>
                         </div>
                     </div>
                 </div>
@@ -55,7 +61,8 @@
             <div class="card-header border-0">
                 <div class="row align-items-center">
                     <div class="col">
-                        Ubah Password
+                        Change Password
+                        <hr class="my-3">
                     </div>
                 </div>
             </div>
@@ -65,18 +72,18 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label class="form-control-label">Password Baru</label>
+                                <label class="form-control-label">New Password</label>
                                 <input type="password" name="password" class="form-control form-control-alternative" placeholder="Masukan Password Baru">
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label class="form-control-label">Konfirmasi Password</label>
+                                <label class="form-control-label">Confirm Password</label>
                                 <input type="password" name="password_confirmation" class="form-control form-control-alternative" placeholder="Masukan Ulang Password">
                             </div>
                         </div>
-                        <div class="col-md-12 mb-2">
-                            <button type="submit" class="btn btn-primary">Ubah Password</button>
+                        <div class="col-md-12 mb-4">
+                            <button type="submit" class="btn btn-primary">Change Password</button>
                         </div>
                     </div>
                 </div>

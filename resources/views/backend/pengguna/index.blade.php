@@ -38,7 +38,7 @@
                         <h3 class="mb-0 text-default">Data Pengguna</h3>
                     </div>
                     <div class="col text-right">
-                        <a href="{{ Route('users.create') }}" class="btn btn-icon-only btn-sm btn-default fas fa-plus-circle text-md text-white"></a>
+                        <a href="{{ Route('users.create') }}" class="btn btn-sm btn-default"><span class="fas fa-plus-circle"></span>&nbsp; ADD</a>
                     </div>
                 </div>
             </div>
@@ -49,9 +49,11 @@
                 <table class="table align-items-center">
                     <thead class="thead-light">
                         <tr>
+                            <th scope="col">Avatar</th>
                             <th scope="col">Name</th>
                             <th scope="col">Email Addres</th>
                             <th scope="col">Jabatan</th>
+                            <th scope="col">Status</th>
                             <th scope="col"></th>
                             <th scope="col"></th>
                         </tr>
@@ -60,36 +62,26 @@
                     @if (count($users) > 0)
                     @foreach ($users as $user)
                         <tr>
-                            <td><span class="font-weight-bold">{{ $user->name }}</span></td>
-                            <td>{{ $user->email }}</td>
-                            <td>{{ $user->jabatan == 1 ? 'Administrator' : 'Pengguna' }}</td>
                             <td>
-                            <td class="text-right">
-                                <div class="dropdown">
-                                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                      <i class="fas fa-ellipsis-v"></i>
-                                    </a>
-
-                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-
-                                <div class=" dropdown-header noti-title">
-                                    <h6 class="text-overflow m-0 text-light">Actions</h6>
-                                </div>
-
-                                    <a class="btn dropdown-item" href="{{ Route('users.edit', $user->id_users) }}">
-                                        <i class="fas fa-user-edit text-default"></i>
-                                        <span class="text-default">Edit</span>
-                                    </a>
-                                    <form action="{{ Route('users.destroy', $user->id_users) }}" method="POST">
-                                    {{ method_field('DELETE') }}
-                                    {{ csrf_field() }}
-                                      <button class="btn dropdown-item" type="submit">
-                                          <i class="fas fa-user-times text-default"></i>
-                                          <span class="text-default">Delete</span>
-                                      </button>
-                                    </form>
-                                </div>
-                                </div>
+                                <img class="rounded-circle" src="{{ asset($user->foto) }}" alt="" width="70" height="70">
+                            </td>
+                            @if ($user->name == Auth::user()->name)
+                            <td><span class="badge badge-dot mr-4"><i class="bg-success"></i><b>{{ $user->name }}</b></td>
+                            @else
+                            <td><span class="badge badge-dot mr-4"><i class="bg-danger"></i><b>{{ $user->name }}</b></span><p class="text-sm">(sedang tidak online)</p></td>
+                            @endif
+                            <th>{{ $user->email }}</th>
+                            <th>{{ $user->opsiJabatan->name }}</th>
+                            <th>{{ $user->status }}</th>
+                            <td>
+                                <a class="btn btn-sm btn-warning" href="{{ Route('users.edit', $user->id_users) }}"><span class="fas fa-pencil-ruler"></span>&nbsp;EDIT</a>
+                            </td>
+                            <td>
+                                <form action="{{ Route('users.destroy', $user->id_users) }}" method="POST">
+                                {{ method_field('DELETE') }}
+                                {{ csrf_field() }}
+                                    <button class="btn btn-sm btn-danger" type="submit"><span class="fas fa-eraser"></span>&nbsp;DELETE</button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach

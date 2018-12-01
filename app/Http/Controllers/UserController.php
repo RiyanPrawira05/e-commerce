@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Jabatan;
+use File;
 
 class UserController extends Controller
 {
@@ -29,7 +30,7 @@ class UserController extends Controller
         {
 
         $search = $request->search;
-        $users = $result->where('name', 'LIKE', '%'.$search.'%')->orwhere('email', 'LIKE', '%' .$request->search. '%' );
+        $users = $result->where('name', 'LIKE', '%'.$search.'%')->orwhere('email', 'LIKE', '%'.$search.'%' );
 
         }
 
@@ -45,7 +46,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('backend.pengguna.create');
+        $jabatan = Jabatan::all();
+        return view('backend.pengguna.create', compact('jabatan'));
     }
 
     /**
@@ -59,18 +61,37 @@ class UserController extends Controller
 
        $this->validate($request, [
 
+            'foto' => 'required|mimes:jpg,png,jpeg,gif',
             'name' => 'required|max:60|string',
             'email' => 'required|max:80|unique:users,email',
-            'password' => 'min:4',
+            'password' => 'required|min:4|confirmed',
             'jabatan' => 'required',
+            'status' => 'required',
 
         ]);
 
         $data = new User;
+
+        if ($request->foto) 
+        {
+            $foto = $request->foto;
+            $extensiFoto = $foto->getClientOriginalExtension();
+            $folderFoto = 'avatar/pengguna';
+            $namaFoto = rand(100000,1001238912).'.'.$extensiFoto;
+
+            if (!is_dir($folderFoto)) { 
+                File::makeDirectory($folderFoto,0777,true); 
+            }
+
+            $foto->move($folderFoto, $namaFoto);
+            $data->foto = $folderFoto.$namaFoto;
+        }
+
         $data->name = $request->name;
         $data->email = $request->email;
         $data->password = bcrypt($request->password);
         $data->jabatan = $request->jabatan;
+        $data->status = $request->status;
         $data->save();
 
         return redirect()->route('users.index')->with('success', 'Data Berhasil ditambahkan');
@@ -96,7 +117,8 @@ class UserController extends Controller
     public function edit($id)
     {
         $users = User::find($id);
-        return view('backend.pengguna.edit', compact('users'));
+        $jabatan = Jabatan::all();
+        return view('backend.pengguna.edit', compact('users', 'jabatan'));
     }
 
     /**
@@ -110,9 +132,8 @@ class UserController extends Controller
     {
         $this->validate($request, [
 
-            'name' => 'required|max:60|string',
-            'email' => 'required|max:80',
-            'password' => 'min:4',
+            'name' => 'string|max:60',
+            'email' => 'max:80',
             'jabatan' => 'required',
 
         ]);
@@ -128,7 +149,7 @@ class UserController extends Controller
         $data->jabatan = $request->jabatan;
         $data->save();
 
-        return redirect()->back()->with('success', 'Data Berhasil di Update');
+        return redirect()->route('users.index')->with('success', 'Data Berhasil di Update');
     }
 
     /**

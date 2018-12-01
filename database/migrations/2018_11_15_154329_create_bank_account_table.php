@@ -17,6 +17,7 @@ class CreateBankAccountTable extends Migration
             $table->increments('id_bank');
             $table->string('name_bank');
             $table->string('no_rek')->comment('Nomor Rekening');
+            $table->string('ats_nama');
         });
     }
 
