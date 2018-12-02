@@ -39,6 +39,7 @@
                             <div class="form-group">
                                 <label class="form-control-label">Jenis</label>
                                 <select name="jenis" class="form-control form-control-alternative" required>
+                                <option value="" disabled selected>-- Pilih Jenis --</option>
                                 @foreach ($jenis as $tipe)
                                     <option value="{{ $tipe->id_jenis }}">{{ $tipe->slug_bahan }}</option>
                                 @endforeach
@@ -49,6 +50,7 @@
                             <div class="form-group">
                                 <label class="form-control-label">Category</label>
                                 <select name="category" class="form-control form-control-alternative" required>
+                                <option value="" disabled selected>-- Pilih Category --</option>
                                 @foreach ($category as $categories)
                                     <option value="{{ $categories->id_category }}">{{ $categories->category }}</option>
                                 @endforeach
@@ -133,7 +135,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $('.select2').select2({
-            placeholder: 'Choose size product',
+            placeholder: 'Size yang tersedia : s/m/l/xl',
             maximumSelectionLength: 4,
         });
     });

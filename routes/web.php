@@ -34,6 +34,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Users
 Route::resource('users', 'UserController', ['names' => 'users']);
 Route::post('/users/{id}/change-password', 'UserController@password')->name('users.password');
+Route::post('/users/{id}/change-photo', 'UserController@foto')->name('users.foto');
 // Route::get('/users/search', 'UserController@search')->name('users.search');
 
 // Route::get('/users', 'UserController@index')->name('users');

@@ -2,9 +2,13 @@
 
 @section('brand') Edit Pengguna @endsection
 
+@section('css') 
+<link rel="stylesheet" href="{{ asset('backend/plugins/dist/css/dropify.min.css') }}">
+@endsection
+
 @section('content')
 <div class="row">
-    <div class="col-md-7">
+    <div class="col-md-12 mb-3">
         <div class="card shadow">
             <div class="card-header border-0">
                 <div class="row align-items-center">
@@ -17,7 +21,7 @@
                 @include('template.alert')
             </div>
             <div class="col-md-12">
-                Change Data
+                Users Informations
                 <hr class="my-3">
             </div>
             <form class="horizontal" action="{{ Route('users.update', $users->id_users) }}" method="POST">
@@ -48,20 +52,60 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-12 mb-2">
-                            <button type="submit" class="btn btn-primary">Change Data</button>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="form-control-label">status</label>
+                                <input type="text" name="status" class="form-control form-control-alternative" placeholder="Online/Offline" value="{{ $users->status }}">
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <button type="submit" class="btn btn-primary">Change Users</button>
                         </div>
                     </div>
                 </div>
             </form>
         </div>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-12 mb-3">
         <div class="card shadow">
             <div class="card-header border-0">
                 <div class="row align-items-center">
                     <div class="col">
-                        Change Password
+                        Photo Profil
+                        <hr class="my-3">
+                    </div>
+                </div>
+            </div>
+            <form class="horizontal" action="{{ Route('users.foto', $users->id_users) }}" method="POST" enctype="multipart/form-data">
+                {{ csrf_field() }}
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="form-control-label">Your Photos</label>
+                                <img src="{{ asset($users->foto) }}" class="dropify" disabled="disabled" data-default-file="{{ asset($users->foto) }}">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="form-control-label">Upload Foto</label>
+                                <input type="file" name="foto" class="form-control form-control-alternative dropify dropify-event" id="foto" data-allowed-file-extensions="jpg jpeg png gif" data-max-file-size="2M" data-show-errors="true" data-height="300">
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-4">
+                            <button type="submit" class="btn btn-primary">Change Photo</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="card shadow">
+            <div class="card-header border-0">
+                <div class="row align-items-center">
+                    <div class="col">
+                        Password
                         <hr class="my-3">
                     </div>
                 </div>
@@ -91,4 +135,43 @@
         </div>
     </div>
 </div>
+
+@section('script') 
+<script src="{{ asset('backend/plugins/dist/js/dropify.min.js') }}"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.dropify').dropify({
+
+    messages: {
+        'default': 'Drag and drop or click your photo product here',
+        'replace': 'Drag and drop or click your photo product here to replace',
+        'remove':  'Remove',
+        'fileSize': 'The file size is too big',
+        'imageFormat': 'The image format is not allowed',
+        'maxWidth': 'The image width is too big',
+        'maxHeight': 'The image height is too big'
+             }
+
+        });
+    });
+</script>
+<script type="text/javascript">
+
+            $(document).ready(function(){
+
+                $('.dropify').dropify();
+
+                var drEvent = $('.dropify-event').dropify();
+
+                drEvent.on('dropify.beforeClear', function(event, element){
+                    return confirm("Do you really want to delete \"" + element.filename + "\" ?");
+                });
+
+                drEvent.on('dropify.afterClear', function(event, element){
+                    alert('File deleted');
+                });
+            });
+</script>
+@endsection
+
 @endsection

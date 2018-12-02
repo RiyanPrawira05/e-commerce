@@ -62,9 +62,7 @@
                     @if (count($users) > 0)
                     @foreach ($users as $user)
                         <tr>
-                            <td>
-                                <img class="rounded-circle" src="{{ asset($user->foto) }}" alt="" width="70" height="70">
-                            </td>
+                            <td><img src="{{ asset($user->foto) }}" alt="" class="rounded-circle" width="70" height="70"></td>
                             @if ($user->name == Auth::user()->name)
                             <td><span class="badge badge-dot mr-4"><i class="bg-success"></i><b>{{ $user->name }}</b></td>
                             @else

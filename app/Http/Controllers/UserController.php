@@ -76,7 +76,7 @@ class UserController extends Controller
         {
             $foto = $request->foto;
             $extensiFoto = $foto->getClientOriginalExtension();
-            $folderFoto = 'avatar/pengguna';
+            $folderFoto = 'avatar/';
             $namaFoto = rand(100000,1001238912).'.'.$extensiFoto;
 
             if (!is_dir($folderFoto)) { 
@@ -105,7 +105,9 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        // $users = User::find($id);
+        // $jabatan = Jabatan::all();
+        // return view('', compact('users', 'jabatan'));
     }
 
     /**
@@ -132,20 +134,16 @@ class UserController extends Controller
     {
         $this->validate($request, [
 
-            'name' => 'string|max:60',
-            'email' => 'max:80',
+            'name' => 'required|string|max:60',
+            'email' => 'required|max:80',
             'jabatan' => 'required',
+            'status' => 'required',
 
         ]);
 
         $data = User::find($id);
         $data->name = $request->name;
         $data->email = $request->email;
-
-        if ($data->password){
-            $data->password = bcrypt($request->password);
-        }
-
         $data->jabatan = $request->jabatan;
         $data->save();
 
@@ -183,5 +181,35 @@ class UserController extends Controller
         $data->save();
 
         return redirect()->back()->with('success', 'Password Berhasil di ubah');
+    }
+
+    public function foto(Request $request, $id)
+    {
+        $this->validate($request, [
+
+            'foto' => 'required|mimes:jpeg,jpg,png,gif',
+
+        ]);
+
+        $data = User::find($id);
+
+        if ($request->foto) 
+        {
+            $foto = $request->foto;
+            $extensiFoto = $foto->getClientOriginalExtension();
+            $folderFoto = 'avatar/';
+            $namaFoto = rand(100000,1001238912).'.'.$extensiFoto;
+
+            if (!is_dir($folderFoto)) { 
+                File::makeDirectory($folderFoto,0777,true); 
+            }
+
+            $foto->move($folderFoto, $namaFoto);
+            $data->foto = $folderFoto.$namaFoto;
+        }
+
+        $data->save();
+        return redirect()->back()->with('success', 'Foto Anda Berhasil di Ubah');
+
     }
 }
