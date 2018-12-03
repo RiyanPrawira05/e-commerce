@@ -111,7 +111,7 @@
                         </div>
                         <div class="text-left pt-4">
                             <div class="col-md-12 mb-3">
-                                <button type="submit" class="btn btn-default">Created</button>
+                                <button type="submit" class="btn btn-default">Change Product</button>
                             </div>
                         </div>
                     </div>

@@ -17,7 +17,15 @@ class DiscountController extends Controller
     public function index(Request $request)
     {
         $result = Discount::query();
-        if ($request->filled('search')) {
+
+        if ($request->filled('product')) 
+        {
+            $search = $request->product;
+            $discounts = $result->where('product', $search);
+        }
+
+        if ($request->filled('search')) 
+        {
             $search = $request->search;
             $discounts = $result->where('potongan', 'LIKE', '%'.$search.'%')->orwhere('kode', 'LIKE', '%'.$search.'%');
         }
@@ -67,7 +75,7 @@ class DiscountController extends Controller
         $discounts->expired_discount = $request->expired_discount.' 00:00:00';
         $discounts->save();
 
-        return redirect()->route('discount.index')->with('success', 'Data Berhasil Ditambahkan');
+        return redirect()->route('discount.index')->with('success', 'Data discount berhasil ditambahkan');
     }
 
     /**
@@ -124,7 +132,7 @@ class DiscountController extends Controller
         $discounts->expired_discount = $request->expired_discount.' 00:00:00';
         $discounts->save();
 
-        return redirect()->route('discount.index')->with('success', 'Data Berhasil di Update');
+        return redirect()->route('discount.index')->with('success', 'Data discount sudah dirubah');
     }
 
     /**
@@ -136,6 +144,6 @@ class DiscountController extends Controller
     public function destroy($id)
     {
         $discounts = Discount::find($id)->delete();
-        return redirect()->back()->with('success', 'Data Berhasil di Hapus');
+        return redirect()->back()->with('success', 'Data discount sudah dihapus');
     }
 }

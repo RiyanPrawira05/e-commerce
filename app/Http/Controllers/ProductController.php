@@ -25,15 +25,18 @@ class ProductController extends Controller
 
         $product = Product::query();
 
-        if ($request->filled('category')) {
+        if ($request->filled('category')) 
+        {
             $product = $product->where('category', $request->category);
         }
 
-        if ($request->filled('jenis')) {
+        if ($request->filled('jenis')) 
+        {
             $product = $product->where('jenis', $request->jenis);
         }
         
-        if ($request->filled('search')) {
+        if ($request->filled('search')) 
+        {
             $product = $product->where('product', 'LIKE', '%'.$request->search.'%');
         }
 
