@@ -14,7 +14,7 @@
                                 <div class="col-xs-12 mr-3">
                                     <div class="form-group">
                                         <select class="form-control form-control-alternative" name="jabatan">
-                                            <option value="" selected disabled>-- Berdasarkan Jabatan --</option>
+                                            <option value="" selected disabled>-- Berdasarkan Hak Akses --</option>
                                             @foreach ($jabatan as $keys => $posisi)
                                                 <option value="{{ $posisi->id_jabatan }}" {{ Request::get('jabatan') == $posisi->id_jabatan ? 'selected' : '' }}>{{ $posisi->name }}</option>
                                             @endforeach
@@ -50,10 +50,10 @@
                     <thead class="thead-light">
                         <tr>
                             <th scope="col">Avatar</th>
+                            <th scope="col">Status</th>
                             <th scope="col">Name</th>
                             <th scope="col">Email Addres</th>
-                            <th scope="col">Jabatan</th>
-                            <th scope="col">Status</th>
+                            <th scope="col">Hak Akses</th>
                             <th scope="col"></th>
                             <th scope="col"></th>
                         </tr>
@@ -63,6 +63,7 @@
                     @foreach ($users as $user)
                         <tr>
                             <td><img src="{{ asset($user->foto) }}" alt="" class="rounded-circle" width="70" height="70"></td>
+                            <th>{{ $user->status }}</th>
                             @if ($user->name == Auth::user()->name)
                             <td><span class="badge badge-dot mr-4"><i class="bg-success"></i><b>{{ $user->name }}</b></td>
                             @else
@@ -70,7 +71,6 @@
                             @endif
                             <th>{{ $user->email }}</th>
                             <th>{{ $user->opsiJabatan->name }}</th>
-                            <th>{{ $user->status }}</th>
                             <td>
                                 <a class="btn btn-sm btn-warning" href="{{ Route('users.edit', $user->id_users) }}"><span class="fas fa-pencil-ruler"></span>&nbsp;EDIT</a>
                             </td>

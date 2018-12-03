@@ -22,7 +22,7 @@
                      <h3 class="mb-0 text-default">Data Jenis</h3>
                   </div>
                   <div class="col text-right">
-                     <a href="{{ Route('jenis.create') }}" class="btn btn-icon-only btn-sm btn-default fas fa-plus-circle text-md text-white"></a>
+                     <a href="{{ Route('jenis.create') }}" class="btn btn-sm btn-default"><span class="fas fa-plus-circle"></span>&nbsp; ADD</a>
                   </div>
                </div>
             </div>
@@ -36,6 +36,7 @@
                            <th scope="col">Bahan</th>
                            <th scope="col">Slug</th>
                            <th scope="col">Deskripsi</th>
+                           <th scope="col"></th>
                            <th scope="col"></th>
                         </tr>
                      </thead>
@@ -61,42 +62,26 @@
                            @else
                               <th><span class="mb-0 text-danger">Deskripsi Belum Di Isi</span></th>
                            @endif
-                           <td class="text-right">
-                                 <div class="dropdown">
-                                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                       <i class="fas fa-ellipsis-v"></i>
-                                    </a>
-
-                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-
-                                 <div class=" dropdown-header noti-title">
-                                    <h6 class="text-overflow m-0 text-light">Actions</h6>
-                                 </div>
-                                    <a class="btn dropdown-item" href="{{ route('jenis.edit', $model->id_jenis) }}">
-                                        <i class="fas fa-user-edit text-default"></i>
-                                        <span class="text-default">Edit</span>
-                                    </a>
-                                 <form action="{{ Route('jenis.destroy', $model->id_jenis) }}" method="POST">
-                                    {{ method_field('DELETE') }}
-                                    {{ csrf_field() }}
-                                       <button class="btn dropdown-item" type="submit">
-                                          <i class="fas fa-user-times text-default"></i>
-                                          <span class="text-default">Delete</span>
-                                       </button>
-                                 </form>
-                              </div>
-                           </div>
-                        </td>
-                     </tr>
-                        @endforeach
-                        @else
-                             <th class="mb-0 text-danger">Data Tidak Ditemukan !!</th>
-                        @endif
-                  </tbody>
-               </table>
-                  {{ $jenis->links('pagin.pagin') }}
-            </div>
-        </div>
-    </div>
-</div>
+                              <td>
+                                   <a class="btn btn-sm btn-warning" href="{{ route('jenis.edit', $model->id_jenis) }}"><span class="fas fa-pencil-ruler"></span>&nbsp;EDIT</a>
+                               </td>
+                               <td>
+                                   <form action="{{ Route('jenis.destroy', $model->id_jenis) }}" method="POST">
+                                   {{ method_field('DELETE') }}
+                                   {{ csrf_field() }}
+                                       <button class="btn btn-sm btn-danger" type="submit"><span class="fas fa-eraser"></span>&nbsp;DELETE</button>
+                                   </form>
+                               </td>
+                           </tr>
+                           @endforeach
+                           @else
+                                <th class="mb-0 text-danger">Data Tidak Ditemukan !!</th>
+                           @endif
+                     </tbody>
+                  </table>
+                     {{ $jenis->links('pagin.pagin') }}
+               </div>
+           </div>
+       </div>
+   </div>
 @endsection

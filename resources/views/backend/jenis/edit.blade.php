@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('brand') Jenis @endsection
+@section('brand') Edit Jenis @endsection
 
 @section('content')
 <div class="row">

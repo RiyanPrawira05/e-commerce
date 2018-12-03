@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('brand') Category @endsection
+@section('brand') Edit Category @endsection
 
 @section('content')
 <div class="row">
@@ -31,8 +31,8 @@
                                 <input type="text" name="slug_category" class="form-control form-control-alternative" placeholder="Men" value="{{ $data->slug_category }}" required>
                             </div>
                         </div>
-                        <div class="col-md-12 mb-2">
-                            <button type="submit" class="btn btn-default">Created</button>
+                        <div class="col-md-12 mb-4">
+                            <button type="submit" class="btn btn-default">Change</button>
                         </div>
                     </div>
                 </div>

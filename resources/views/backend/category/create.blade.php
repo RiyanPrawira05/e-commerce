@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('brand') Category @endsection
+@section('brand') Add Category @endsection
 
 @section('content')
 <div class="row">
@@ -30,8 +30,8 @@
                                 <input type="text" name="slug_category" class="form-control form-control-alternative" placeholder="Men" required>
                             </div>
                         </div>
-                        <div class="col-md-12 mb-2">
-                            <button type="submit" class="btn btn-default">Created</button>
+                        <div class="col-md-12 mb-4">
+                            <button type="submit" class="btn btn-default">Add</button>
                         </div>
                     </div>
                 </div>
