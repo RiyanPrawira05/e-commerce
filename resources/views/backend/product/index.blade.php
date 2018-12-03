@@ -99,10 +99,10 @@
                             @else
                               <th class="text-danger">Deskripsi Belum Di Isi</th>
                             @endif
-                            <td>
+                            <td class="text-right">
                                 <a class="btn btn-sm btn-warning" href="{{ Route('product.edit', $products->id_product) }}"><span class="fas fa-pencil-ruler"></span>&nbsp;EDIT</a>
                             </td>
-                            <td>
+                            <td class="text-right">
                                 <form action="{{ Route('product.destroy', $products->id_product) }}" method="POST">
                                 {{ method_field('DELETE') }}
                                 {{ csrf_field() }}
@@ -112,7 +112,7 @@
                         </tr>
                         @endforeach
                         @else
-                            <th class="mb-0 text-danger">Data Tidak Ditemukan !!</th>
+                            <th class="mb-0 text-danger">Data product kosong !!</th>
                         @endif
                     </tbody>
                 </table>

@@ -53,10 +53,10 @@
                             @endif
                             <th>{{ $bank->no_rek }}</th>
                             <th>{{ $bank->ats_nama }}</th>
-                            <td>
+                            <td class="text-right">
                                 <a class="btn btn-sm btn-warning" href="{{ Route('bank.edit', $bank->id_bank)}}"><span class="fas fa-pencil-ruler"></span>&nbsp;EDIT</a>
                             </td>
-                            <td>
+                            <td class="text-right">
                                 <form action="{{ Route('bank.destroy', $bank->id_bank)}}" method="POST">
                                 {{ method_field('DELETE') }}
                                 {{ csrf_field() }}

@@ -62,10 +62,10 @@
                            @else
                               <th><span class="mb-0 text-danger">Deskripsi Belum Di Isi</span></th>
                            @endif
-                              <td>
+                              <td class="text-right">
                                    <a class="btn btn-sm btn-warning" href="{{ route('jenis.edit', $model->id_jenis) }}"><span class="fas fa-pencil-ruler"></span>&nbsp;EDIT</a>
                                </td>
-                               <td>
+                               <td class="text-right">
                                    <form action="{{ Route('jenis.destroy', $model->id_jenis) }}" method="POST">
                                    {{ method_field('DELETE') }}
                                    {{ csrf_field() }}

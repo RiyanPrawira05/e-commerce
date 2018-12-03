@@ -71,10 +71,10 @@
                             @endif
                             <th>{{ $user->email }}</th>
                             <th>{{ $user->opsiJabatan->name }}</th>
-                            <td>
+                            <td class="text-right">
                                 <a class="btn btn-sm btn-warning" href="{{ Route('users.edit', $user->id_users) }}"><span class="fas fa-pencil-ruler"></span>&nbsp;EDIT</a>
                             </td>
-                            <td>
+                            <td class="text-right">
                                 <form action="{{ Route('users.destroy', $user->id_users) }}" method="POST">
                                 {{ method_field('DELETE') }}
                                 {{ csrf_field() }}

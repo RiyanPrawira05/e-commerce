@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('brand') Product @endsection
+@section('brand') Add Product @endsection
 
 @section('css') 
 <link href="{{ asset('backend/select2-4.0.6-rc.1/dist/css/select2.min.css') }}" rel="stylesheet">
@@ -11,83 +11,108 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card shadow">
-            <div class="card-header border-0">
+            <div class="card-header border-1">
                 <div class="row align-items-center">
-                    <div class="col">
+                    <div class="col-8">
                         <a href="{{ Route('product.index') }}" class="btn btn-sm btn-primary"><i class="fas fa-chevron-circle-left"></i> Back </a>
+                    </div>
+                    <div class="col-4 text-right">
+                        <h4 class="heading-small text-muted mb-0">Create Product</h4>
                     </div>
                 </div>
             </div>
-            <form class="horizontal" action="{{ Route('product.store') }}" method="POST" enctype="multipart/form-data">
-                {{ csrf_field() }}
+            <div class="card-body">
+                <form class="horizontal" action="{{ Route('product.store') }}" method="POST" enctype="multipart/form-data">
+                    {{ csrf_field() }}
                 <div class="col-md-12">
                     @include('template.alert')
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="form-control-label">Foto</label>
-                                <input type="file" name="foto" class="form-control form-control-alternative dropify dropify-event" id="foto" data-allowed-file-extensions="jpg jpeg png gif" data-max-file-size="2M" data-show-errors="true" data-height="300">
+                </div>
+                <h6 class="heading-small text-muted mb-4">Photo Product</h6>
+                    <div class="pl-md-4">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-control-label">Photo</label>
+                                    <input type="file" name="foto" class="form-control form-control-alternative dropify dropify-event" id="foto" data-allowed-file-extensions="jpg jpeg png gif" data-max-file-size="2M" data-show-errors="true" data-height="300">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="form-control-label">Produk</label>
-                                <input type="text" name="product" class="form-control form-control-alternative" placeholder="Dinna Blouse" required>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="form-control-label">Jenis</label>
-                                <select name="jenis" class="form-control form-control-alternative" required>
-                                <option value="" disabled selected>-- Pilih Jenis --</option>
-                                @foreach ($jenis as $tipe)
-                                    <option value="{{ $tipe->id_jenis }}">{{ $tipe->slug_bahan }}</option>
-                                @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="form-control-label">Category</label>
-                                <select name="category" class="form-control form-control-alternative" required>
-                                <option value="" disabled selected>-- Pilih Category --</option>
-                                @foreach ($category as $categories)
-                                    <option value="{{ $categories->id_category }}">{{ $categories->category }}</option>
-                                @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="form-control-label">Size</label>
-                                <select multiple="multiple" name="size[]" class="form-control form-control-alternative select2" required>
-                                @foreach ($size as $ukuran)
-                                    <option value="{{ $ukuran->id_size }}">{{ $ukuran->size }}</option>
-                                @endforeach
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="form-control-label">Harga</label>
-                                <input type="number" name="harga" class="form-control form-control-alternative" placeholder="IDR 4XXXXX" required>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="form-control-label">Deskripsi</label>
-                                <textarea name="deskripsi" class="form-control form-control-alternative" placeholder="New Arrival, Hot Offer"></textarea>
-                            </div>
-                        </div>
-                        <div class="col-md-12 mb-2">
-                            <button type="submit" class="btn btn-default">Created</button>
                         </div>
                     </div>
-                </div>
-            </form>
+                    <hr class="my-4">
+
+                    <h6 class="heading-small text-muted mb-4">Product Information</h6>
+                        <div class="pl-md-4">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Name Product</label>
+                                        <input type="text" name="product" class="form-control form-control-alternative" placeholder="Dinna Blouse" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Jenis</label>
+                                        <select name="jenis" class="form-control form-control-alternative" required>
+                                        <option value="" disabled selected>-- Pilih Jenis --</option>
+                                        @foreach ($jenis as $tipe)
+                                            <option value="{{ $tipe->id_jenis }}">{{ $tipe->slug_bahan }}</option>
+                                        @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Category</label>
+                                        <select name="category" class="form-control form-control-alternative" required>
+                                        <option value="" disabled selected>-- Pilih Category --</option>
+                                        @foreach ($category as $categories)
+                                            <option value="{{ $categories->id_category }}">{{ $categories->category }}</option>
+                                        @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Harga</label>
+                                        <input type="number" name="harga" class="form-control form-control-alternative" placeholder="IDR 4XXXXX" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Size</label>
+                                        <select multiple="multiple" name="size[]" class="form-control form-control-alternative select2" required>
+                                        @foreach ($size as $ukuran)
+                                            <option value="{{ $ukuran->id_size }}">{{ $ukuran->size }}</option>
+                                        @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="my-4">
+
+                        <h6 class="heading-small text-muted mb-4">Description</h6>
+                            <div class="pl-md-4">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <label class="form-control-label">Deskripsi</label>
+                                            <textarea name="deskripsi" class="form-control form-control-alternative" placeholder="New Arrival, Hot Offer"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-left pt-4">
+                                <div class="col-md-12 mb-2">
+                                    <button type="submit" class="btn btn-default">Add Product</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 
 @section('script') 
 

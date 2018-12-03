@@ -41,7 +41,7 @@
                 </div>
                 <div class="row align-items-center">
                     <div class="col">
-                        <h3 class="mb-0 text-default">Data Stock</h3>
+                        <h3 class="heading-small text-muted mb-0">Data Stock</h3>
                     </div>
                     <div class="col text-right">
                         <a href="{{ Route('stock.create') }}" class="btn btn-sm btn-default"><span class="fas fa-plus-circle text-md text-white"></span>&nbsp; ADD</a>
@@ -83,10 +83,10 @@
                                     </div>
                                 </div>
                             </th>
-                            <td>
+                            <td class="text-right">
                                 <a class="btn btn-sm btn-warning" href="{{ Route('stock.edit', $stock->id_stock) }}"><span class="fas fa-pencil-ruler"></span>&nbsp;EDIT</a>
                             </td>
-                            <td>
+                            <td class="text-right">
                                 <form action="{{ Route('stock.destroy', $stock->id_stock) }}" method="POST">
                                 {{ method_field('DELETE') }}
                                 {{ csrf_field() }}

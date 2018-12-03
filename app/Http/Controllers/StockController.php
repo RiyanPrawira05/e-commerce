@@ -76,7 +76,7 @@ class StockController extends Controller
         $stock->category = $request->category;
         $stock->save();
 
-        return redirect()->route('stock.index')->with('success', 'Data Berhasil Di Tambahkan');
+        return redirect()->route('stock.index')->with('success', 'Data stock berhasil di tambahkan');
     }
 
     /**
@@ -127,7 +127,7 @@ class StockController extends Controller
         $stock->category = $request->category;
         $stock->save();
 
-        return redirect()->route('stock.index')->with('success', 'Data Berhasil Di Update');
+        return redirect()->route('stock.index')->with('success', 'Data stock sudah diubah');
     }
 
     /**
@@ -139,6 +139,6 @@ class StockController extends Controller
     public function destroy($id)
     {
         $stocks = Stock::find($id)->delete();
-        return redirect()->back()->with('success', 'Data Berhasil Di Delete');
+        return redirect()->back()->with('success', 'Data stock sudah dihapus');
     }
 }

@@ -54,10 +54,10 @@
                                  </div>
                               </div>
                            </th>
-                           <td>
+                           <td class="text-right">
                               <a class="btn btn-sm btn-warning" href="{{ Route('category.edit', $categories->id_category) }}"><span class="fas fa-pencil-ruler"></span>&nbsp;EDIT</a>
                            </td>
-                            <td>
+                            <td class="text-right">
                                 <form action="{{ Route('category.destroy', $categories->id_category) }}" method="POST">
                                 {{ method_field('DELETE') }}
                                 {{ csrf_field() }}

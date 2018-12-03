@@ -12,17 +12,17 @@
                       <div class="col-md-12">
                           <div class="form-group">
                               <button type="submit" class="btn btn-sm btn-primary mb-3"><span class="fas fa-search"></span></button>
-                              <input class="form-control form-control-alternative" type="text" name="search" placeholder="Type here for Search" value="{{ request()->search }}" autofocus>
+                              <input class="form-control form-control-alternative" type="text" name="search" placeholder="Type here for Search" value="{{ request()->search }}" autocomplete="off">
                           </div>
                       </div>
                   </form>
                 </div>
                 <div class="row align-items-center">
                     <div class="col">
-                        <h3 class="mb-0 text-default">Data Lingkar Dada</h3>
+                         <h3 class="heading-small text-muted mb-0">Data Lingkar Dada</h3>
                     </div>
                     <div class="col text-right">
-                        <a href="{{ Route('LD.create') }}" class="btn btn-icon-only btn-sm btn-default fas fa-plus-circle text-md text-white"></a>
+                        <a href="{{ Route('LD.create') }}" class="btn btn-sm btn-default"> <span class="fas fa-plus-circle"></span>&nbsp; ADD</a>
                     </div>
                 </div>
             </div>
@@ -35,47 +35,30 @@
                         <tr>
                             <th scope="col">Lingkar Dada</th>
                             <th scope="col"></th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
                     @if (count($lingkardada) > 0)
                     @foreach ($lingkardada as $ld)
                         <tr>
-                            <td>
+                            <td class="text-right">
                               <span class="badge badge-dot mr-2"><i class="bg-default"></i> <span class="mb-0 text-sm"><b>{{ $ld->ukuran }}</b></span>
                             </td>
-                            <td>
                             <td class="text-right">
-                                <div class="dropdown">
-                                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                      <i class="fas fa-ellipsis-v"></i>
-                                    </a>
-
-                                <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-
-                                <div class=" dropdown-header noti-title">
-                                    <h6 class="text-overflow m-0 text-light">Actions</h6>
-                                </div>
-
-                                    <a class="btn dropdown-item" href="{{ Route('LD.edit', $ld->id_lingkar_dada) }}">
-                                        <i class="fas fa-user-edit text-default"></i>
-                                        <span class="text-default">Edit</span>
-                                    </a>
-                                    <form action="{{ Route('LD.destroy', $ld->id_lingkar_dada) }}" method="POST">
-                                    {{ method_field('DELETE') }}
-                                    {{ csrf_field() }}
-                                      <button class="btn dropdown-item" type="submit">
-                                          <i class="fas fa-user-times text-default"></i>
-                                          <span class="text-default">Delete</span>
-                                      </button>
-                                    </form>
-                                </div>
-                                </div>
+                                <a class="btn btn-sm btn-warning" href="{{ Route('LD.edit', $ld->id_lingkar_dada) }}"><span class="fas fa-pencil-ruler"></span>&nbsp;EDIT</a>
                             </td>
+                            <td>
+                                <form action="{{ Route('LD.destroy', $ld->id_lingkar_dada) }}" method="POST">
+                                {{ method_field('DELETE') }}
+                                {{ csrf_field() }}
+                                    <button class="btn btn-sm btn-danger" type="submit"><span class="fas fa-eraser"></span>&nbsp;DELETE</button>
+                                </form>
+                            </td>   
                         </tr>
                     @endforeach
                     @else
-                        <th class="mb-0 text-danger">Data Tidak Ditemukan !!</th>
+                        <th class="mb-0 text-danger">Data lingkar dada kosong !!</th>
                     @endif
                     </tbody>
                 </table>

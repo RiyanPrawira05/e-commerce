@@ -16,7 +16,15 @@ class StatusController extends Controller
     public function index(Request $request)
     {
         $result = Status::query();
-        if ($request->filled('search')) {
+
+        if ($request->filled('users')) 
+        {
+            $search = $request->users;
+            $status = $result->where('users', $search);
+        }
+
+        if ($request->filled('search')) 
+        {
             $search = $request->search;
             $status = $result->where('status', 'LIKE', '%'.$search.'%');
         }
@@ -55,7 +63,7 @@ class StatusController extends Controller
         $status->status = $request->status;
         $status->users = $request->users;
         $status->save();
-        return redirect()->route('status.index')->with('success', 'Data Berhasil Di Tambahkan');
+        return redirect()->route('status.index')->with('success', 'Data status berhasil ditambahkan');
     }
 
     /**
@@ -102,7 +110,7 @@ class StatusController extends Controller
         $status->status = $request->status;
         $status->users = $request->users;
         $status->save();
-        return redirect()->route('status.index')->with('success', 'Data Berhasil Di Update');
+        return redirect()->route('status.index')->with('success', 'Data status sudah diubah');
     }
 
     /**
@@ -114,6 +122,6 @@ class StatusController extends Controller
     public function destroy($id)
     {
         $status = Status::find($id)->delete();
-        return redirect()->back()->with('success', 'Data Berhasil di Delete');
+        return redirect()->back()->with('success', 'Data status sudah dihapus');
     }
 }

@@ -17,7 +17,7 @@ class LingkardadaController extends Controller
         $result = Lingkardada::query();
         if ($request->filled('search')) {
             $search = $request->search;
-            $lingkardada = $result->where('lingkardada', 'LIKE', '%'.$search.'%');
+            $lingkardada = $result->where('ukuran', 'LIKE', '%'.$search.'%');
         }
         $lingkardada = $result->orderBy('created_at', 'DESC')->paginate(3);
         return view('backend.lingkardada.index', compact('lingkardada'));
@@ -51,7 +51,7 @@ class LingkardadaController extends Controller
         $lingkardada->ukuran = $request->ukuran;
         $lingkardada->save();
 
-        return redirect()->route('LD.index')->with('success', 'Data Berhasil di Tambahkan');
+        return redirect()->route('LD.index')->with('success', 'Data lingkar dada berhasil ditambahkan');
     }
 
     /**
@@ -96,7 +96,7 @@ class LingkardadaController extends Controller
         $lingkardada->ukuran = $request->ukuran;
         $lingkardada->save();
 
-        return redirect()->route('LD.index')->with('success', 'Data Berhasil di Update');
+        return redirect()->route('LD.index')->with('success', 'Data lingkar dada sudah diubah');
     }
 
     /**
@@ -108,6 +108,6 @@ class LingkardadaController extends Controller
     public function destroy($id)
     {
         $lingkardada = Lingkardada::find($id)->delete();
-        return redirect()->back()->with('success', 'Data Berhasil di Hapus');
+        return redirect()->back()->with('success', 'Data lingkar dada sudah dihapus');
     }
 }

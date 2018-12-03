@@ -22,7 +22,7 @@
                      <h3 class="heading-small text-muted mb-0">Data Colors</h3>
                   </div>
                   <div class="col text-right">
-                     <a href="{{ Route('colors.create') }}" class="btn btn-icon-only btn-sm btn-default fas fa-plus-circle text-md text-white"></a>
+                     <a href="{{ Route('colors.create') }}" class="btn btn-sm btn-default"><span class="fas fa-plus-circle"></span>&nbsp; ADD</a>
                   </div>
                </div>
             </div>
@@ -58,10 +58,10 @@
                                  <span class="badge badge-dot mr-4"><i class="bg-info"></i> <span class="mb-0 text-sm"><b>{{ $color->warna }}</b></span>
                               @endif
                            </td>
-                           <td>
+                           <td class="text-right">
                               <a class="btn btn-sm btn-warning" href="{{ Route('colors.edit', $color->id_warna) }}"><span class="fas fa-pencil-ruler"></span>&nbsp;EDIT</a>
                            </td>
-                           <td>
+                           <td class="text-right">
                               <form action="{{ Route('colors.destroy', $color->id_warna) }}" method="POST">
                                 {{ method_field('DELETE') }}
                                 {{ csrf_field() }}

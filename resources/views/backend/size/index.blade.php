@@ -22,7 +22,7 @@
                      <h3 class="heading-small text-muted mb-0">Data Size</h3>
                   </div>
                   <div class="col text-right">
-                     <a href="{{ Route('size.create') }}" class="btn btn-icon-only btn-sm btn-default fas fa-plus-circle text-md text-white"></a>
+                     <a href="{{ Route('size.create') }}" class="btn btn-sm btn-default"><span class="fas fa-plus-circle"></span>&nbsp; ADD</a>
                   </div>
                </div>
             </div>
@@ -64,10 +64,10 @@
                                  </div>
                               </div>
                            </th>
-                           <td>
+                           <td class="text-right">
                               <a class="btn btn-sm btn-warning" href="{{ Route('size.edit', $ukuran->id_size) }}"><span class="fas fa-pencil-ruler"></span>&nbsp;EDIT</a>
                            </td>
-                           <td>
+                           <td class="text-right">
                               <form action="{{ Route('size.destroy', $ukuran->id_size) }}" method="POST">
                                 {{ method_field('DELETE') }}
                                 {{ csrf_field() }}
