@@ -53,7 +53,7 @@ class SizeController extends Controller
         $size->deskripsi = $request->deskripsi;
         $size->save();
 
-        return redirect()->route('size.index')->with('success', 'Data Berhasil Di Tambahkan');
+        return redirect()->route('size.index')->with('success', 'Data size berhasil ditambahkan');
     }
 
     /**
@@ -100,7 +100,7 @@ class SizeController extends Controller
         $size->deskripsi = $request->deskripsi;
         $size->save();
 
-        return redirect()->route('size.index')->with('success', 'Data Berhasil Di Update');
+        return redirect()->route('size.index')->with('success', 'Data size sudah diubah');
     }
 
     /**
@@ -112,6 +112,6 @@ class SizeController extends Controller
     public function destroy($id)
     {
         $size = Size::find($id)->delete();
-        return redirect()->back()->with('success', 'Data Berhasil Di Hapus');
+        return redirect()->back()->with('success', 'Data size sudah dihapus');
     }
 }

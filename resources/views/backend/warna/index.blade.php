@@ -19,7 +19,7 @@
                </div>
                <div class="row align-items-center">
                   <div class="col">
-                     <h3 class="mb-0 text-default">Data Colors</h3>
+                     <h3 class="heading-small text-muted mb-0">Data Colors</h3>
                   </div>
                   <div class="col text-right">
                      <a href="{{ Route('colors.create') }}" class="btn btn-icon-only btn-sm btn-default fas fa-plus-circle text-md text-white"></a>
@@ -34,6 +34,7 @@
                      <thead class="thead-light">
                         <tr>
                            <th scope="col">Warna</th>
+                           <th scope="col"></th>
                            <th scope="col"></th>
                         </tr>
                      </thead>
@@ -57,39 +58,23 @@
                                  <span class="badge badge-dot mr-4"><i class="bg-info"></i> <span class="mb-0 text-sm"><b>{{ $color->warna }}</b></span>
                               @endif
                            </td>
-                           <td class="text-right">
-                                 <div class="dropdown">
-                                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                       <i class="fas fa-ellipsis-v"></i>
-                                    </a>
-
-                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-
-                                 <div class=" dropdown-header noti-title">
-                                    <h6 class="text-overflow m-0 text-light">Actions</h6>
-                                 </div>
-                                    <a class="btn dropdown-item" href="{{ Route('colors.edit', $color->id_warna) }}">
-                                        <i class="fas fa-user-edit text-default"></i>
-                                        <span class="text-default">Edit</span>
-                                    </a>
-                                 <form action="{{ Route('colors.destroy', $color->id_warna) }}" method="POST">
-                                    {{ csrf_field() }}
-                                    {{ method_field('DELETE') }}
-                                       <button class="btn dropdown-item" type="submit">
-                                          <i class="fas fa-user-times text-default"></i>
-                                          <span class="text-default">Delete</span>
-                                       </button>
-                                 </form>
-                              </div>
-                           </div>
-                        </td>
-                     </tr>
-                        @endforeach
-                        @else
-                             <th class="mb-0 text-danger">Data Tidak Ditemukan !!</th>
-                        @endif
-                  </tbody>
-               </table>
+                           <td>
+                              <a class="btn btn-sm btn-warning" href="{{ Route('colors.edit', $color->id_warna) }}"><span class="fas fa-pencil-ruler"></span>&nbsp;EDIT</a>
+                           </td>
+                           <td>
+                              <form action="{{ Route('colors.destroy', $color->id_warna) }}" method="POST">
+                                {{ method_field('DELETE') }}
+                                {{ csrf_field() }}
+                                    <button class="btn btn-sm btn-danger" type="submit"><span class="fas fa-eraser"></span>&nbsp;DELETE</button>
+                              </form>
+                           </td>    
+                        </tr>
+                     @endforeach
+                     @else
+                        <th class="mb-0 text-danger">Data Colors Kosong !!</th>
+                     @endif
+               </tbody>
+            </table>
                {{ $colors->links('pagin.pagin') }}
-            </div>
-   @endsection
+         </div>
+@endsection

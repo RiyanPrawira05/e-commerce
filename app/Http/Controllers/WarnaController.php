@@ -50,7 +50,7 @@ class WarnaController extends Controller
         $colors = new Warna;
         $colors->warna = $request->warna;
         $colors->save();
-        return redirect()->route('colors.index')->with('success', 'Data Berhasil Di Tambahkan');
+        return redirect()->route('colors.index')->with('success', 'Data colors berhasil di tambahkan');
     }
 
     /**
@@ -94,7 +94,7 @@ class WarnaController extends Controller
         $colors = Warna::find($id);
         $colors->warna = $request->warna;
         $colors->save();
-        return redirect()->route('colors.index')->with('success', 'Data Berhasil Di Update');
+        return redirect()->route('colors.index')->with('success', 'Data Colors sudah diubah');
     }
 
     /**
@@ -106,6 +106,6 @@ class WarnaController extends Controller
     public function destroy($id)
     {
         $colors = Warna::find($id)->delete();
-        return redirect()->back()->with('success', 'Data Berhasil Di Delete');
+        return redirect()->back()->with('success', 'Data Colors sudah dihapus');
     }
 }

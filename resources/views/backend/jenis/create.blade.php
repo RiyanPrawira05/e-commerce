@@ -49,7 +49,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="text-center pt-4">
+                        <div class="text-left pt-4">
                             <div class="col-md-12 mb-3">
                                 <button type="submit" class="btn btn-default">Add Jenis</button>
                             </div>

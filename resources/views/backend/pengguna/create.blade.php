@@ -89,7 +89,7 @@
                                 </div>
                             </div>
 
-                            <div class="text-center pt-4">
+                            <div class="text-left pt-4">
                                 <div class="col-md-12 mb-3">
                                     <button type="submit" class="btn btn-default">Add Users</button>
                                 </div>
@@ -108,8 +108,8 @@
         $('.dropify').dropify({
 
     messages: {
-        'default': 'Drag and drop or click your photo product here',
-        'replace': 'Drag and drop or click your photo product here to replace',
+        'default': 'Drag and drop or click your photo here',
+        'replace': 'Drag and drop or click your photo here to replace',
         'remove':  'Remove',
         'fileSize': 'The file size is too big',
         'imageFormat': 'The image format is not allowed',

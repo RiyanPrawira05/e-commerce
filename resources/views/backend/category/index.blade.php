@@ -12,14 +12,14 @@
                       <div class="col-md-12">
                           <div class="form-group">
                               <button type="submit" class="btn btn-sm btn-primary mb-3"><span class="fas fa-search"></span></button>
-                              <input class="form-control form-control-alternative" type="text" name="search" placeholder="Type here for Search" value="{{ request()->search }}" autofocus>
+                              <input class="form-control form-control-alternative" type="text" name="search" placeholder="Search" value="{{ Request::get('search') }}" autocomplete>
                           </div>
                       </div>
                   </form>
                </div>
                <div class="row align-items-center">
                   <div class="col">
-                     <h3 class="mb-0 text-default">Data Category</h3>
+                     <h3 class="heading-small text-muted mb-0">Data Category</h3>
                   </div>
                   <div class="col text-right">
                      <a href="{{ Route('category.create') }}" class="btn btn-sm btn-default"><span class="fas fa-plus-circle"></span>&nbsp; ADD</a>
@@ -67,7 +67,7 @@
                         </tr>
                            @endforeach
                            @else
-                                <th class="mb-0 text-danger">Data Tidak Ditemukan !!</th>
+                                <th class="mb-0 text-danger">Data Category Kosong !!</th>
                            @endif
                      </tbody>
                   </table>
