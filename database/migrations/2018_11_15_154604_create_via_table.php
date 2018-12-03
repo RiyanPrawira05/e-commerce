@@ -15,7 +15,7 @@ class CreateViaTable extends Migration
     {
         Schema::create('via', function (Blueprint $table) {
             $table->increments('id_via');
-            $table->enum('via', ['ATM','COD'])->comment(' 0 = ATM, 1 = COD');
+            $table->enum('via', ['ATM','COD','ALFAMART','INDOMARET']);
             $table->timestamp('created_at')->nullable();
         });
     }

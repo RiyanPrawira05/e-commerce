@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('brand') Edit Pengguna @endsection
+@section('brand') Edit Users @endsection
 
 @section('css') 
 <link rel="stylesheet" href="{{ asset('backend/plugins/dist/css/dropify.min.css') }}">
@@ -108,7 +108,7 @@
                     </div>
 
                     <div class="text-center pt-4">
-                        <div class="col-md-12 mb-4">
+                        <div class="col-md-12 mb-3">
                             <button type="submit" class="btn btn-default">Change Photo</button>
                         </div>
                     </div>
@@ -151,7 +151,7 @@
                     </div>
 
                     <div class="text-center pt-4">
-                        <div class="col-md-12 mb-4">
+                        <div class="col-md-12 mb-3">
                             <button type="submit" class="btn btn-default">Change Password</button>
                         </div>
                     </div>
@@ -159,6 +159,7 @@
             </div>
         </form>
     </div>
+</div>
 </div>
 </div>
 

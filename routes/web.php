@@ -83,6 +83,8 @@ Route::resource('status', 'StatusController', ['names' => 'status']);
 // Discount 
 Route::resource('discount', 'DiscountController', ['names' => 'discount']);
 
+// Bank Account 
+Route::resource('bankAccount', 'BankAccountController', ['names' => 'bank']);
 
 
 

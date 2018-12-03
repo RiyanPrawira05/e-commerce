@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('brand') Users @endsection
+@section('brand') Add Users @endsection
 
 @section('css') 
 <link rel="stylesheet" href="{{ asset('backend/plugins/dist/css/dropify.min.css') }}">
