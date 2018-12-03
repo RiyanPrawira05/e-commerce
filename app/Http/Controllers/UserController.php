@@ -66,7 +66,6 @@ class UserController extends Controller
             'email' => 'required|max:80|unique:users,email',
             'password' => 'required|min:4|confirmed',
             'jabatan' => 'required',
-            'status' => 'required',
 
         ]);
 
@@ -91,10 +90,9 @@ class UserController extends Controller
         $data->email = $request->email;
         $data->password = bcrypt($request->password);
         $data->jabatan = $request->jabatan;
-        $data->status = $request->status;
         $data->save();
 
-        return redirect()->route('users.index')->with('success', 'Data Berhasil ditambahkan');
+        return redirect()->route('users.index')->with('success', 'Data users berhasil ditambahkan');
     }
 
     /**
@@ -137,7 +135,6 @@ class UserController extends Controller
             'name' => 'required|string|max:60',
             'email' => 'required|max:80',
             'jabatan' => 'required',
-            'status' => 'required',
 
         ]);
 
@@ -147,7 +144,7 @@ class UserController extends Controller
         $data->jabatan = $request->jabatan;
         $data->save();
 
-        return redirect()->route('users.index')->with('success', 'Data Berhasil di Update');
+        return redirect()->route('users.index')->with('success', 'Data users berhasil diubah');
     }
 
     /**
@@ -159,7 +156,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         $users = User::find($id)->delete();
-        return redirect()->route('users.index')->with('success', 'Data Berhasil di Delete');
+        return redirect()->route('users.index')->with('success', 'Data users sudah dihapus');
     }
 
     /**
@@ -180,7 +177,7 @@ class UserController extends Controller
         $data->password = bcrypt($request->password);
         $data->save();
 
-        return redirect()->back()->with('success', 'Password Berhasil di ubah');
+        return redirect()->back()->with('success', 'Password berhasil diganti');
     }
 
     public function foto(Request $request, $id)
@@ -209,7 +206,7 @@ class UserController extends Controller
         }
 
         $data->save();
-        return redirect()->back()->with('success', 'Foto Anda Berhasil di Ubah');
+        return redirect()->back()->with('success', 'Foto berhasil diganti');
 
     }
 }

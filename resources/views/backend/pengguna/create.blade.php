@@ -28,7 +28,7 @@
                     @include('template.alert')
                 </div>
 
-                <h6 class="heading-small text-muted mb-4">User Information</h6>
+                <h6 class="heading-small text-muted mb-4">Users Information</h6>
                     <div class="pl-md-4">
                         <div class="row">
                             <div class="col-md-8">

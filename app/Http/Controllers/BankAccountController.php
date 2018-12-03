@@ -52,7 +52,7 @@ class BankAccountController extends Controller
         $accountBank->no_rek = $request->no_rek;
         $accountBank->ats_nama = $request->ats_nama;
         $accountBank->save();
-        return redirect()->route('bank.index')->with('success', 'Data BankAccount Berhasil di Tambahkan');
+        return redirect()->route('bank.index')->with('success', 'BankAccount Berhasil di Tambahkan');
     }
 
     /**
@@ -98,7 +98,7 @@ class BankAccountController extends Controller
         $accountBank->no_rek = $request->no_rek;
         $accountBank->ats_nama = $request->ats_nama;
         $accountBank->save();
-        return redirect()->route('bank.index')->with('success', 'Data BankAccount Berhasil di Ubah');
+        return redirect()->route('bank.index')->with('success', 'BankAccount Berhasil di Ubah');
     }
 
     /**
@@ -110,6 +110,6 @@ class BankAccountController extends Controller
     public function destroy($id)
     {
         $accountBank = BankAccount::find($id)->delete();
-        return redirect()->back()->with('success', 'Data Berhasil di Delete');
+        return redirect()->back()->with('success', 'BankAccount Berhasil di Delete');
     }
 }

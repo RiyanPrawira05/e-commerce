@@ -55,7 +55,7 @@ class JenisController extends Controller
         $data->deskripsi = $request->deskripsi;
         $data->save();
 
-        return redirect()->route('jenis.index')->with('success', 'Data Berhasil Ditambahkan');
+        return redirect()->route('jenis.index')->with('success', 'Data jenis berhasil ditambahkan');
     }
 
     /**
@@ -104,7 +104,7 @@ class JenisController extends Controller
         $data->deskripsi = $request->deskripsi;
         $data->save();
 
-        return redirect()->route('jenis.index')->with('success', 'Data Berhasil Di Update');
+        return redirect()->route('jenis.index')->with('success', 'Data jenis telah di ubah');
     }
 
     /**
@@ -116,6 +116,6 @@ class JenisController extends Controller
     public function destroy($id)
     {
         $data = Jenis::find($id)->delete();
-        return redirect()->back()->with('success', 'Data Berhasil Di Hapus');
+        return redirect()->back()->with('success', 'Data jenis sudah dihapus');
     }
 }
