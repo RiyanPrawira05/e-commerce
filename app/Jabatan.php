@@ -9,6 +9,8 @@ class Jabatan extends Model
     protected $table = 'jabatan';
     protected $primaryKey = 'id_jabatan';
     protected $fillable = [
-    	'name', 'jabatan',
+    	'name', 'slug_jabatan',
     ];
+
+    public $timestamps = false;
 }

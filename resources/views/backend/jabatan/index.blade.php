@@ -1,6 +1,6 @@
 @extends('layouts.backend')
 
-@section('brand') Size @endsection
+@section('brand') Jabatan @endsection
 
 @section('content')
    <div class="row">
@@ -12,17 +12,17 @@
                       <div class="col-md-12">
                           <div class="form-group">
                               <button type="submit" class="btn btn-sm btn-primary mb-3"><span class="fas fa-search"></span></button>
-                              <input class="form-control form-control-alternative" type="text" name="search" placeholder="Type here for Search" value="{{ request()->search }}" autocomplete="off">
+                              <input class="form-control form-control-alternative" type="text" name="search" placeholder="Type here for Search" value="{{ Request::get('search') }}" autocomplete="off">
                           </div>
                       </div>
                   </form>
                </div>
                <div class="row align-items-center">
                   <div class="col">
-                     <h3 class="heading-small text-muted mb-0">Data Size</h3>
+                     <h3 class="heading-small text-muted mb-0">Data Jabatan</h3>
                   </div>
                   <div class="col text-right">
-                     <a href="{{ Route('size.create') }}" class="btn btn-sm btn-default"><span class="fas fa-plus-circle"></span>&nbsp; ADD</a>
+                     <a href="{{ Route('jabatan.create') }}" class="btn btn-sm btn-default"><span class="fas fa-plus-circle"></span>&nbsp; ADD</a>
                   </div>
                </div>
             </div>
@@ -33,42 +33,32 @@
                   <table class="table align-items-center">
                      <thead class="thead-light">
                         <tr>
-                           <th scope="col">Size</th>
-                           <th scope="col">Deskripsi</th>
+                           <th scope="col">Nama Jabatan</th>
+                           <th scope="col">Slug Jabatan</th>
                            <th scope="col"></th>
                            <th scope="col"></th>
                         </tr>
                      </thead>
                      <tbody>
 
-                        @if (count($size) > 0)
-                        @foreach ($size as $ukuran)
+                        @if (count($jabatan) > 0)
+                        @foreach ($jabatan as $key => $isijabatan)
                         <tr>
                            <td>
-                              @if ($ukuran->size == 'S')
-                                 <span class="badge badge-dot mr-4"><i class="bg-danger"></i> <span class="mb-0 text-sm"><b>{{ $ukuran->size }}</b></span>
-                              @elseif ($ukuran->size == 'M')
-                                 <span class="badge badge-dot mr-4"><i class="bg-warning"></i> <span class="mb-0 text-sm"><b>{{ $ukuran->size }}</b></span>
-                              @elseif ($ukuran->size == 'L')
-                                 <span class="badge badge-dot mr-4"><i class="bg-info"></i> <span class="mb-0 text-sm"><b>{{ $ukuran->size }}</b></span>
-                              @elseif ($ukuran->size == 'XL')
-                                 <span class="badge badge-dot mr-4"><i class="bg-success"></i> <span class="mb-0 text-sm"><b>{{ $ukuran->size }}</b></span>
-                              @else
-                                 <span class="badge badge-dot mr-4"><i class="bg-default"></i> <span class="mb-0 text-sm"><b>{{ $ukuran->size }}</b></span>
-                              @endif
+                              <span class="badge badge-dot mr-4"><i class="bg-danger"></i> <span class="mb-0 text-sm"><b>{{ $isijabatan->name }}</b></span>
                            </td>
                            <th>
                               <div class="media align-items-center">
                                  <div class="media-body">
-                                    <span class="mb-0 text-sm">{{ $ukuran->deskripsi }}</span>
+                                    <span class="mb-0 text-sm">{{ $isijabatan->slug_jabatan }}</span>
                                  </div>
                               </div>
                            </th>
                            <td class="text-right">
-                              <a class="btn btn-sm btn-warning" href="{{ Route('size.edit', $ukuran->id_size) }}"><span class="fas fa-pencil-ruler"></span>&nbsp;EDIT</a>
+                              <a class="btn btn-sm btn-warning" href="{{ Route('jabatan.edit', $isijabatan->id_jabatan) }}"><span class="fas fa-pencil-ruler"></span>&nbsp;EDIT</a>
                            </td>
                            <td class="text-right">
-                              <form action="{{ Route('size.destroy', $ukuran->id_size) }}" method="POST">
+                              <form action="{{ Route('jabatan.destroy', $isijabatan->id_jabatan) }}" method="POST">
                                 {{ method_field('DELETE') }}
                                 {{ csrf_field() }}
                                     <button class="btn btn-sm btn-danger" type="submit"><span class="fas fa-eraser"></span>&nbsp;DELETE</button>
@@ -77,10 +67,10 @@
                         </tr>
                         @endforeach
                         @else
-                             <th class="mb-0 text-danger">Data Size Kosong !!</th>
+                             <th class="mb-0 text-danger">Data Jabatan Kosong !!</th>
                         @endif
                   </tbody>
                </table>
-                  {{ $size->links('pagin.pagin') }}
+                  {{ $jabatan->links('pagin.pagin') }}
             </div>
 @endsection

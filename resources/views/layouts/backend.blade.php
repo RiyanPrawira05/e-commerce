@@ -128,13 +128,18 @@
 						</a>
 					</li>
 					<li class="nav-item">
+						<a class="nav-link" href="{{ Route('jabatan.index') }}">
+							<i class="fas fa-id-card-alt text-primary"></i>Jabatan
+						</a>
+					</li>
+					<li class="nav-item">
 						<a class="nav-link" href="{{ Route('alamat.index') }}">
 							<i class="fas fa-map-marked-alt text-primary"></i>Alamat Pengguna
 						</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="{{ Route('product.index') }}">
-							<i class="fas fa-store-alt text-primary"></i>Product
+							<i class="fas fa-store text-primary"></i>Product
 						</a>
 					</li>
 					<li class="nav-item">
@@ -184,7 +189,7 @@
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="{{ Route('bank.index') }}">
-							<i class="fas fa-money-check-alt text-primary"></i>Account Bank
+							<i class="fas fa-university text-primary"></i>Account Bank
 						</a>
 					</li>
 				@else

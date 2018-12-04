@@ -11,8 +11,6 @@
 |
 */
 
-
-// Auth::Routes();
 Route::get('/pass', function () {
     return bcrypt('123456');
 });
@@ -86,6 +84,8 @@ Route::resource('discount', 'DiscountController', ['names' => 'discount']);
 // Bank Account 
 Route::resource('bankAccount', 'BankAccountController', ['names' => 'bank']);
 
+// Jabatan 
+Route::resource('jabatan', 'JabatanController', ['names' => 'jabatan']);
 
 
 
