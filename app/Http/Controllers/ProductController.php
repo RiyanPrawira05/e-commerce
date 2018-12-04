@@ -135,6 +135,13 @@ class ProductController extends Controller
         $jenis = Jenis::all();
         $category = Category::all();
         $size = Productsize::all();
+        foreach ($product->pilihSize as $key => $value) {
+            foreach ($size as $size_key => $size_value) {
+                if ($value['id'] == $size_value['id']) {
+                    $size[$size_key]['checked'] = true;
+                }
+            }
+        }
         return view('backend.product.edit', compact('product', 'jenis', 'category', 'size'));
     }
 
