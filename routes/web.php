@@ -15,6 +15,10 @@ Route::get('/pass', function () {
     return bcrypt('123456');
 });
 
+Route::get('/test', function () {
+    return view('layouts.frontend');
+});
+
 // Route untuk Authentication
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('/login', 'Auth\LoginController@login')->name('login');
