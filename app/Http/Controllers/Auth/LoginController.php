@@ -56,10 +56,10 @@ class LoginController extends Controller
                 return redirect()->route('home'); // ini untuk dia redirect kemana jikalau user dengan hak akses admin
                 break;
             case '2':
-                return redirect()->route('welcome'); // ini untuk dia redirect kemana jikalau user dengan hak akses pengguna
+                return redirect()->route('users'); // ini untuk dia redirect kemana jikalau user dengan hak akses pengguna
                 break;
         }
-        return redirect('/home'); // ini default jika value / nomor jabatan user tidak masuk ke salah satu yg diatas dia otomatis ke sini
+        return redirect('/welcome'); // ini default jika value / nomor jabatan user tidak masuk ke salah satu yg diatas dia otomatis ke sini
     }
     public function logout()
     {

@@ -20,7 +20,7 @@ class ViaController extends Controller
             $search = $request->search;
             $via = $result->where('via', 'LIKE', '%'.$search.'%');
         }
-        $via = $result->orderBy('created_at', 'DESC')->paginate(3);
+        $via = $result->orderBy('via', 'DESC')->paginate(3);
         return view('backend.via.index', compact('via'));
     }
 

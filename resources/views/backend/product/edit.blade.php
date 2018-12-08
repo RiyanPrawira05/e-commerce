@@ -87,39 +87,51 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="form-control-label">Size</label>
-                                        <select multiple="multiple" name="size[]" class="form-control form-control-alternative select2" required>
+                                        <select multiple="multiple" name="size[]" class="form-control form-control-alternative sizes" required>
                                         @foreach ($size as $ukuran)
-                                            <option value="{{ $ukuran->id_size }}" {{ $ukuran->id_size == $product->size ? 'selected' : ''}}>{{ $ukuran->size }}</option>
+                                            <option value="{{ $ukuran->id_size }}" {{ $ukuran['checked'] ? 'selected' : ''}}>{{ $ukuran->size }}</option>
                                         @endforeach
                                         </select>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    <hr class="my-4">
-
-                    <h6 class="heading-small text-muted mb-4">Description</h6>
-                        <div class="pl-md-4">
-                            <div class="row">
-                                <div class="col-md-12">
+                        <div class="col-md-12">
                                     <div class="form-group">
-                                        <label class="form-control-label">Deskripsi</label>
-                                        <textarea name="deskripsi" class="form-control form-control-alternative" placeholder="New Arrival, Hot Offer">{{ $product->deskripsi }}</textarea>
+                                        <label class="form-control-label">Warna</label>
+                                        <select multiple="multiple" name="warna[]" class="form-control form-control-alternative colors" required>
+                                        @foreach ($warna as $key => $valueWarna)
+                                            <option value="{{ $valueWarna->id_warna }}" {{ $product->warna == $valueWarna->id_warna ? 'selected' : ''}}>{{ $valueWarna->warna }}</option>
+                                        @endforeach
+                                        </select>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="text-left pt-4">
-                            <div class="col-md-12 mb-3">
-                                <button type="submit" class="btn btn-default">Change Product</button>
+                        <hr class="my-4">
+
+                        <h6 class="heading-small text-muted mb-4">Description</h6>
+                            <div class="pl-md-4">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="form-control-label">Deskripsi</label>
+                                            <textarea name="deskripsi" class="form-control form-control-alternative" placeholder="New Arrival, Hot Offer">{{ $product->deskripsi }}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-left pt-4">
+                                <div class="col-md-12 mb-3">
+                                    <button type="submit" class="btn btn-default">Change Product</button>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 
 @section('script') 
 
@@ -169,9 +181,18 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $('.select2').select2({
+        $('.sizes').select2({
             placeholder: 'Size yang tersedia : s/m/l/xl',
             maximumSelectionLength: 4,
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.colors').select2({
+            placeholder: 'Warna : red/blue/black/yellow',
+            maximumSelectionLength: 5,
         });
     });
 </script>

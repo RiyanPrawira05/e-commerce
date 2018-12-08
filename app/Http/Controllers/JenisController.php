@@ -19,7 +19,7 @@ class JenisController extends Controller
             $search = $request->search;
             $jenis = $result->where('bahan', 'LIKE', '%'.$search.'%');
         }
-        $jenis = $result->orderBy('created_at', 'DESC')->paginate(3);
+        $jenis = $result->orderBy('bahan', 'DESC')->paginate(3);
         return view('backend.jenis.index', compact('jenis'));
     }
 
@@ -45,14 +45,12 @@ class JenisController extends Controller
 
             'bahan' => 'required|min:4|max:50|string|unique:jenis,bahan',
             'slug_bahan' => 'required|string|min:4|max:50',
-            'deskripsi' => 'min:5|string|nullable',
 
         ]);
 
         $data = new Jenis;
         $data->bahan = $request->bahan;
         $data->slug_bahan = $request->slug_bahan;
-        $data->deskripsi = $request->deskripsi;
         $data->save();
 
         return redirect()->route('jenis.index')->with('success', 'Data jenis berhasil ditambahkan');
@@ -94,14 +92,12 @@ class JenisController extends Controller
 
             'bahan' => 'string|min:4|max:50',
             'slug_bahan' => 'string|min:4|max:50',
-            'deskripsi' => 'min:5',
 
         ]);
 
         $data = Jenis::find($id);
         $data->bahan = $request->bahan;
         $data->slug_bahan = $request->slug_bahan;
-        $data->deskripsi = $request->deskripsi;
         $data->save();
 
         return redirect()->route('jenis.index')->with('success', 'Data jenis telah di ubah');

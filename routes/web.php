@@ -15,10 +15,6 @@ Route::get('/pass', function () {
     return bcrypt('123456');
 });
 
-Route::get('/test', function () {
-    return view('layouts.frontend');
-});
-
 // Route untuk Authentication
 Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('/login', 'Auth\LoginController@login')->name('login');
@@ -90,6 +86,12 @@ Route::resource('bankAccount', 'BankAccountController', ['names' => 'bank']);
 
 // Jabatan 
 Route::resource('jabatan', 'JabatanController', ['names' => 'jabatan']);
+
+
+// Tampilan untuk users
+Route::get('/test', function () {
+    return view('layouts.frontend');
+})->name('users');
 
 
 

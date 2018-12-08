@@ -34,7 +34,7 @@
                      <thead class="thead-light">
                         <tr>
                            <th scope="col">Category</th>
-                           <th scope="col">Slug</th>
+                           <th scope="col">Deskripsi</th>
                            <th scope="col"></th>
                            <th scope="col"></th>
                         </tr>
@@ -47,13 +47,9 @@
                            <td>
                               <span class="badge badge-dot mr-4"><i class="bg-success"></i> <span class="mb-0 text-sm"><b>{!! $categories->category !!}</b></span>
                            </td>
-                           <th scope="row">
-                              <div class="media align-items-center">
-                                 <div class="media-body">
-                                    <span class="mb-0 text-sm">{{ $categories->slug_category }}</span>
-                                 </div>
-                              </div>
-                           </th>
+                           <td>
+                              {{ $categories->deskripsi }}
+                           </td>
                            <td class="text-right">
                               <a class="btn btn-sm btn-warning" href="{{ Route('category.edit', $categories->id_category) }}"><span class="fas fa-pencil-ruler"></span>&nbsp;EDIT</a>
                            </td>

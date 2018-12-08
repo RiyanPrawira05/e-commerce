@@ -34,8 +34,8 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label class="form-control-label">Slug</label>
-                                    <input type="text" name="slug_category" class="form-control form-control-alternative" placeholder="Men" value="{{ $data->slug_category }}" required>
+                                    <label class="form-control-label">Deskripsi</label>
+                                    <textarea name="deskripsi" class="form-control form-control-alternative" placeholder="Men" required>{{ $data->deskripsi }}</textarea>
                                 </div>
                             </div>
                         </div>

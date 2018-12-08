@@ -31,33 +31,25 @@
                                         <input type="text" name="bahan" class="form-control form-control-alternative" placeholder="Chino" required>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label class="form-control-label">Slug</label>
-                                        <input type="text" name="slug_bahan" class="form-control form-control-alternative" placeholder="SlimFit" autofocus required>
+                                <div class="pl-md-4">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="form-control-label">Deskripsi</label>
+                                                <textarea name="deskripsi" class="form-control form-control-alternative"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-left pt-4">
+                                    <div class="col-md-12 mb-3">
+                                        <button type="submit" class="btn btn-default">Add Jenis</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="pl-md-4">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label class="form-control-label">Deskripsi</label>
-                                        <textarea name="deskripsi" class="form-control form-control-alternative" placeholder="Bahan yang adem slimfit tidak mudah kusut"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-left pt-4">
-                            <div class="col-md-12 mb-3">
-                                <button type="submit" class="btn btn-default">Add Jenis</button>
-                            </div>
-                        </div>
-                    </div>
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
-    </div>
-</div>
 @endsection

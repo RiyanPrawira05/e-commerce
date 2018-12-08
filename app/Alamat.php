@@ -11,9 +11,7 @@ class Alamat extends Model
     protected $fillable = [
     	'alamat', 'users',
     ];
-
-    public $timestamps = false;
-
+    
     public function pilihUser()
     {
     	return $this->belongsTo('App\User', 'users', 'id_users');

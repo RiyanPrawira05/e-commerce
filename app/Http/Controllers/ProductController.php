@@ -7,6 +7,7 @@ use App\Product;
 use App\Jenis;
 use App\Category;
 use App\Size as Productsize;
+use App\Warna as Productwarna;
 use File;
 
 class ProductController extends Controller
@@ -45,7 +46,8 @@ class ProductController extends Controller
         $jenis = Jenis::all();
         $category = Category::all();
         $size = Productsize::all();
-        return view('backend.product.index', compact('product', 'jenis', 'category', 'size'));
+        $warna = Productwarna::all();
+        return view('backend.product.index', compact('product', 'jenis', 'category', 'size', 'warna'));
     }
 
     /**
@@ -59,7 +61,8 @@ class ProductController extends Controller
         $jenis = Jenis::all();
         $category = Category::all();
         $size = Productsize::all();
-        return view('backend.product.create', compact('product', 'jenis', 'category', 'size'));
+        $colors = Productwarna::all();
+        return view('backend.product.create', compact('product', 'jenis', 'category', 'size', 'colors'));
     }
 
     /**
@@ -78,7 +81,8 @@ class ProductController extends Controller
             'category' => 'required',
             'harga' => 'required|numeric',
             'size' => 'required',
-            'deskripsi' => 'string|min:3|nullable',
+            'warna' => 'required',
+            'deskripsi' => 'string|min:3',
 
         ]);
 
@@ -101,11 +105,12 @@ class ProductController extends Controller
         $data->jenis = $request->jenis;
         $data->category = $request->category;
         $data->harga = $request->harga;
+        $data->warna = $request->warna;
         $data->deskripsi = $request->deskripsi;
         $data->save();
         if ($request->size) {
             foreach ($request->size as $size) {
-                $data->pilihSize()->attach($size); // Memanggil fungsi dimobel dan lakukan Perulangan pakai attach untuk select multiple size karena name html nya berbentuk array[]
+                $data->pilihSize()->attach($size); // Memanggil fungsi dimodel dan lakukan Perulangan pakai attach untuk select multiple size karena untuk menghapus data array dan menambahkan size arraynya
             }
         }
 
@@ -135,14 +140,15 @@ class ProductController extends Controller
         $jenis = Jenis::all();
         $category = Category::all();
         $size = Productsize::all();
+        $warna = Productwarna::all();
         foreach ($product->pilihSize as $key => $value) {
             foreach ($size as $size_key => $size_value) {
-                if ($value['id'] == $size_value['id']) {
+                if ($value['id_size'] == $size_value['id_size']) {
                     $size[$size_key]['checked'] = true;
                 }
             }
         }
-        return view('backend.product.edit', compact('product', 'jenis', 'category', 'size'));
+        return view('backend.product.edit', compact('product', 'jenis', 'category', 'size', 'warna'));
     }
 
     /**
@@ -162,7 +168,8 @@ class ProductController extends Controller
             'category' => 'numeric',
             'harga' => 'numeric',
             'size' => 'required',
-            'deskripsi' => 'string|nullable',
+            'warna' => 'required',
+            'deskripsi' => 'string|min:3',
 
         ]);
 
@@ -185,6 +192,7 @@ class ProductController extends Controller
         $data->jenis = $request->jenis;
         $data->category = $request->category;
         $data->harga = $request->harga;
+        $data->warna = $request->warna;
         $data->deskripsi = $request->deskripsi;
         $data->save();
 

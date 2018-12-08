@@ -19,7 +19,7 @@ class SizeController extends Controller
             $search = $request->search;
             $size = $result->whereHas('size', 'LIKE', '%'.$search.'%');
         }
-        $size = $result->orderBy('created_at', 'DESC')->paginate(3);
+        $size = $result->orderBy('size', 'DESC')->paginate(3);
         return view('backend.size.index', compact('size'));
     }
 

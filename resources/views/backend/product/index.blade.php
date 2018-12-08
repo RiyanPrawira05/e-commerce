@@ -65,6 +65,7 @@
                             <th scope="col">Category</th>
                             <th scope="col">Harga</th>
                             <th scope="col">Size</th>
+                            <th scope="col">Warna</th>
                             <th scope="col">Deskripsi</th>
                             <th scope="col"></th>
                             <th scope="col"></th>
@@ -76,12 +77,12 @@
                         <tr>
                             <td><img src="{{ asset($products->foto) }}" alt="" class="rounded-circle" width="70" height="70"></td>
                             <td><span class="font-weight-bold"><strong>{{ $products->product }}</strong></span></td>
-                            <td><span class="font-weight-bold">{{ $products->pilihJenis->slug_bahan }}</span></td>
+                            <td><span class="font-weight-bold">{{ $products->pilihJenis->bahan }}</span></td>
                             <td><span class="font-weight-bold">{{ $products->pilihCategory->category }}</span></td>
                             <td><span class="font-weight-bold">{{ $products->harga }}</span></td>
                             <td>
                             @foreach($products->pilihSize as $size)
-                              <!-- Memanggil fungsi dimobel dan lakukan Perulangan untuk select multiple size karena name html nya berbentuk array[] -->
+                              <!-- Memanggil fungsi dimodel dan lakukan Perulangan untuk select multiple size karena name html nya berbentuk array[] -->
                                 @if ($size->size == 'S')
                                   <span class="badge badge-dot mr-3"><i class="bg-danger"></i><span class="mb-0 text-sm"></span><b> {{ $size->size }}</b></span>
                                 @elseif ($size->size == 'M')
@@ -94,6 +95,10 @@
 
                             @endforeach
                             </td>
+                                <td>
+                                    <span class="badge badge-dot mr-3"><i class="bg-success"></i><span class="mb-0 text-sm"></span><b> {{ $color->pilihWarna->warna }}</b></span>
+                                </td>
+
                             @if (!empty($products->deskripsi))
                             <td><span class="font-weight-bold">{{ $products->deskripsi }}</span></td>
                             @else

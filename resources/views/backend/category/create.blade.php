@@ -33,8 +33,8 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <label class="form-control-label">Slug</label>
-                                    <input type="text" name="slug_category" class="form-control form-control-alternative" placeholder="Men" required>
+                                    <label class="form-control-label">Deskripsi</label>
+                                    <textarea name="deskripsi" class="form-control form-control-alternative" required></textarea>
                                 </div>
                             </div>
                         </div>

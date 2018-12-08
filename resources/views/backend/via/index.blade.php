@@ -45,9 +45,9 @@
                         <tr>
                            <td>
                            @if ($vpembayaran->via == 'ATM')
-                              <span class="badge badge-dot mr-4"><i class="bg-success"></i> <span class="mb-0 text-sm"><b>{{ $vpembayaran->via }}</b></span>
+                              <span class="badge badge-dot mr-0"><i class="bg-success"></i> <span class="mb-0 text-sm"><b>{{ $vpembayaran->via }}</b></span>
                            @elseif ($vpembayaran->via == 'COD')
-                              <span class="badge badge-dot mr-4"><i class="bg-info"></i> <span class="mb-0 text-sm"><b>{{ $vpembayaran->via }}</b></span>
+                              <span class="badge badge-dot mr-0"><i class="bg-info"></i> <span class="mb-0 text-sm"><b>{{ $vpembayaran->via }}</b></span>
                            @endif
                            </td>
                            <td class="text-right">

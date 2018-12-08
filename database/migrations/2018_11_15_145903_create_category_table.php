@@ -16,8 +16,7 @@ class CreateCategoryTable extends Migration
         Schema::create('category', function (Blueprint $table) {
             $table->increments('id_category');
             $table->string('category', 50)->comment('ex: Mans, Womens, Celana, dll');
-            $table->string('slug_category', 20);
-            $table->timestamp('created_at')->nullable();
+            $table->string('deskripsi', 100);
         });
     }
 

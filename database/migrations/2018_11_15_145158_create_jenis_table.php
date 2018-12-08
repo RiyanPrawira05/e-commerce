@@ -16,9 +16,7 @@ class CreateJenisTable extends Migration
         Schema::create('jenis', function (Blueprint $table) {
             $table->increments('id_jenis');
             $table->string('bahan', 100)->comment('ex: Denim, Slimfit, dll');
-            $table->string('slug_bahan', 100);
-            $table->text('deskripsi')->nullable();
-            $table->timestamp('created_at')->nullable();
+            $table->string('deskripsi', 100);
         });
     }
 

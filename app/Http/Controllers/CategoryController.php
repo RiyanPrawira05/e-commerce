@@ -17,9 +17,9 @@ class CategoryController extends Controller
         $result = Category::query();
         if ($request->filled('search')) {
             $search = $request->search;
-            $category = $result->where('category', 'LIKE', '%'.$search.'%')->orwhere('slug_category', 'LIKE', '%'.$search.'%');
+            $category = $result->where('category', 'LIKE', '%'.$search.'%');
         }
-        $category = $result->orderBy('created_at', 'DESC')->paginate(3);
+        $category = $result->orderBy('category', 'DESC')->paginate(3);
         return view('backend.category.index', compact('category'));
     }
 
@@ -44,13 +44,13 @@ class CategoryController extends Controller
         $this->validate($request, [
             
             'category'=> 'required|min:3|string|unique:category,category',
-            'slug_category'=> 'required|min:3|string',
+            'deskripsi'=> 'required|min:3|string',
 
         ]);
 
         $category = new Category;
         $category->category = $request->category;
-        $category->slug_category = $request->slug_category;
+        $category->deskripsi = $request->deskripsi;
         $category->save();
 
         return redirect()->route('category.index')->with('success', 'Data Berhasil Di Tambah');
@@ -91,13 +91,12 @@ class CategoryController extends Controller
          $this->validate($request, [
             
             'category'=> 'min:3|string',
-            'slug_category'=> 'min:3|string',
+            'deskripsi'=> 'min:3|string',
 
         ]);
 
         $category = Category::find($id);
         $category->category = $request->category;
-        $category->slug_category = $request->slug_category;
         $category->save();
 
         return redirect()->route('category.index')->with('success', 'Data Berhasil Di Update');

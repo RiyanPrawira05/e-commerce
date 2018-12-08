@@ -55,7 +55,7 @@
                                         <select name="jenis" class="form-control form-control-alternative" required>
                                         <option value="" disabled selected>-- Pilih Jenis --</option>
                                         @foreach ($jenis as $tipe)
-                                            <option value="{{ $tipe->id_jenis }}">{{ $tipe->slug_bahan }}</option>
+                                            <option value="{{ $tipe->id_jenis }}">{{ $tipe->bahan }}</option>
                                         @endforeach
                                         </select>
                                     </div>
@@ -80,9 +80,19 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="form-control-label">Size</label>
-                                        <select multiple="multiple" name="size[]" class="form-control form-control-alternative select2" required>
+                                        <select multiple="multiple" name="size[]" class="form-control form-control-alternative sizes" required>
                                         @foreach ($size as $ukuran)
                                             <option value="{{ $ukuran->id_size }}">{{ $ukuran->size }}</option>
+                                        @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="form-control-label">Warna</label>
+                                        <select multiple="multiple" name="warna" class="form-control form-control-alternative colors" required>
+                                        @foreach ($colors as $color)
+                                            <option value="{{ $color->id_warna }}">{{ $color->warna }}</option>
                                         @endforeach
                                         </select>
                                     </div>
@@ -159,9 +169,18 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $('.select2').select2({
+        $('.sizes').select2({
             placeholder: 'Size yang tersedia : s/m/l/xl',
             maximumSelectionLength: 4,
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.colors').select2({
+            placeholder: 'Warna : red/blue/black/yellow',
+            maximumSelectionLength: 5,
         });
     });
 </script>

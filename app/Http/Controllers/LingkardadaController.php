@@ -19,7 +19,7 @@ class LingkardadaController extends Controller
             $search = $request->search;
             $lingkardada = $result->where('ukuran', 'LIKE', '%'.$search.'%');
         }
-        $lingkardada = $result->orderBy('created_at', 'DESC')->paginate(3);
+        $lingkardada = $result->orderBy('ukuran', 'DESC')->paginate(3);
         return view('backend.lingkardada.index', compact('lingkardada'));
     }
 

@@ -17,7 +17,6 @@ class CreateAlamatTable extends Migration
             $table->increments('id_alamat');
             $table->text('alamat');
             $table->integer('users')->unsigned();
-            $table->timestamp('created_at')->nullable();
 
             $table->foreign('users')->references('id_users')->on('users');
         });

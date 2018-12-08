@@ -33,7 +33,7 @@
                 <table class="table align-items-center">
                     <thead class="thead-light">
                         <tr>
-                            <th scope="col">Lingkar Dada</th>
+                            <th scope="col">Ukuran Lingkar Dada</th>
                             <th scope="col"></th>
                             <th scope="col"></th>
                         </tr>
@@ -42,8 +42,8 @@
                     @if (count($lingkardada) > 0)
                     @foreach ($lingkardada as $ld)
                         <tr>
-                            <td class="text-right">
-                              <span class="badge badge-dot mr-2"><i class="bg-default"></i> <span class="mb-0 text-sm"><b>{{ $ld->ukuran }}</b></span>
+                            <td>
+                              <span class="badge badge-dot mr-0"><i class="bg-default"></i> <span class="mb-0 text-sm"><b>{{ $ld->ukuran }}</b></span>
                             </td>
                             <td class="text-right">
                                 <a class="btn btn-sm btn-warning" href="{{ Route('LD.edit', $ld->id_lingkar_dada) }}"><span class="fas fa-pencil-ruler"></span>&nbsp;EDIT</a>
