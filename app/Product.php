@@ -40,7 +40,7 @@ class Product extends Model
         return $this->belongsToMany('App\Size', 'product_size', 'id_product', 'id_size'); // Panggil model Foreign nya, panggil nama kolom integer foreign nya, panggil id tabel ini, panggil id tabel foreign nya
     }
 
-    public function pilihWarna()
+    public function pilihColors()
     {
         return $this->belongsToMany('App\Warna', 'product_warna', 'id_product', 'id_warna');
     }

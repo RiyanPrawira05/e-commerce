@@ -108,6 +108,7 @@ class ProductController extends Controller
         $data->warna = $request->warna;
         $data->deskripsi = $request->deskripsi;
         $data->save();
+
         if ($request->size) {
             foreach ($request->size as $size) {
                 $data->pilihSize()->attach($size); // Memanggil fungsi dimodel dan lakukan Perulangan pakai attach untuk select multiple size karena untuk menghapus data array dan menambahkan size arraynya

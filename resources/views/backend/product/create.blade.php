@@ -90,7 +90,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label class="form-control-label">Warna</label>
-                                        <select multiple="multiple" name="warna" class="form-control form-control-alternative colors" required>
+                                        <select multiple="multiple" name="warna[]" class="form-control form-control-alternative colors" required>
                                         @foreach ($colors as $color)
                                             <option value="{{ $color->id_warna }}">{{ $color->warna }}</option>
                                         @endforeach
