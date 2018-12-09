@@ -96,8 +96,8 @@
                             @endforeach
                             </td>
                                 <td>
-                                 @foreach($products->pilihColors as $color)
-                                    <span class="badge badge-dot mr-3"><i class="bg-success"></i><span class="mb-0 text-sm"></span><b> {{ $color->warna }}</b></span>
+                                 @foreach($products->pilihColors as $key => $valueWarna)
+                                    <span class="badge badge-dot mr-3"><i class="bg-success"></i><span class="mb-0 text-sm"></span><b> {{ $valueWarna->warna }}</b></span>
                                 @endforeach
                                 </td>
 

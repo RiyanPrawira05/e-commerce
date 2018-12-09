@@ -105,7 +105,6 @@ class ProductController extends Controller
         $data->jenis = $request->jenis;
         $data->category = $request->category;
         $data->harga = $request->harga;
-        $data->warna = $request->warna;
         $data->deskripsi = $request->deskripsi;
         $data->save();
 
@@ -113,8 +112,11 @@ class ProductController extends Controller
             foreach ($request->size as $size) {
                 $data->pilihSize()->attach($size); // Memanggil fungsi dimodel dan lakukan Perulangan pakai attach untuk select multiple size karena untuk menghapus data array dan menambahkan size arraynya
             }
+        } elseif ($request->warna) {
+            foreach ($request->warna as $key => $value) {
+                $data->pilihColors()->attach($value);
+            }
         }
-
         return redirect()->route('product.index')->with('success', 'Data Berhasil Ditambahkan');
     }
 
